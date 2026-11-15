@@ -19,6 +19,7 @@ Feed the tree together and it grows, raising new rings of islands around it. At 
 | Crouch + `G` | **Launch**: throw your partner across a gap |
 | `H` | **Ender Call**: teleport to your partner (needs Ender Thread) |
 | `U` | **Unhook**: loosen the rope (Golden Thread only) |
+| `J` | **Weaver's Journal**: map, quests, tree |
 
 ## The rope
 | Tier | Length | How to get it |
@@ -34,30 +35,61 @@ Feed the tree together and it grows, raising new rings of islands around it. At 
 - The void still kills. If you both fall, you both fall.
 - Go through a portal and your partner gets pulled through with you.
 
+## The world map
+You start on **Heartrest**, a small island with the Heart Tree. Seven more islands float far away:
+
+| # | Island | Distance | Theme | Quests use |
+|---|---|---|---|---|
+| 1 | Hearthmeadow | ~200 | meadows, animals | Farmer's Delight, Vinery |
+| 2 | Ironreach | ~360 | ore-rich rock | Create, Ex Deorum |
+| 3 | Windward Docks | ~540 | high & windy | Paragliders, Immersive Aircraft, the Aether |
+| 4 | Arcanum | ~720 | birch & old stone | Ars Nouveau, Occultism, enchanting |
+| 5 | Frostfall | ~920 | snow & ice | Ice and Fire (dragons) |
+| 6 | Gloomhollow | ~1160 | dark forest | the Nether, Wither, Mowzie's Mobs, Cataclysm |
+| 7 | Bloomreach | ~1500 | cherry blossoms | the Weaver's question (ending) |
+
+Islands are built when you get close, so the far ones really are undiscovered.
+
+**The loop:** grow the Heart Tree → its roots grow a **Rootway** bridge to the next island → do that island's
+quest chapter together → get a **Heart Shard** → bring it home → the tree grows → next island.
+
+**Anchor Stones:** each island has one in the middle. Right-click it *together* to attune it.
+
 ## The Heart Tree
-Right-click the heart with an empty hand to see what it wants, or with items to offer them.
-It only grows when **both of you** are near it.
+Right-click it to see what it wants. It only grows when you're **both** next to it.
+Every stage unlocks a **blessing** for the whole world:
 
-| Stage | Needs | New islands |
+| Stage | Name | Blessing |
 |---|---|---|
-| Sprout | 64 cobblestone, 32 logs, 16 wheat | Meadows: trees, animals, coal/iron/copper |
-| Young Tree | 16 iron, 16 bread, 8 leather, 16 wool | Stone islands with ores, a desert island |
-| Grown Tree | 48 copper, 16 gold, 32 redstone, 4 diamonds | Jungle, swamp and snowy islands |
-| Old Tree | 32 obsidian, 8 ender pearls, 8 blaze rods | Dark shadow islands (ancient city loot) |
-| Bloom | 4 diamond blocks, 8 eyes of ender, 4 golden apples | Cherry blossom islands + the ending |
+| 1 | Sprout | **Green Thumb**: crops near the tree grow faster |
+| 2 | Sapling | **Together**: regeneration while you're within 12 blocks of each other |
+| 3 | Young Tree | **Heart Paths**: fast travel between the tree and attuned anchors (journal map) |
+| 4 | Grown Tree | **Deep Roots**: rope +4 blocks |
+| 5 | Elder Tree | **Shared Table**: when one eats, the other is fed a little |
+| 6 | Ancient Tree | **Heartward**: no monsters spawn near the tree |
+| 7 | Bloom | the last root reaches Bloomreach |
 
-### Adding mods to the Heart Tree
-Stages are plain JSON in `data/<namespace>/heart_tree_stages/`. A datapack (or KubeJS) can override them
-or add stage 6, 7, ... Requirements take item ids or tags (`"tag": "c:ingots/tin"`). Island rings can use
-any mod's blocks, biomes and tree features. Missing mods are skipped, not crashed.
+Rope upgrades need the tree too: Leather at stage 2, Chain at 3, Ender at 4.
 
-Advancements `tethered:heart_tree/stage_N`, `tethered:paired`, `tethered:bound_forever` etc. can be used
-as FTB Quests tasks.
+## The Weaver's Journal (press J)
+- **Map**: every island, the Rootways, you (white) and your partner (pink). Click an attuned island to travel.
+- **Quests**: a chapter per island, tasks, rewards and a *Hand in items* button.
+- **Heart Tree**: stage and blessings.
+The HUD also shows an arrow to the next island.
+
+Quests for mods you don't have are hidden automatically, so the story always works.
+
+## Adding to it
+Everything is datapack JSON, so it's easy to extend without code:
+- `data/tethered/tethered_islands/*.json`: islands (position, size, blocks, ores, biome, trees, mobs, loot)
+- `data/tethered/tethered_quests/*.json`: quest chapters (task types: item, kill, advancement, visit, attune,
+  tree_stage, together; rewards: item, shard, xp, unlock, ending)
+- `data/tethered/heart_tree_stages/*.json`: what each stage needs and which island it unlocks
 
 ## Commands
-- `/tether status`, `/hearttree info`
+- `/tether status`, `/tether travel <island|tree>`, `/hearttree info`
 - Operators: `/tether pair <a> <b>`, `/tether cut <player>`, `/tether tier <player> <1-5>`,
-  `/hearttree grow` (skip a stage), `/hearttree startisland` (build a starter island where you stand)
+  `/hearttree grow` (skip a stage), `/hearttree unlockall`, `/hearttree startisland` (build a starter island where you stand)
 
 ## Building
 `./gradlew build` → `build/libs/tethered-0.1.0.jar`.
