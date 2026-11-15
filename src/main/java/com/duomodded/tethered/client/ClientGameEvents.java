@@ -18,6 +18,9 @@ public final class ClientGameEvents {
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Post event) {
         Minecraft mc = Minecraft.getInstance();
+        if (mc.player != null && mc.screen == null) {
+            while (Keys.JOURNAL.consumeClick()) ClientAccess.openJournal();
+        }
         if (mc.player == null || mc.level == null || !ClientTetherState.get().linked()) {
             haulWasDown = false;
             return;
@@ -45,6 +48,7 @@ public final class ClientGameEvents {
     @SubscribeEvent
     public static void onLoggingOut(ClientPlayerNetworkEvent.LoggingOut event) {
         ClientTetherState.reset();
+        ClientJournalState.reset();
         haulWasDown = false;
     }
 

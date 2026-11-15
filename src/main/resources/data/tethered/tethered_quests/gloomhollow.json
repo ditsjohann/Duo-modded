@@ -1,0 +1,195 @@
+{
+  "title": "Gloomhollow",
+  "order": 6,
+  "icon": "minecraft:wither_skeleton_skull",
+  "quests": [
+    {
+      "id": "anchor",
+      "title": "Anchor Gloomhollow",
+      "description": "Find the Anchor Stone in the middle of Gloomhollow and right-click it together. Attuned islands show on your map and become places the Heart Tree can carry you to.",
+      "icon": "tethered:anchor_stone",
+      "tasks": [
+        {
+          "type": "attune",
+          "island": "gloomhollow"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 30
+        }
+      ]
+    },
+    {
+      "id": "fire",
+      "title": "Into the Fire",
+      "description": "Open a portal to the Nether and bring back blaze rods and obsidian.",
+      "icon": "minecraft:blaze_rod",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "minecraft:blaze_rod",
+          "count": 8,
+          "consume": true
+        },
+        {
+          "type": "item",
+          "item": "minecraft:obsidian",
+          "count": 16,
+          "consume": true
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 100
+        }
+      ],
+      "requires": [
+        "anchor"
+      ]
+    },
+    {
+      "id": "bones",
+      "title": "Bone Collectors",
+      "description": "Defeat wither skeletons in a Nether fortress.",
+      "icon": "minecraft:coal",
+      "tasks": [
+        {
+          "type": "kill",
+          "entity": "minecraft:wither_skeleton",
+          "count": 10
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 120
+        }
+      ],
+      "requires": [
+        "anchor"
+      ]
+    },
+    {
+      "id": "pearls",
+      "title": "Eyes in the Dark",
+      "description": "Endermen walk the shadow islands at night.",
+      "icon": "minecraft:ender_pearl",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "minecraft:ender_pearl",
+          "count": 12,
+          "consume": true
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:ender_eye",
+          "count": 2
+        }
+      ],
+      "requires": [
+        "anchor"
+      ]
+    },
+    {
+      "id": "wither",
+      "title": "The Wither",
+      "description": "The hardest fight in the vanilla world. Optional, but legendary.",
+      "icon": "minecraft:nether_star",
+      "tasks": [
+        {
+          "type": "kill",
+          "entity": "minecraft:wither",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 500
+        }
+      ],
+      "requires": [
+        "bones"
+      ],
+      "optional": true
+    },
+    {
+      "id": "wroughtnaut",
+      "title": "The Ferrous Wroughtnaut",
+      "description": "An ancient knight of iron sleeps in the dark.",
+      "icon": "minecraft:iron_axe",
+      "tasks": [
+        {
+          "type": "kill",
+          "entity": "mowziesmobs:ferrous_wroughtnaut",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 300
+        }
+      ],
+      "requires": [
+        "anchor"
+      ],
+      "mod": "mowziesmobs",
+      "optional": true
+    },
+    {
+      "id": "monstrosity",
+      "title": "The Netherite Monstrosity",
+      "description": "A mountain of molten metal. Good luck.",
+      "icon": "minecraft:netherite_scrap",
+      "tasks": [
+        {
+          "type": "kill",
+          "entity": "cataclysm:netherite_monstrosity",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 500
+        }
+      ],
+      "requires": [
+        "fire"
+      ],
+      "mod": "cataclysm",
+      "optional": true
+    },
+    {
+      "id": "shard",
+      "title": "Heart of Gloomhollow",
+      "description": "When Gloomhollow's tasks are done, stand together and its Heart Shard will come to you. Bring it home to the Heart Tree.",
+      "icon": "tethered:heart_shard",
+      "tasks": [
+        {
+          "type": "together"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "shard",
+          "count": 1
+        }
+      ],
+      "requires": [
+        "anchor",
+        "fire",
+        "bones",
+        "pearls"
+      ]
+    }
+  ],
+  "island": "gloomhollow"
+}

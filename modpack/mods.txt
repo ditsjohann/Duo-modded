@@ -4,8 +4,7 @@
 # Mods each of these need are added automatically.
 
 # --- Pack foundation
-# FTB Quests / Library / Teams: CurseForge only, not on Modrinth. Trying Heracles (a quest book on Modrinth) instead.
-Heracles | heracles
+# FTB Quests / Library / Teams: CurseForge only. The Tethered mod has its own quest journal instead.
 KubeJS | kubejs
 JEI | jei
 Jade | jade
@@ -107,7 +106,7 @@ Artifacts | artifacts
 Better Combat | better-combat
 Combat Roll | combat-roll
 Naturalist | naturalist
-Friends & Foes | friends-and-foes
+Friends & Foes | friends-and-foes-forge
 
 # --- Hard mode
 Tough As Nails | tough-as-nails

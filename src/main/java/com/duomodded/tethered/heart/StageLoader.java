@@ -50,6 +50,6 @@ public final class StageLoader extends SimpleJsonResourceReloadListener {
 
     public static String nameOf(int stage) {
         StageDef def = get(stage);
-        return def != null ? def.name() : "Sapling";
+        return def != null ? def.name() : "Seed";
     }
 }

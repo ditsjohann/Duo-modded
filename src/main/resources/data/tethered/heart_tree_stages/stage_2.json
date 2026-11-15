@@ -1,99 +1,22 @@
 {
   "stage": 2,
-  "name": "Young Tree",
-  "message": "The Weaver: \"Stronger roots, stronger stone. Mind the edges. The higher you climb, the further you fall.\"",
+  "name": "Sapling",
+  "message": "The Weaver: \"A heart remembers every place you've been. A new root, toward stone and iron.\"",
   "requires": [
     {
-      "item": "minecraft:iron_ingot",
-      "count": 16
+      "item": "tethered:heart_shard",
+      "count": 1
     },
     {
       "item": "minecraft:bread",
       "count": 16
     },
     {
-      "item": "minecraft:leather",
-      "count": 8
-    },
-    {
       "tag": "minecraft:wool",
       "count": 16
     }
   ],
-  "rings": [
-    {
-      "count": 3,
-      "radius": 52,
-      "size_min": 8,
-      "size_max": 11,
-      "y_min": -8,
-      "y_max": 8,
-      "bumpiness": 3.0,
-      "surface": "minecraft:stone",
-      "filler": "minecraft:stone",
-      "core": "minecraft:stone",
-      "ores": [
-        {
-          "block": "minecraft:coal_ore",
-          "chance": 0.06
-        },
-        {
-          "block": "minecraft:iron_ore",
-          "chance": 0.05
-        },
-        {
-          "block": "minecraft:copper_ore",
-          "chance": 0.05
-        },
-        {
-          "block": "minecraft:gold_ore",
-          "chance": 0.02
-        },
-        {
-          "block": "minecraft:redstone_ore",
-          "chance": 0.02
-        },
-        {
-          "block": "minecraft:lapis_ore",
-          "chance": 0.015
-        },
-        {
-          "block": "minecraft:diamond_ore",
-          "chance": 0.004
-        }
-      ],
-      "biome": "minecraft:windswept_hills",
-      "entities": [
-        {
-          "id": "minecraft:goat",
-          "count": 1
-        }
-      ]
-    },
-    {
-      "count": 1,
-      "radius": 46,
-      "size_min": 8,
-      "size_max": 9,
-      "y_min": -4,
-      "y_max": 2,
-      "surface": "minecraft:sand",
-      "filler": "minecraft:sand",
-      "core": "minecraft:sandstone",
-      "biome": "minecraft:desert",
-      "features": [
-        {
-          "id": "minecraft:patch_cactus",
-          "tries": 2
-        }
-      ],
-      "entities": [
-        {
-          "id": "minecraft:rabbit",
-          "count": 2
-        }
-      ],
-      "loot": "minecraft:chests/desert_pyramid"
-    }
+  "unlocks": [
+    "ironreach"
   ]
 }

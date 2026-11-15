@@ -1,50 +1,26 @@
 {
   "stage": 5,
-  "name": "Bloom",
-  "message": "The Weaver: \"It blooms. You did this, together. Now come to the tree. I have a question for you both.\"",
+  "name": "Elder Tree",
+  "message": "The Weaver: \"What one of you eats, the other tastes. Share the table.\"",
   "requires": [
     {
-      "item": "minecraft:diamond_block",
-      "count": 4
+      "item": "tethered:heart_shard",
+      "count": 1
     },
     {
-      "item": "minecraft:ender_eye",
-      "count": 8
+      "item": "minecraft:lapis_lazuli",
+      "count": 32
     },
     {
-      "item": "minecraft:golden_apple",
+      "item": "minecraft:book",
+      "count": 16
+    },
+    {
+      "item": "minecraft:diamond",
       "count": 4
     }
   ],
-  "rings": [
-    {
-      "count": 5,
-      "radius": 106,
-      "size_min": 9,
-      "size_max": 12,
-      "y_min": -4,
-      "y_max": 14,
-      "surface": "minecraft:grass_block",
-      "filler": "minecraft:dirt",
-      "core": "minecraft:stone",
-      "biome": "minecraft:cherry_grove",
-      "features": [
-        {
-          "id": "minecraft:cherry_bees_005",
-          "tries": 3
-        },
-        {
-          "id": "minecraft:patch_grass",
-          "tries": 2
-        }
-      ],
-      "entities": [
-        {
-          "id": "minecraft:rabbit",
-          "count": 1
-        }
-      ],
-      "loot": "minecraft:chests/end_city_treasure"
-    }
+  "unlocks": [
+    "frostfall"
   ]
 }

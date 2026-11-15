@@ -1,0 +1,37 @@
+{
+  "name": "Bloomreach",
+  "description": "The farthest island, always in blossom. The Weaver waits here.",
+  "color": "#FF9CC8",
+  "order": 7,
+  "pos": [
+    0,
+    120,
+    -1500
+  ],
+  "radius": 22,
+  "rootway": true,
+  "island": {
+    "surface": "minecraft:grass_block",
+    "filler": "minecraft:dirt",
+    "core": "minecraft:stone",
+    "bumpiness": 1.5,
+    "biome": "minecraft:cherry_grove",
+    "features": [
+      {
+        "id": "minecraft:cherry_bees_005",
+        "tries": 5
+      },
+      {
+        "id": "minecraft:patch_grass",
+        "tries": 4
+      }
+    ],
+    "entities": [
+      {
+        "id": "minecraft:rabbit",
+        "count": 2
+      }
+    ],
+    "loot": "minecraft:chests/end_city_treasure"
+  }
+}

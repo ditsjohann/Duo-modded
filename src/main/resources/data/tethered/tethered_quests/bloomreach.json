@@ -1,0 +1,49 @@
+{
+  "title": "Bloomreach",
+  "order": 7,
+  "icon": "minecraft:pink_petals",
+  "quests": [
+    {
+      "id": "anchor",
+      "title": "Anchor Bloomreach",
+      "description": "Find the Anchor Stone in the middle of Bloomreach and right-click it together. Attuned islands show on your map and become places the Heart Tree can carry you to.",
+      "icon": "tethered:anchor_stone",
+      "tasks": [
+        {
+          "type": "attune",
+          "island": "bloomreach"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 30
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "The Weaver's Question",
+      "description": "Stand together beside the Anchor Stone of Bloomreach. The Weaver has one question for you both.",
+      "icon": "tethered:golden_thread",
+      "tasks": [
+        {
+          "type": "attune",
+          "island": "bloomreach"
+        },
+        {
+          "type": "together"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "ending"
+        }
+      ],
+      "requires": [
+        "anchor"
+      ]
+    }
+  ],
+  "island": "bloomreach"
+}

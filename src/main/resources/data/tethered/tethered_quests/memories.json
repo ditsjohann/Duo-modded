@@ -1,0 +1,96 @@
+{
+  "title": "Memories",
+  "order": 8,
+  "icon": "minecraft:writable_book",
+  "quests": [
+    {
+      "id": "photo",
+      "title": "Say Cheese",
+      "description": "Take a photo of each other with a camera.",
+      "icon": "minecraft:spyglass",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "exposure:camera",
+          "count": 1,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ],
+      "mod": "exposure",
+      "optional": true
+    },
+    {
+      "id": "dance",
+      "title": "Sleep Under the Stars",
+      "description": "Craft two hammocks.",
+      "icon": "minecraft:white_wool",
+      "tasks": [
+        {
+          "type": "item",
+          "tag": "comforts:hammocks",
+          "count": 2,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 40
+        }
+      ],
+      "mod": "comforts",
+      "optional": true
+    },
+    {
+      "id": "song",
+      "title": "Our Song",
+      "description": "Make a music disc of your song.",
+      "icon": "minecraft:music_disc_cat",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "etched:etched_music_disc",
+          "count": 1,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ],
+      "mod": "etched",
+      "optional": true
+    },
+    {
+      "id": "cake",
+      "title": "Celebrate",
+      "description": "Bake a cake together, just because.",
+      "icon": "minecraft:cake",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "minecraft:cake",
+          "count": 1,
+          "consume": false
+        },
+        {
+          "type": "together"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 30
+        }
+      ]
+    }
+  ]
+}

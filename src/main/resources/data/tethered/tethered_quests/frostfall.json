@@ -1,0 +1,148 @@
+{
+  "title": "Frostfall",
+  "order": 5,
+  "icon": "minecraft:snowball",
+  "quests": [
+    {
+      "id": "anchor",
+      "title": "Anchor Frostfall",
+      "description": "Find the Anchor Stone in the middle of Frostfall and right-click it together. Attuned islands show on your map and become places the Heart Tree can carry you to.",
+      "icon": "tethered:anchor_stone",
+      "tasks": [
+        {
+          "type": "attune",
+          "island": "frostfall"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 30
+        }
+      ]
+    },
+    {
+      "id": "warm",
+      "title": "Warm Hearts",
+      "description": "Light campfires and bring wool for the cold nights.",
+      "icon": "minecraft:campfire",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "minecraft:campfire",
+          "count": 4,
+          "consume": false
+        },
+        {
+          "type": "item",
+          "tag": "minecraft:wool",
+          "count": 16,
+          "consume": true
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ],
+      "requires": [
+        "anchor"
+      ]
+    },
+    {
+      "id": "strays",
+      "title": "Cold Hunters",
+      "description": "Strays haunt the snow. Hunt them together.",
+      "icon": "minecraft:arrow",
+      "tasks": [
+        {
+          "type": "kill",
+          "entity": "minecraft:stray",
+          "count": 10
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:spectral_arrow",
+          "count": 32
+        }
+      ],
+      "requires": [
+        "anchor"
+      ]
+    },
+    {
+      "id": "bones",
+      "title": "A Loyal Friend",
+      "description": "Collect bones (and maybe tame a wolf).",
+      "icon": "minecraft:bone",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "minecraft:bone",
+          "count": 32,
+          "consume": true
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:name_tag",
+          "count": 2
+        }
+      ],
+      "requires": [
+        "anchor"
+      ]
+    },
+    {
+      "id": "dragon",
+      "title": "Dragon Hunters",
+      "description": "Slay a fire dragon. Bring everything you've got.",
+      "icon": "minecraft:dragon_head",
+      "tasks": [
+        {
+          "type": "kill",
+          "entity": "iceandfire:fire_dragon",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 500
+        }
+      ],
+      "requires": [
+        "anchor"
+      ],
+      "mod": "iceandfire",
+      "optional": true
+    },
+    {
+      "id": "shard",
+      "title": "Heart of Frostfall",
+      "description": "When Frostfall's tasks are done, stand together and its Heart Shard will come to you. Bring it home to the Heart Tree.",
+      "icon": "tethered:heart_shard",
+      "tasks": [
+        {
+          "type": "together"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "shard",
+          "count": 1
+        }
+      ],
+      "requires": [
+        "anchor",
+        "warm",
+        "strays"
+      ]
+    }
+  ],
+  "island": "frostfall"
+}

@@ -1,0 +1,158 @@
+{
+  "title": "Windward Docks",
+  "order": 3,
+  "icon": "minecraft:feather",
+  "quests": [
+    {
+      "id": "anchor",
+      "title": "Anchor Windward Docks",
+      "description": "Find the Anchor Stone in the middle of Windward Docks and right-click it together. Attuned islands show on your map and become places the Heart Tree can carry you to.",
+      "icon": "tethered:anchor_stone",
+      "tasks": [
+        {
+          "type": "attune",
+          "island": "windward_docks"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 30
+        }
+      ]
+    },
+    {
+      "id": "feathers",
+      "title": "Featherfall",
+      "description": "Gather feathers and phantom membranes. The sky is a long way down.",
+      "icon": "minecraft:feather",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "minecraft:feather",
+          "count": 32,
+          "consume": true
+        },
+        {
+          "type": "item",
+          "item": "minecraft:phantom_membrane",
+          "count": 4,
+          "consume": true
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:golden_carrot",
+          "count": 8
+        }
+      ],
+      "requires": [
+        "anchor"
+      ]
+    },
+    {
+      "id": "glide",
+      "title": "Wings for Two",
+      "description": "Craft two paragliders, one each.",
+      "icon": "paragliders:paraglider",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "paragliders:paraglider",
+          "count": 2,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 80
+        }
+      ],
+      "requires": [
+        "anchor"
+      ],
+      "mod": "paragliders",
+      "optional": true
+    },
+    {
+      "id": "plane",
+      "title": "Take to the Sky",
+      "description": "Build a biplane. The far islands are a short flight away.",
+      "icon": "immersive_aircraft:biplane",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "immersive_aircraft:biplane",
+          "count": 1,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 120
+        }
+      ],
+      "requires": [
+        "anchor"
+      ],
+      "mod": "immersive_aircraft",
+      "optional": true
+    },
+    {
+      "id": "aether",
+      "title": "Above the Clouds",
+      "description": "Find the Aether and bring back its treasures.",
+      "icon": "aether:ambrosium_shard",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "aether:ambrosium_shard",
+          "count": 16,
+          "consume": false
+        },
+        {
+          "type": "item",
+          "item": "aether:zanite_gemstone",
+          "count": 8,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 150
+        }
+      ],
+      "requires": [
+        "anchor"
+      ],
+      "mod": "aether",
+      "optional": true
+    },
+    {
+      "id": "shard",
+      "title": "Heart of Windward Docks",
+      "description": "When Windward Docks's tasks are done, stand together and its Heart Shard will come to you. Bring it home to the Heart Tree.",
+      "icon": "tethered:heart_shard",
+      "tasks": [
+        {
+          "type": "together"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "shard",
+          "count": 1
+        }
+      ],
+      "requires": [
+        "anchor",
+        "feathers"
+      ]
+    }
+  ],
+  "island": "windward_docks"
+}

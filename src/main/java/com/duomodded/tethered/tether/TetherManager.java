@@ -16,6 +16,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -309,8 +310,14 @@ public final class TetherManager {
         if (data.getLink(p.getUUID()) == null) {
             p.sendSystemMessage(Component.translatable("msg.tethered.waiting").withStyle(ChatFormatting.GRAY));
         }
+        if (data.startIslandGenerated() && data.markJournalGiven(p.getUUID())) {
+            ItemStack journal = new ItemStack(com.duomodded.tethered.registry.ModRegistry.WEAVERS_JOURNAL.get());
+            if (!p.getInventory().add(journal)) p.drop(journal, false);
+            p.sendSystemMessage(Component.translatable("msg.tethered.journal_hint").withStyle(ChatFormatting.GRAY));
+        }
         Ending.offerAll(server);
         sync(p);
+        com.duomodded.tethered.quest.QuestManager.sync(p);
     }
 
     @SubscribeEvent

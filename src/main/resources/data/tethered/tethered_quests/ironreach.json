@@ -1,0 +1,200 @@
+{
+  "title": "Ironreach",
+  "order": 2,
+  "icon": "minecraft:iron_pickaxe",
+  "quests": [
+    {
+      "id": "anchor",
+      "title": "Anchor Ironreach",
+      "description": "Find the Anchor Stone in the middle of Ironreach and right-click it together. Attuned islands show on your map and become places the Heart Tree can carry you to.",
+      "icon": "tethered:anchor_stone",
+      "tasks": [
+        {
+          "type": "attune",
+          "island": "ironreach"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 30
+        }
+      ]
+    },
+    {
+      "id": "iron",
+      "title": "Iron Will",
+      "description": "Mine and smelt iron.",
+      "icon": "minecraft:iron_ingot",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "minecraft:iron_ingot",
+          "count": 32,
+          "consume": true
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:chain",
+          "count": 8
+        }
+      ],
+      "requires": [
+        "anchor"
+      ]
+    },
+    {
+      "id": "copper",
+      "title": "Copper Glow",
+      "description": "Copper for the machines to come.",
+      "icon": "minecraft:copper_ingot",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "minecraft:copper_ingot",
+          "count": 32,
+          "consume": true
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ],
+      "requires": [
+        "anchor"
+      ]
+    },
+    {
+      "id": "alloy",
+      "title": "Andesite Age",
+      "description": "Make Andesite Alloy, the start of every Create machine.",
+      "icon": "create:andesite_alloy",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "create:andesite_alloy",
+          "count": 32,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 80
+        }
+      ],
+      "requires": [
+        "anchor"
+      ],
+      "mod": "create",
+      "optional": true
+    },
+    {
+      "id": "press",
+      "title": "Pressing Matters",
+      "description": "Build a Mechanical Press and a Water Wheel.",
+      "icon": "create:mechanical_press",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "create:mechanical_press",
+          "count": 1,
+          "consume": false
+        },
+        {
+          "type": "item",
+          "item": "create:water_wheel",
+          "count": 1,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 100
+        }
+      ],
+      "requires": [
+        "alloy"
+      ],
+      "mod": "create",
+      "optional": true
+    },
+    {
+      "id": "sieve",
+      "title": "Sifting the Sky",
+      "description": "Build a sieve: dust and gravel hide ores.",
+      "icon": "minecraft:gravel",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "exdeorum:oak_sieve",
+          "count": 1,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ],
+      "requires": [
+        "anchor"
+      ],
+      "mod": "exdeorum",
+      "optional": true
+    },
+    {
+      "id": "chain",
+      "title": "Links of Iron",
+      "description": "Craft a Chain Tether (needs tree stage Young Tree to use).",
+      "icon": "tethered:chain_tether",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "tethered:chain_tether",
+          "count": 1,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ],
+      "requires": [
+        "iron"
+      ],
+      "optional": true
+    },
+    {
+      "id": "shard",
+      "title": "Heart of Ironreach",
+      "description": "When Ironreach's tasks are done, stand together and its Heart Shard will come to you. Bring it home to the Heart Tree.",
+      "icon": "tethered:heart_shard",
+      "tasks": [
+        {
+          "type": "together"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "shard",
+          "count": 1
+        }
+      ],
+      "requires": [
+        "anchor",
+        "iron",
+        "copper"
+      ]
+    }
+  ],
+  "island": "ironreach"
+}

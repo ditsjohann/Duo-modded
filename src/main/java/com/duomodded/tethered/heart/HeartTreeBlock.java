@@ -32,7 +32,7 @@ import org.jetbrains.annotations.Nullable;
  */
 public class HeartTreeBlock extends BaseEntityBlock {
     public static final MapCodec<HeartTreeBlock> CODEC = simpleCodec(HeartTreeBlock::new);
-    public static final IntegerProperty STAGE = IntegerProperty.create("stage", 0, 5);
+    public static final IntegerProperty STAGE = IntegerProperty.create("stage", 0, 7);
 
     public HeartTreeBlock(Properties properties) {
         super(properties);

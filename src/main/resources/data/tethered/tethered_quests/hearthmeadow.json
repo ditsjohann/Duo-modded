@@ -1,0 +1,187 @@
+{
+  "title": "Hearthmeadow",
+  "order": 1,
+  "icon": "minecraft:poppy",
+  "quests": [
+    {
+      "id": "anchor",
+      "title": "Anchor Hearthmeadow",
+      "description": "Find the Anchor Stone in the middle of Hearthmeadow and right-click it together. Attuned islands show on your map and become places the Heart Tree can carry you to.",
+      "icon": "tethered:anchor_stone",
+      "tasks": [
+        {
+          "type": "attune",
+          "island": "hearthmeadow"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 30
+        }
+      ]
+    },
+    {
+      "id": "farm",
+      "title": "A Little Farm",
+      "description": "Raise animals together: leather and wool for the road ahead.",
+      "icon": "minecraft:leather",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "minecraft:leather",
+          "count": 8,
+          "consume": true
+        },
+        {
+          "type": "item",
+          "tag": "minecraft:wool",
+          "count": 16,
+          "consume": true
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:lead",
+          "count": 2
+        }
+      ],
+      "requires": [
+        "anchor"
+      ]
+    },
+    {
+      "id": "bread",
+      "title": "Bread for Two",
+      "description": "Bake enough bread to share.",
+      "icon": "minecraft:bread",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "minecraft:bread",
+          "count": 16,
+          "consume": true
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:cake",
+          "count": 1
+        }
+      ],
+      "requires": [
+        "anchor"
+      ]
+    },
+    {
+      "id": "pot",
+      "title": "Cooking Together",
+      "description": "Build a Cooking Pot and grow some tomatoes.",
+      "icon": "farmersdelight:cooking_pot",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "farmersdelight:cooking_pot",
+          "count": 1,
+          "consume": false
+        },
+        {
+          "type": "item",
+          "item": "farmersdelight:tomato",
+          "count": 8,
+          "consume": true
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ],
+      "requires": [
+        "anchor"
+      ],
+      "mod": "farmersdelight",
+      "optional": true
+    },
+    {
+      "id": "date",
+      "title": "Date Night",
+      "description": "Cook two bowls of Beef Stew and eat them side by side.",
+      "icon": "farmersdelight:beef_stew",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "farmersdelight:beef_stew",
+          "count": 2,
+          "consume": true
+        },
+        {
+          "type": "together"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:golden_carrot",
+          "count": 8
+        }
+      ],
+      "requires": [
+        "pot"
+      ],
+      "mod": "farmersdelight",
+      "optional": true
+    },
+    {
+      "id": "vines",
+      "title": "A Glass of Wine",
+      "description": "Plant a vineyard together.",
+      "icon": "minecraft:sweet_berries",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "vinery:red_grape",
+          "count": 16,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ],
+      "requires": [
+        "anchor"
+      ],
+      "mod": "vinery",
+      "optional": true
+    },
+    {
+      "id": "shard",
+      "title": "Heart of Hearthmeadow",
+      "description": "When Hearthmeadow's tasks are done, stand together and its Heart Shard will come to you. Bring it home to the Heart Tree.",
+      "icon": "tethered:heart_shard",
+      "tasks": [
+        {
+          "type": "together"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "shard",
+          "count": 1
+        }
+      ],
+      "requires": [
+        "anchor",
+        "farm",
+        "bread"
+      ]
+    }
+  ],
+  "island": "hearthmeadow"
+}

@@ -102,7 +102,8 @@ public final class StartIsland {
                 page("The Weaver's Note\n\nTwo hearts, one thread.\n\nI have tied you together and set you on this little island in the sky. Do not let go of each other."),
                 page("THE ROPE\n\nYou can never be far apart. If one of you falls, the other holds on.\n\nCrouch to BRACE.\nHold R to HAUL your partner up.\nCrouch + G throws your partner across a gap."),
                 page("THE HEART TREE\n\nThe glowing heart in the middle is a seed. Right-click it to see what it wants.\n\nIt only grows when you are BOTH beside it."),
-                page("Each time it grows, new islands rise around it.\n\nThe rope grows too: craft stronger tethers as you go.\n\nLeather, Chain, Ender..."),
+                page("THE ISLANDS\n\nEach time it grows, a root bridge reaches out to a faraway island. Some are very far.\n\nFinish an island's tasks together and it gives you a Heart Shard. Bring it home."),
+                page("YOUR JOURNAL\n\nPress J for the map, your quests and the tree's blessings.\n\nAttune the Anchor Stone on each island together, and the tree can carry you back and forth."),
                 page("IF YOU FALL\n\nIf one of you goes down, the other has a few seconds to crouch next to them and help them up.\n\nThe void forgives no one."),
                 page("Water and lava make stone.\nIce melts into water.\nTrees give more trees.\n\nWhen the tree blooms, I will ask you one question.\n\n- The Weaver"));
         book.set(DataComponents.WRITTEN_BOOK_CONTENT,

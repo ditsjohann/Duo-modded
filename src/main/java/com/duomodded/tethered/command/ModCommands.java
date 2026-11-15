@@ -9,6 +9,8 @@ import com.duomodded.tethered.tether.TetherData;
 import com.duomodded.tethered.tether.TetherManager;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.duomodded.tethered.world.IslandManager;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -28,6 +30,13 @@ public final class ModCommands {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(Commands.literal("tether")
                 .then(Commands.literal("status").executes(ctx -> status(ctx.getSource())))
+                .then(Commands.literal("travel")
+                        .then(Commands.argument("where", StringArgumentType.word())
+                                .executes(ctx -> {
+                                    IslandManager.travel(ctx.getSource().getPlayerOrException(),
+                                            StringArgumentType.getString(ctx, "where"));
+                                    return 1;
+                                })))
                 .then(Commands.literal("choice")
                         .then(Commands.literal("keep").executes(ctx -> choice(ctx.getSource(), true)))
                         .then(Commands.literal("cut").executes(ctx -> choice(ctx.getSource(), false))))
@@ -62,6 +71,11 @@ public final class ModCommands {
         dispatcher.register(Commands.literal("hearttree")
                 .then(Commands.literal("info").executes(ctx -> treeInfo(ctx.getSource())))
                 .then(Commands.literal("grow").requires(s -> s.hasPermission(2)).executes(ctx -> treeGrow(ctx.getSource())))
+                .then(Commands.literal("unlockall").requires(s -> s.hasPermission(2)).executes(ctx -> {
+                    IslandManager.unlockAll(ctx.getSource().getServer());
+                    ctx.getSource().sendSuccess(() -> Component.literal("Unlocked every island"), true);
+                    return 1;
+                }))
                 .then(Commands.literal("startisland").requires(s -> s.hasPermission(2)).executes(ctx -> {
                     ServerPlayer p = ctx.getSource().getPlayerOrException();
                     BlockPos at = p.blockPosition().below();

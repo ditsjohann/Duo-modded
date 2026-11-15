@@ -2,7 +2,7 @@
   "parent": "tethered:heart_tree/stage_3",
   "display": {
     "icon": {
-      "id": "minecraft:dark_oak_log"
+      "id": "minecraft:oak_log"
     },
     "title": {
       "translate": "advancements.tethered.heart_tree.stage_4.title"

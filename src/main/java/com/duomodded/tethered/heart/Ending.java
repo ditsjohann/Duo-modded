@@ -27,7 +27,7 @@ import net.minecraft.world.item.ItemStack;
 public final class Ending {
     public static void offerAll(MinecraftServer server) {
         TetherData data = TetherData.get(server);
-        if (data.heartStage() < StageLoader.maxStage() || StageLoader.maxStage() == 0) return;
+        if (!data.endingUnlocked()) return;
         for (TetherData.Link link : data.uniqueLinks()) {
             offer(server, data, link);
         }

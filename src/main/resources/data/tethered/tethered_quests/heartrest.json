@@ -1,0 +1,171 @@
+{
+  "title": "Heartrest",
+  "order": 0,
+  "icon": "tethered:heart_tree",
+  "quests": [
+    {
+      "id": "tied",
+      "title": "Two Hearts, One Thread",
+      "description": "The Weaver tied you together. Find each other.",
+      "icon": "tethered:red_thread",
+      "tasks": [
+        {
+          "type": "advancement",
+          "id": "tethered:paired"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:bread",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "id": "stone",
+      "title": "Stone from Nothing",
+      "description": "Pour water next to lava and you get stone. Mine it, again and again.",
+      "icon": "minecraft:cobblestone",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "minecraft:cobblestone",
+          "count": 64,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:torch",
+          "count": 16
+        }
+      ],
+      "requires": [
+        "tied"
+      ]
+    },
+    {
+      "id": "timber",
+      "title": "Timber",
+      "description": "Plant saplings, grow trees, collect logs.",
+      "icon": "minecraft:oak_log",
+      "tasks": [
+        {
+          "type": "item",
+          "tag": "minecraft:logs",
+          "count": 32,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:apple",
+          "count": 4
+        }
+      ],
+      "requires": [
+        "tied"
+      ]
+    },
+    {
+      "id": "harvest",
+      "title": "First Harvest",
+      "description": "Grow wheat together. Bone meal helps.",
+      "icon": "minecraft:wheat",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "minecraft:wheat",
+          "count": 16,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:bone_meal",
+          "count": 16
+        }
+      ],
+      "requires": [
+        "tied"
+      ]
+    },
+    {
+      "id": "offering",
+      "title": "The First Offering",
+      "description": "Right-click the Heart Tree with cobblestone, logs and wheat, then stand next to it together.",
+      "icon": "tethered:heart_tree",
+      "tasks": [
+        {
+          "type": "tree_stage",
+          "stage": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 50
+        }
+      ],
+      "requires": [
+        "stone",
+        "timber",
+        "harvest"
+      ]
+    },
+    {
+      "id": "journey",
+      "title": "Along the Rootway",
+      "description": "A root bridge now leads out into the sky. Follow it to Hearthmeadow (the arrow at the top left points the way).",
+      "icon": "tethered:heartwood_log",
+      "tasks": [
+        {
+          "type": "visit",
+          "island": "hearthmeadow"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:lantern",
+          "count": 4
+        }
+      ],
+      "requires": [
+        "offering"
+      ]
+    },
+    {
+      "id": "leather",
+      "title": "A Stronger Rope",
+      "description": "Craft a Leather Tether (leather and string) and use it once the tree reaches Sapling. Your rope gets longer.",
+      "icon": "tethered:leather_tether",
+      "tasks": [
+        {
+          "type": "tree_stage",
+          "stage": 2
+        },
+        {
+          "type": "item",
+          "item": "tethered:leather_tether",
+          "count": 1,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 40
+        }
+      ],
+      "requires": [
+        "journey"
+      ],
+      "optional": true
+    }
+  ]
+}

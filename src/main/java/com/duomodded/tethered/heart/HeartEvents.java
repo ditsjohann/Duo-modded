@@ -2,7 +2,11 @@ package com.duomodded.tethered.heart;
 
 import com.duomodded.tethered.Tethered;
 import com.duomodded.tethered.command.ModCommands;
+import com.duomodded.tethered.quest.QuestLoader;
+import com.duomodded.tethered.quest.QuestManager;
 import com.duomodded.tethered.tether.TetherData;
+import com.duomodded.tethered.world.IslandLoader;
+import com.duomodded.tethered.world.IslandManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -17,6 +21,8 @@ public final class HeartEvents {
     @SubscribeEvent
     public static void onReload(AddReloadListenerEvent event) {
         event.addListener(new StageLoader());
+        event.addListener(new IslandLoader());
+        event.addListener(new QuestLoader());
     }
 
     @SubscribeEvent
@@ -36,7 +42,15 @@ public final class HeartEvents {
             while (tree.forceGrow(level)) {
                 Tethered.LOGGER.info("SMOKE TEST: Heart Tree grew to stage {} of {}", tree.stage(), max);
             }
-            if (tree.stage() == max && max > 0) {
+            IslandManager.unlockAll(server);
+            TetherData data = TetherData.get(server);
+            Tethered.LOGGER.info("SMOKE TEST: {} islands unlocked, {} built, {} quest chapters, {} quests",
+                    data.unlockedIslands().size(), data.generatedIslands().size(),
+                    QuestLoader.chapters().size(), QuestLoader.all().size());
+            QuestManager.checkAll(server, null);
+            QuestManager.syncAll(server);
+            boolean islandsOk = !IslandLoader.all().isEmpty() && data.generatedIslands().size() == IslandLoader.all().size();
+            if (tree.stage() == max && max > 0 && islandsOk && !QuestLoader.all().isEmpty()) {
                 Tethered.LOGGER.info("SMOKE TEST PASSED");
             } else {
                 Tethered.LOGGER.error("SMOKE TEST FAILED: stopped at stage {} of {}", tree.stage(), max);

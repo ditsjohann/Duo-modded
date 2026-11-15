@@ -3,7 +3,10 @@ package com.duomodded.tethered.heart;
 import com.duomodded.tethered.TetherConfig;
 import com.duomodded.tethered.registry.ModRegistry;
 import com.duomodded.tethered.tether.TetherData;
+import com.duomodded.tethered.quest.QuestManager;
+import com.duomodded.tethered.tether.TetherManager;
 import com.duomodded.tethered.util.Advancements;
+import com.duomodded.tethered.world.IslandManager;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -114,8 +117,11 @@ public class HeartTreeBlockEntity extends BlockEntity {
     }
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, HeartTreeBlockEntity be) {
-        if (!(level instanceof ServerLevel serverLevel) || level.getGameTime() % 40 != 0) return;
-        if (be.complete()) be.tryGrow(serverLevel, false);
+        if (!(level instanceof ServerLevel serverLevel)) return;
+        if (be.stage >= Blessings.GREEN_THUMB && level.getGameTime() % 10 == 0) {
+            Blessings.growCrops(serverLevel, pos, level.random);
+        }
+        if (level.getGameTime() % 40 == 0 && be.complete()) be.tryGrow(serverLevel, false);
     }
 
     /** Grows if every requirement is met and the pair is standing near the tree. */
@@ -167,7 +173,7 @@ public class HeartTreeBlockEntity extends BlockEntity {
         setChanged();
         BlockState state = getBlockState();
         if (state.hasProperty(HeartTreeBlock.STAGE)) {
-            level.setBlock(worldPosition, state.setValue(HeartTreeBlock.STAGE, Math.min(5, Math.max(0, stage))), 3);
+            level.setBlock(worldPosition, state.setValue(HeartTreeBlock.STAGE, Math.min(7, Math.max(0, stage))), 3);
         }
 
         int max = StageLoader.maxStage();
@@ -181,6 +187,8 @@ public class HeartTreeBlockEntity extends BlockEntity {
 
         MinecraftServer server = level.getServer();
         TetherData.get(server).setHeartStage(stage);
+        for (String island : def.unlocks()) IslandManager.unlock(server, island);
+        QuestManager.markDirty();
 
         Vec3 c = Vec3.atCenterOf(worldPosition);
         level.sendParticles(ParticleTypes.HEART, c.x, c.y + 2, c.z, 40, 3, 3, 3, 0.1);
@@ -195,8 +203,11 @@ public class HeartTreeBlockEntity extends BlockEntity {
                 p.sendSystemMessage(Component.literal(def.message()).withStyle(ChatFormatting.LIGHT_PURPLE, ChatFormatting.ITALIC));
             }
             Advancements.award(p, "heart_tree/stage_" + stage);
+            p.sendSystemMessage(Component.translatable("msg.tethered.tree.blessing",
+                    Component.translatable("blessing.tethered." + stage).withStyle(ChatFormatting.GOLD),
+                    Component.translatable("blessing.tethered." + stage + ".desc")).withStyle(ChatFormatting.LIGHT_PURPLE));
         }
-        if (bloom) Ending.offerAll(server);
+        for (ServerPlayer p : server.getPlayerList().getPlayers()) TetherManager.sync(p);
     }
 
     @Override

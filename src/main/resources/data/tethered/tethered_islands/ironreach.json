@@ -1,0 +1,57 @@
+{
+  "name": "Ironreach",
+  "description": "Bare rock full of ore. The ground hums with machinery waiting to be built.",
+  "color": "#B0B7C3",
+  "order": 2,
+  "pos": [
+    -180,
+    70,
+    312
+  ],
+  "radius": 20,
+  "rootway": true,
+  "island": {
+    "surface": "minecraft:stone",
+    "filler": "minecraft:stone",
+    "core": "minecraft:stone",
+    "bumpiness": 4.0,
+    "ores": [
+      {
+        "block": "minecraft:coal_ore",
+        "chance": 0.07
+      },
+      {
+        "block": "minecraft:iron_ore",
+        "chance": 0.06
+      },
+      {
+        "block": "minecraft:copper_ore",
+        "chance": 0.06
+      },
+      {
+        "block": "minecraft:gold_ore",
+        "chance": 0.025
+      },
+      {
+        "block": "minecraft:redstone_ore",
+        "chance": 0.025
+      },
+      {
+        "block": "minecraft:lapis_ore",
+        "chance": 0.02
+      },
+      {
+        "block": "minecraft:diamond_ore",
+        "chance": 0.006
+      }
+    ],
+    "biome": "minecraft:windswept_hills",
+    "entities": [
+      {
+        "id": "minecraft:goat",
+        "count": 2
+      }
+    ],
+    "loot": "minecraft:chests/abandoned_mineshaft"
+  }
+}

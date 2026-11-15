@@ -1,63 +1,26 @@
 {
   "stage": 4,
-  "name": "Old Tree",
-  "message": "The Weaver: \"Even old trees have shadows. Something stirs out there in the dark islands. Stay close.\"",
+  "name": "Grown Tree",
+  "message": "The Weaver: \"Its roots run deep now, and your thread runs longer.\"",
   "requires": [
     {
-      "item": "minecraft:obsidian",
+      "item": "tethered:heart_shard",
+      "count": 1
+    },
+    {
+      "item": "minecraft:gold_ingot",
+      "count": 16
+    },
+    {
+      "item": "minecraft:redstone",
       "count": 32
     },
     {
-      "item": "minecraft:ender_pearl",
-      "count": 8
-    },
-    {
-      "item": "minecraft:blaze_rod",
-      "count": 8
+      "item": "minecraft:feather",
+      "count": 32
     }
   ],
-  "rings": [
-    {
-      "count": 4,
-      "radius": 88,
-      "size_min": 9,
-      "size_max": 12,
-      "y_min": -12,
-      "y_max": 4,
-      "bumpiness": 2.0,
-      "surface": "minecraft:podzol",
-      "filler": "minecraft:coarse_dirt",
-      "core": "minecraft:deepslate",
-      "ores": [
-        {
-          "block": "minecraft:deepslate_diamond_ore",
-          "chance": 0.012
-        },
-        {
-          "block": "minecraft:deepslate_gold_ore",
-          "chance": 0.03
-        },
-        {
-          "block": "minecraft:deepslate_redstone_ore",
-          "chance": 0.03
-        },
-        {
-          "block": "minecraft:deepslate_lapis_ore",
-          "chance": 0.02
-        },
-        {
-          "block": "minecraft:deepslate_emerald_ore",
-          "chance": 0.003
-        }
-      ],
-      "biome": "minecraft:dark_forest",
-      "features": [
-        {
-          "id": "minecraft:dark_oak",
-          "tries": 3
-        }
-      ],
-      "loot": "minecraft:chests/ancient_city"
-    }
+  "unlocks": [
+    "arcanum"
   ]
 }

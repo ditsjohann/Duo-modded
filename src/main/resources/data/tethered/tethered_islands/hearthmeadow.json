@@ -1,0 +1,71 @@
+{
+  "name": "Hearthmeadow",
+  "description": "Soft grass, flowers and animals. A place to make a home.",
+  "color": "#7BD389",
+  "order": 1,
+  "pos": [
+    188,
+    66,
+    68
+  ],
+  "radius": 18,
+  "rootway": true,
+  "island": {
+    "surface": "minecraft:grass_block",
+    "filler": "minecraft:dirt",
+    "core": "minecraft:stone",
+    "bumpiness": 1.5,
+    "ores": [
+      {
+        "block": "minecraft:coal_ore",
+        "chance": 0.05
+      },
+      {
+        "block": "minecraft:iron_ore",
+        "chance": 0.03
+      }
+    ],
+    "biome": "minecraft:flower_forest",
+    "features": [
+      {
+        "id": "minecraft:oak",
+        "tries": 4
+      },
+      {
+        "id": "minecraft:birch",
+        "tries": 2
+      },
+      {
+        "id": "minecraft:flower_default",
+        "tries": 5
+      },
+      {
+        "id": "minecraft:patch_grass",
+        "tries": 4
+      },
+      {
+        "id": "minecraft:patch_pumpkin",
+        "tries": 1
+      }
+    ],
+    "entities": [
+      {
+        "id": "minecraft:cow",
+        "count": 3
+      },
+      {
+        "id": "minecraft:sheep",
+        "count": 3
+      },
+      {
+        "id": "minecraft:chicken",
+        "count": 3
+      },
+      {
+        "id": "minecraft:pig",
+        "count": 2
+      }
+    ],
+    "loot": "minecraft:chests/village/village_plains_house"
+  }
+}

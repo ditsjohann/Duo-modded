@@ -1,0 +1,157 @@
+{
+  "title": "Arcanum",
+  "order": 4,
+  "icon": "minecraft:enchanted_book",
+  "quests": [
+    {
+      "id": "anchor",
+      "title": "Anchor Arcanum",
+      "description": "Find the Anchor Stone in the middle of Arcanum and right-click it together. Attuned islands show on your map and become places the Heart Tree can carry you to.",
+      "icon": "tethered:anchor_stone",
+      "tasks": [
+        {
+          "type": "attune",
+          "island": "arcanum"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 30
+        }
+      ]
+    },
+    {
+      "id": "words",
+      "title": "Words of Power",
+      "description": "Build an enchanting table surrounded by books.",
+      "icon": "minecraft:enchanting_table",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "minecraft:enchanting_table",
+          "count": 1,
+          "consume": false
+        },
+        {
+          "type": "item",
+          "item": "minecraft:bookshelf",
+          "count": 15,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:lapis_lazuli",
+          "count": 32
+        }
+      ],
+      "requires": [
+        "anchor"
+      ]
+    },
+    {
+      "id": "brew",
+      "title": "Brewing Together",
+      "description": "Set up a brewing stand and grow nether wart.",
+      "icon": "minecraft:brewing_stand",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "minecraft:brewing_stand",
+          "count": 1,
+          "consume": false
+        },
+        {
+          "type": "item",
+          "item": "minecraft:nether_wart",
+          "count": 16,
+          "consume": true
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 80
+        }
+      ],
+      "requires": [
+        "anchor"
+      ]
+    },
+    {
+      "id": "ars",
+      "title": "Novice Spellcraft",
+      "description": "Write your first spell book.",
+      "icon": "ars_nouveau:novice_spell_book",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "ars_nouveau:novice_spell_book",
+          "count": 1,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 100
+        }
+      ],
+      "requires": [
+        "anchor"
+      ],
+      "mod": "ars_nouveau",
+      "optional": true
+    },
+    {
+      "id": "spirits",
+      "title": "Talking to Spirits",
+      "description": "Find the Dictionary of Spirits.",
+      "icon": "occultism:dictionary_of_spirits",
+      "tasks": [
+        {
+          "type": "item",
+          "item": "occultism:dictionary_of_spirits",
+          "count": 1,
+          "consume": false
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 100
+        }
+      ],
+      "requires": [
+        "anchor"
+      ],
+      "mod": "occultism",
+      "optional": true
+    },
+    {
+      "id": "shard",
+      "title": "Heart of Arcanum",
+      "description": "When Arcanum's tasks are done, stand together and its Heart Shard will come to you. Bring it home to the Heart Tree.",
+      "icon": "tethered:heart_shard",
+      "tasks": [
+        {
+          "type": "together"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "shard",
+          "count": 1
+        }
+      ],
+      "requires": [
+        "anchor",
+        "words",
+        "brew"
+      ]
+    }
+  ],
+  "island": "arcanum"
+}

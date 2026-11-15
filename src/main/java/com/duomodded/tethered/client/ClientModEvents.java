@@ -15,6 +15,7 @@ public final class ClientModEvents {
         event.register(Keys.LAUNCH);
         event.register(Keys.ENDER_CALL);
         event.register(Keys.UNHOOK);
+        event.register(Keys.JOURNAL);
     }
 
     @SubscribeEvent

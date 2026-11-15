@@ -1,0 +1,45 @@
+{
+  "name": "Gloomhollow",
+  "description": "Dark trees and darker caves. Something old sleeps here.",
+  "color": "#5B4A6E",
+  "order": 6,
+  "pos": [
+    -1142,
+    56,
+    201
+  ],
+  "radius": 22,
+  "rootway": true,
+  "island": {
+    "surface": "minecraft:podzol",
+    "filler": "minecraft:coarse_dirt",
+    "core": "minecraft:deepslate",
+    "bumpiness": 2.5,
+    "ores": [
+      {
+        "block": "minecraft:deepslate_diamond_ore",
+        "chance": 0.012
+      },
+      {
+        "block": "minecraft:deepslate_gold_ore",
+        "chance": 0.03
+      },
+      {
+        "block": "minecraft:deepslate_redstone_ore",
+        "chance": 0.03
+      },
+      {
+        "block": "minecraft:deepslate_emerald_ore",
+        "chance": 0.004
+      }
+    ],
+    "biome": "minecraft:dark_forest",
+    "features": [
+      {
+        "id": "minecraft:dark_oak",
+        "tries": 5
+      }
+    ],
+    "loot": "minecraft:chests/ancient_city"
+  }
+}

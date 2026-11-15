@@ -17,6 +17,12 @@
     },
     "stage=5": {
       "model": "tethered:block/heart_tree"
+    },
+    "stage=6": {
+      "model": "tethered:block/heart_tree"
+    },
+    "stage=7": {
+      "model": "tethered:block/heart_tree"
     }
   }
 }

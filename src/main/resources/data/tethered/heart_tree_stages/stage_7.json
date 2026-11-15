@@ -1,0 +1,26 @@
+{
+  "stage": 7,
+  "name": "Bloom",
+  "message": "The Weaver: \"It blooms. The final root reaches Bloomreach. Come find me there. Together.\"",
+  "requires": [
+    {
+      "item": "tethered:heart_shard",
+      "count": 1
+    },
+    {
+      "item": "minecraft:diamond_block",
+      "count": 4
+    },
+    {
+      "item": "minecraft:golden_apple",
+      "count": 4
+    },
+    {
+      "item": "minecraft:ender_eye",
+      "count": 8
+    }
+  ],
+  "unlocks": [
+    "bloomreach"
+  ]
+}

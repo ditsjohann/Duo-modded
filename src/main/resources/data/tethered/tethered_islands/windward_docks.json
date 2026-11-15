@@ -1,0 +1,47 @@
+{
+  "name": "Windward Docks",
+  "description": "A high, windy island. From here, the sky itself is a road.",
+  "color": "#8EC9F0",
+  "order": 3,
+  "pos": [
+    -414,
+    96,
+    -347
+  ],
+  "radius": 16,
+  "rootway": true,
+  "island": {
+    "surface": "minecraft:grass_block",
+    "filler": "minecraft:dirt",
+    "core": "minecraft:calcite",
+    "bumpiness": 2.0,
+    "ores": [
+      {
+        "block": "minecraft:copper_ore",
+        "chance": 0.04
+      }
+    ],
+    "biome": "minecraft:meadow",
+    "features": [
+      {
+        "id": "minecraft:birch",
+        "tries": 3
+      },
+      {
+        "id": "minecraft:flower_default",
+        "tries": 3
+      }
+    ],
+    "entities": [
+      {
+        "id": "minecraft:chicken",
+        "count": 5
+      },
+      {
+        "id": "minecraft:rabbit",
+        "count": 2
+      }
+    ],
+    "loot": "minecraft:chests/shipwreck_supply"
+  }
+}

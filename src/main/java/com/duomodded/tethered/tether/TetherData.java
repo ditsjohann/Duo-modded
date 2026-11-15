@@ -29,6 +29,19 @@ public final class TetherData extends SavedData {
     private BlockPos heartTreePos;
     private int heartStage;
 
+    // World progress, shared by everyone in this (duo) world
+    private final Set<String> unlockedIslands = new HashSet<>();
+    private final Set<String> generatedIslands = new HashSet<>();
+    private final Set<String> visitedIslands = new HashSet<>();
+    private final Set<String> attunedIslands = new HashSet<>();
+    private final Set<String> completedQuests = new HashSet<>();
+    private final Map<String, Integer> taskProgress = new HashMap<>();
+    private final Set<UUID> journalGiven = new HashSet<>();
+    private boolean endingUnlocked;
+
+    /** Extra rope length from the Heart Tree's "Deep Roots" blessing (kept in sync with the stage). */
+    public static volatile float ropeBonus;
+
     public static final class Link {
         public final UUID a;
         public final UUID b;
@@ -57,7 +70,7 @@ public final class TetherData extends SavedData {
         }
 
         public float maxLength() {
-            return ropeTier().length;
+            return ropeTier().length + ropeBonus;
         }
 
         public void setTier(int newTier) {
@@ -65,6 +78,10 @@ public final class TetherData extends SavedData {
             this.currentLength = maxLength();
             if (newTier < RopeTier.GOLDEN.level) this.slack = false;
         }
+    }
+
+    public TetherData() {
+        ropeBonus = 0f; // fresh world (load() sets it again from the saved stage)
     }
 
     public static TetherData get(MinecraftServer server) {
@@ -135,7 +152,40 @@ public final class TetherData extends SavedData {
 
     public void setHeartStage(int stage) {
         heartStage = Math.max(heartStage, stage);
+        ropeBonus = com.duomodded.tethered.heart.Blessings.ropeBonus(heartStage);
         setDirty();
+    }
+
+    // ---- islands and quests
+    public Set<String> unlockedIslands() { return unlockedIslands; }
+    public Set<String> generatedIslands() { return generatedIslands; }
+    public Set<String> visitedIslands() { return visitedIslands; }
+    public Set<String> attunedIslands() { return attunedIslands; }
+    public Set<String> completedQuests() { return completedQuests; }
+    public Map<String, Integer> taskProgress() { return taskProgress; }
+
+    public boolean markJournalGiven(UUID id) {
+        boolean added = journalGiven.add(id);
+        if (added) setDirty();
+        return added;
+    }
+
+    public boolean endingUnlocked() { return endingUnlocked; }
+
+    public void setEndingUnlocked() {
+        endingUnlocked = true;
+        setDirty();
+    }
+
+    private static ListTag strings(Set<String> set) {
+        ListTag list = new ListTag();
+        for (String s : set) list.add(net.minecraft.nbt.StringTag.valueOf(s));
+        return list;
+    }
+
+    private static void readStrings(CompoundTag tag, String key, Set<String> into) {
+        ListTag list = tag.getList(key, Tag.TAG_STRING);
+        for (int i = 0; i < list.size(); i++) into.add(list.getString(i));
     }
 
     @Override
@@ -159,6 +209,18 @@ public final class TetherData extends SavedData {
         tag.putBoolean("startIslandGenerated", startIslandGenerated);
         if (heartTreePos != null) tag.putLong("heartTreePos", heartTreePos.asLong());
         tag.putInt("heartStage", heartStage);
+        tag.put("unlockedIslands", strings(unlockedIslands));
+        tag.put("generatedIslands", strings(generatedIslands));
+        tag.put("visitedIslands", strings(visitedIslands));
+        tag.put("attunedIslands", strings(attunedIslands));
+        tag.put("completedQuests", strings(completedQuests));
+        CompoundTag progress = new CompoundTag();
+        taskProgress.forEach(progress::putInt);
+        tag.put("taskProgress", progress);
+        ListTag given = new ListTag();
+        for (UUID id : journalGiven) given.add(net.minecraft.nbt.StringTag.valueOf(id.toString()));
+        tag.put("journalGiven", given);
+        tag.putBoolean("endingUnlocked", endingUnlocked);
         return tag;
     }
 
@@ -184,6 +246,23 @@ public final class TetherData extends SavedData {
         data.startIslandGenerated = tag.getBoolean("startIslandGenerated");
         if (tag.contains("heartTreePos")) data.heartTreePos = BlockPos.of(tag.getLong("heartTreePos"));
         data.heartStage = tag.getInt("heartStage");
+        ropeBonus = com.duomodded.tethered.heart.Blessings.ropeBonus(data.heartStage);
+        readStrings(tag, "unlockedIslands", data.unlockedIslands);
+        readStrings(tag, "generatedIslands", data.generatedIslands);
+        readStrings(tag, "visitedIslands", data.visitedIslands);
+        readStrings(tag, "attunedIslands", data.attunedIslands);
+        readStrings(tag, "completedQuests", data.completedQuests);
+        CompoundTag progress = tag.getCompound("taskProgress");
+        for (String key : progress.getAllKeys()) data.taskProgress.put(key, progress.getInt(key));
+        ListTag given = tag.getList("journalGiven", Tag.TAG_STRING);
+        for (int i = 0; i < given.size(); i++) {
+            try {
+                data.journalGiven.add(UUID.fromString(given.getString(i)));
+            } catch (IllegalArgumentException ignored) {
+                // skip bad entry
+            }
+        }
+        data.endingUnlocked = tag.getBoolean("endingUnlocked");
         return data;
     }
 }

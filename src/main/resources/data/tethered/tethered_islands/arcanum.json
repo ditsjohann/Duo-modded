@@ -1,0 +1,47 @@
+{
+  "name": "Arcanum",
+  "description": "Pale birches and old stone that whisper old words.",
+  "color": "#B48EF0",
+  "order": 4,
+  "pos": [
+    552,
+    88,
+    -463
+  ],
+  "radius": 18,
+  "rootway": true,
+  "island": {
+    "surface": "minecraft:grass_block",
+    "filler": "minecraft:dirt",
+    "core": "minecraft:deepslate",
+    "bumpiness": 2.0,
+    "ores": [
+      {
+        "block": "minecraft:deepslate_lapis_ore",
+        "chance": 0.05
+      },
+      {
+        "block": "minecraft:amethyst_block",
+        "chance": 0.02
+      }
+    ],
+    "biome": "minecraft:old_growth_birch_forest",
+    "features": [
+      {
+        "id": "minecraft:birch",
+        "tries": 5
+      },
+      {
+        "id": "minecraft:flower_default",
+        "tries": 3
+      }
+    ],
+    "entities": [
+      {
+        "id": "minecraft:rabbit",
+        "count": 2
+      }
+    ],
+    "loot": "minecraft:chests/stronghold_library"
+  }
+}

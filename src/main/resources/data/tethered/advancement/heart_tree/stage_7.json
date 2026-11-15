@@ -1,0 +1,22 @@
+{
+  "parent": "tethered:heart_tree/stage_6",
+  "display": {
+    "icon": {
+      "id": "minecraft:pink_petals"
+    },
+    "title": {
+      "translate": "advancements.tethered.heart_tree.stage_7.title"
+    },
+    "description": {
+      "translate": "advancements.tethered.heart_tree.stage_7.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

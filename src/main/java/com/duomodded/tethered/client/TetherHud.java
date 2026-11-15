@@ -18,9 +18,13 @@ public final class TetherHud {
         Minecraft mc = Minecraft.getInstance();
         LocalPlayer me = mc.player;
         TetherStatePayload s = ClientTetherState.get();
-        if (me == null || mc.options.hideGui || !s.linked()) return;
-
+        if (me == null || mc.options.hideGui) return;
         Font font = mc.font;
+        if (!s.linked()) {
+            wayfinder(g, font, me, 6, 6);
+            return;
+        }
+
         RopeTier tier = RopeTier.byLevel(s.tier());
         int x = 6;
         int y = 6;
@@ -66,6 +70,8 @@ public final class TetherHud {
             y += 11;
         }
 
+        wayfinder(g, font, me, x, y);
+
         int cx = g.guiWidth() / 2;
         int cy = g.guiHeight() / 2;
         if (s.partnerDowned()) {
@@ -78,6 +84,25 @@ public final class TetherHud {
             g.drawCenteredString(font, Component.translatable("hud.tethered.you_down", secs), cx, cy - 40, 0xFFFF5555);
             g.drawCenteredString(font, Component.translatable("hud.tethered.you_down_hint", s.partnerName()), cx, cy - 28, 0xFFFFFFFF);
             bar(g, cx, cy - 16, s.reviveProgress(), s.reviveTotal(), 0xFF55FF55);
+        }
+    }
+
+    /** "Next: Hearthmeadow 210m ->" for the first unlocked island you haven't attuned yet. */
+    private static void wayfinder(GuiGraphics g, Font font, LocalPlayer me, int x, int y) {
+        com.google.gson.JsonObject data = ClientJournalState.get();
+        if (!data.has("islands") || me.level().dimension() != net.minecraft.world.level.Level.OVERWORLD) return;
+        for (com.google.gson.JsonElement e : data.getAsJsonArray("islands")) {
+            com.google.gson.JsonObject o = e.getAsJsonObject();
+            if (!o.get("unlocked").getAsBoolean() || o.get("attuned").getAsBoolean()) continue;
+            double dx = o.get("x").getAsDouble() - me.getX();
+            double dz = o.get("z").getAsDouble() - me.getZ();
+            double dist = Math.sqrt(dx * dx + dz * dz);
+            float targetYaw = (float) (Mth.atan2(dz, dx) * (180.0 / Math.PI)) - 90f;
+            float rel = Mth.wrapDegrees(targetYaw - me.getYRot());
+            String arrow = ARROWS[Math.floorMod(Math.round(rel / 45f), 8)];
+            Component text = Component.translatable("hud.tethered.next", o.get("name").getAsString(), (int) dist, arrow);
+            g.drawString(font, text, x, y, 0xFF000000 | o.get("color").getAsInt(), true);
+            return;
         }
     }
 

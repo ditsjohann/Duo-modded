@@ -23,7 +23,8 @@ import java.util.Optional;
  * "requires" is what the pair must offer to reach this stage; "rings" are the islands it spawns.
  * Requirements accept an item id or a tag (prefix with #), so modpacks can use c: tags.
  */
-public record StageDef(int stage, String name, String message, List<Requirement> requires, List<RingSpec> rings) {
+public record StageDef(int stage, String name, String message, List<Requirement> requires, List<RingSpec> rings,
+                       List<String> unlocks) {
 
     public record Requirement(@Nullable Item item, @Nullable TagKey<Item> tag, int count) {
         public boolean matches(ItemStack stack) {
@@ -65,9 +66,13 @@ public record StageDef(int stage, String name, String message, List<Requirement>
         for (JsonElement e : GsonHelper.getAsJsonArray(o, "rings", new JsonArray())) {
             rings.add(RingSpec.parse(e.getAsJsonObject()));
         }
+        List<String> unlocks = new ArrayList<>();
+        for (JsonElement e : GsonHelper.getAsJsonArray(o, "unlocks", new JsonArray())) {
+            unlocks.add(e.getAsString());
+        }
         return new StageDef(stage,
                 GsonHelper.getAsString(o, "name", "Stage " + stage),
                 GsonHelper.getAsString(o, "message", ""),
-                requires, rings);
+                requires, rings, unlocks);
     }
 }

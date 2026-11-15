@@ -39,6 +39,11 @@ public class TetherUpgradeItem extends Item {
             sp.displayClientMessage(Component.translatable("msg.tethered.not_tied").withStyle(ChatFormatting.RED), true);
             return InteractionResultHolder.fail(stack);
         }
+        int needed = tier.level; // Leather needs tree stage 2, Chain 3, Ender 4 (Golden comes from the ending)
+        if (tier != RopeTier.GOLDEN && data.heartStage() < needed) {
+            sp.displayClientMessage(Component.translatable("msg.tethered.tree_too_young", needed).withStyle(ChatFormatting.LIGHT_PURPLE), true);
+            return InteractionResultHolder.fail(stack);
+        }
         if (link.tier >= tier.level) {
             sp.displayClientMessage(Component.translatable("msg.tethered.already_strong").withStyle(ChatFormatting.YELLOW), true);
             return InteractionResultHolder.fail(stack);

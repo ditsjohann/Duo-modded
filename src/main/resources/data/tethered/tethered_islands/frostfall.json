@@ -1,0 +1,51 @@
+{
+  "name": "Frostfall",
+  "description": "Snow that never melts. Stay close: it's cold up here.",
+  "color": "#DFF3FF",
+  "order": 5,
+  "pos": [
+    315,
+    104,
+    865
+  ],
+  "radius": 20,
+  "rootway": true,
+  "island": {
+    "surface": "minecraft:snow_block",
+    "filler": "minecraft:packed_ice",
+    "core": "minecraft:stone",
+    "bumpiness": 3.0,
+    "ores": [
+      {
+        "block": "minecraft:iron_ore",
+        "chance": 0.05
+      },
+      {
+        "block": "minecraft:coal_ore",
+        "chance": 0.05
+      }
+    ],
+    "biome": "minecraft:snowy_plains",
+    "features": [
+      {
+        "id": "minecraft:spruce",
+        "tries": 4
+      }
+    ],
+    "entities": [
+      {
+        "id": "minecraft:wolf",
+        "count": 3
+      },
+      {
+        "id": "minecraft:fox",
+        "count": 2
+      },
+      {
+        "id": "minecraft:polar_bear",
+        "count": 1
+      }
+    ],
+    "loot": "minecraft:chests/igloo_chest"
+  }
+}
