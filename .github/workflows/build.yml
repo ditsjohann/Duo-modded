@@ -21,3 +21,17 @@ jobs:
         with:
           name: tethered-mod
           path: build/libs/*.jar
+      - name: Server smoke test (Tethered Sky world, grow every stage)
+        run: |
+          mkdir -p run
+          echo "eula=true" > run/eula.txt
+          printf 'level-type=tethered\\:tethered_sky\nonline-mode=false\n' > run/server.properties
+          timeout 900 ./gradlew runServer -PsmokeTest --console=plain > server.log 2>&1 || true
+          echo "----- tethered lines -----"
+          grep -iE "tethered|SMOKE TEST" server.log || true
+          echo "----- errors / exceptions -----"
+          grep -nE "ERROR|Exception" server.log | head -60 || true
+          echo "----- log tail -----"
+          tail -60 server.log
+          grep -q "Built the Tethered starting island" server.log
+          grep -q "SMOKE TEST PASSED" server.log

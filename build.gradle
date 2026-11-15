@@ -22,6 +22,9 @@ neoForge {
         server {
             server()
             programArgument '--nogui'
+            if (project.hasProperty('smokeTest')) {
+                systemProperty 'tethered.smokeTest', 'true'
+            }
         }
     }
 
