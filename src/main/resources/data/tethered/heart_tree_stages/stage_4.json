@@ -1,0 +1,63 @@
+{
+  "stage": 4,
+  "name": "Old Tree",
+  "message": "The Weaver: \"Even old trees have shadows. Something stirs out there in the dark islands. Stay close.\"",
+  "requires": [
+    {
+      "item": "minecraft:obsidian",
+      "count": 32
+    },
+    {
+      "item": "minecraft:ender_pearl",
+      "count": 8
+    },
+    {
+      "item": "minecraft:blaze_rod",
+      "count": 8
+    }
+  ],
+  "rings": [
+    {
+      "count": 4,
+      "radius": 88,
+      "size_min": 9,
+      "size_max": 12,
+      "y_min": -12,
+      "y_max": 4,
+      "bumpiness": 2.0,
+      "surface": "minecraft:podzol",
+      "filler": "minecraft:coarse_dirt",
+      "core": "minecraft:deepslate",
+      "ores": [
+        {
+          "block": "minecraft:deepslate_diamond_ore",
+          "chance": 0.012
+        },
+        {
+          "block": "minecraft:deepslate_gold_ore",
+          "chance": 0.03
+        },
+        {
+          "block": "minecraft:deepslate_redstone_ore",
+          "chance": 0.03
+        },
+        {
+          "block": "minecraft:deepslate_lapis_ore",
+          "chance": 0.02
+        },
+        {
+          "block": "minecraft:deepslate_emerald_ore",
+          "chance": 0.003
+        }
+      ],
+      "biome": "minecraft:dark_forest",
+      "features": [
+        {
+          "id": "minecraft:dark_oak",
+          "tries": 3
+        }
+      ],
+      "loot": "minecraft:chests/ancient_city"
+    }
+  ]
+}

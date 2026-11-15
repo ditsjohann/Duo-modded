@@ -1,0 +1,87 @@
+{
+  "stage": 1,
+  "name": "Sprout",
+  "message": "The Weaver: \"Look, it trusts you. New land rises from the clouds: meadows, animals, iron in the stone.\"",
+  "requires": [
+    {
+      "item": "minecraft:cobblestone",
+      "count": 64
+    },
+    {
+      "tag": "minecraft:logs",
+      "count": 32
+    },
+    {
+      "item": "minecraft:wheat",
+      "count": 16
+    }
+  ],
+  "rings": [
+    {
+      "count": 4,
+      "radius": 34,
+      "size_min": 7,
+      "size_max": 10,
+      "y_min": -6,
+      "y_max": 6,
+      "surface": "minecraft:grass_block",
+      "filler": "minecraft:dirt",
+      "core": "minecraft:stone",
+      "ores": [
+        {
+          "block": "minecraft:coal_ore",
+          "chance": 0.05
+        },
+        {
+          "block": "minecraft:iron_ore",
+          "chance": 0.035
+        },
+        {
+          "block": "minecraft:copper_ore",
+          "chance": 0.03
+        }
+      ],
+      "biome": "minecraft:plains",
+      "features": [
+        {
+          "id": "minecraft:oak",
+          "tries": 2
+        },
+        {
+          "id": "minecraft:birch",
+          "tries": 1
+        },
+        {
+          "id": "minecraft:flower_default",
+          "tries": 2
+        },
+        {
+          "id": "minecraft:patch_grass",
+          "tries": 2
+        },
+        {
+          "id": "minecraft:patch_pumpkin",
+          "tries": 1
+        }
+      ],
+      "entities": [
+        {
+          "id": "minecraft:cow",
+          "count": 1
+        },
+        {
+          "id": "minecraft:sheep",
+          "count": 1
+        },
+        {
+          "id": "minecraft:chicken",
+          "count": 1
+        },
+        {
+          "id": "minecraft:pig",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

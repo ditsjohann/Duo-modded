@@ -1,0 +1,22 @@
+{
+  "parent": "tethered:root",
+  "display": {
+    "icon": {
+      "id": "tethered:red_thread"
+    },
+    "title": {
+      "translate": "advancements.tethered.paired.title"
+    },
+    "description": {
+      "translate": "advancements.tethered.paired.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

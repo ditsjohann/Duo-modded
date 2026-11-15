@@ -1,0 +1,22 @@
+{
+  "parent": "tethered:paired",
+  "display": {
+    "icon": {
+      "id": "minecraft:golden_apple"
+    },
+    "title": {
+      "translate": "advancements.tethered.saved_you.title"
+    },
+    "description": {
+      "translate": "advancements.tethered.saved_you.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

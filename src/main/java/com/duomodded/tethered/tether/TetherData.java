@@ -1,0 +1,189 @@
+package com.duomodded.tethered.tether;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.level.saveddata.SavedData;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+
+/** World-wide save data: who is tied to whom, plus Heart Tree progress. Stored on the overworld. */
+public final class TetherData extends SavedData {
+    private static final String NAME = "tethered";
+
+    private final Map<UUID, Link> links = new HashMap<>();
+    private final Map<UUID, String> names = new HashMap<>();
+    private boolean startIslandGenerated;
+    @Nullable
+    private BlockPos heartTreePos;
+    private int heartStage;
+
+    public static final class Link {
+        public final UUID a;
+        public final UUID b;
+        public int tier;
+        public boolean slack;
+        public boolean endingOffered;
+
+        // Runtime only (not saved)
+        public float currentLength;
+        public final Set<UUID> hauling = new HashSet<>();
+        public final Map<UUID, Boolean> choices = new HashMap<>();
+
+        Link(UUID a, UUID b, int tier) {
+            this.a = a;
+            this.b = b;
+            this.tier = tier;
+            this.currentLength = maxLength();
+        }
+
+        public UUID other(UUID id) {
+            return id.equals(a) ? b : a;
+        }
+
+        public RopeTier ropeTier() {
+            return RopeTier.byLevel(tier);
+        }
+
+        public float maxLength() {
+            return ropeTier().length;
+        }
+
+        public void setTier(int newTier) {
+            this.tier = newTier;
+            this.currentLength = maxLength();
+            if (newTier < RopeTier.GOLDEN.level) this.slack = false;
+        }
+    }
+
+    public static TetherData get(MinecraftServer server) {
+        return server.overworld().getDataStorage()
+                .computeIfAbsent(new SavedData.Factory<>(TetherData::new, TetherData::load, null), NAME);
+    }
+
+    @Nullable
+    public Link getLink(UUID id) {
+        return links.get(id);
+    }
+
+    public Link link(UUID a, UUID b, int tier) {
+        unlink(a);
+        unlink(b);
+        Link link = new Link(a, b, tier);
+        links.put(a, link);
+        links.put(b, link);
+        setDirty();
+        return link;
+    }
+
+    @Nullable
+    public Link unlink(UUID id) {
+        Link link = links.remove(id);
+        if (link != null) {
+            links.remove(link.other(id));
+            setDirty();
+        }
+        return link;
+    }
+
+    /** Each link once (both players map to the same object). */
+    public List<Link> uniqueLinks() {
+        return new ArrayList<>(new LinkedHashSet<>(links.values()));
+    }
+
+    public void rememberName(UUID id, String name) {
+        if (!name.equals(names.put(id, name))) setDirty();
+    }
+
+    public String nameOf(UUID id) {
+        return names.getOrDefault(id, "???");
+    }
+
+    public boolean startIslandGenerated() {
+        return startIslandGenerated;
+    }
+
+    public void setStartIslandGenerated() {
+        startIslandGenerated = true;
+        setDirty();
+    }
+
+    @Nullable
+    public BlockPos heartTreePos() {
+        return heartTreePos;
+    }
+
+    public void setHeartTreePos(BlockPos pos) {
+        heartTreePos = pos.immutable();
+        setDirty();
+    }
+
+    public int heartStage() {
+        return heartStage;
+    }
+
+    public void setHeartStage(int stage) {
+        heartStage = Math.max(heartStage, stage);
+        setDirty();
+    }
+
+    @Override
+    public CompoundTag save(CompoundTag tag, HolderLookup.Provider registries) {
+        ListTag list = new ListTag();
+        for (Link link : uniqueLinks()) {
+            CompoundTag t = new CompoundTag();
+            t.putUUID("a", link.a);
+            t.putUUID("b", link.b);
+            t.putInt("tier", link.tier);
+            t.putBoolean("slack", link.slack);
+            t.putBoolean("endingOffered", link.endingOffered);
+            list.add(t);
+        }
+        tag.put("links", list);
+
+        CompoundTag nameTag = new CompoundTag();
+        names.forEach((id, name) -> nameTag.putString(id.toString(), name));
+        tag.put("names", nameTag);
+
+        tag.putBoolean("startIslandGenerated", startIslandGenerated);
+        if (heartTreePos != null) tag.putLong("heartTreePos", heartTreePos.asLong());
+        tag.putInt("heartStage", heartStage);
+        return tag;
+    }
+
+    public static TetherData load(CompoundTag tag, HolderLookup.Provider registries) {
+        TetherData data = new TetherData();
+        ListTag list = tag.getList("links", Tag.TAG_COMPOUND);
+        for (int i = 0; i < list.size(); i++) {
+            CompoundTag t = list.getCompound(i);
+            Link link = new Link(t.getUUID("a"), t.getUUID("b"), t.getInt("tier"));
+            link.slack = t.getBoolean("slack");
+            link.endingOffered = t.getBoolean("endingOffered");
+            data.links.put(link.a, link);
+            data.links.put(link.b, link);
+        }
+        CompoundTag nameTag = tag.getCompound("names");
+        for (String key : nameTag.getAllKeys()) {
+            try {
+                data.names.put(UUID.fromString(key), nameTag.getString(key));
+            } catch (IllegalArgumentException ignored) {
+                // skip bad entry
+            }
+        }
+        data.startIslandGenerated = tag.getBoolean("startIslandGenerated");
+        if (tag.contains("heartTreePos")) data.heartTreePos = BlockPos.of(tag.getLong("heartTreePos"));
+        data.heartStage = tag.getInt("heartStage");
+        return data;
+    }
+}

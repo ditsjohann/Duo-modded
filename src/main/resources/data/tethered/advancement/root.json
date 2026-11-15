@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "id": "tethered:red_thread"
+    },
+    "title": {
+      "translate": "advancements.tethered.root.title"
+    },
+    "description": {
+      "translate": "advancements.tethered.root.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "background": "minecraft:textures/block/cherry_planks.png"
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

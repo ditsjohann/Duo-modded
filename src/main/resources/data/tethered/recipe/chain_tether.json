@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CCC",
+    "CTC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:chain"
+    },
+    "T": {
+      "item": "tethered:leather_tether"
+    }
+  },
+  "result": {
+    "id": "tethered:chain_tether",
+    "count": 1
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "parent": "tethered:heart_tree/stage_5",
+  "display": {
+    "icon": {
+      "id": "tethered:golden_thread"
+    },
+    "title": {
+      "translate": "advancements.tethered.bound_forever.title"
+    },
+    "description": {
+      "translate": "advancements.tethered.bound_forever.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

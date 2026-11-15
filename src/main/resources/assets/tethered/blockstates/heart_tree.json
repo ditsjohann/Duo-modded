@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "tethered:block/heart_tree"
+    },
+    "stage=1": {
+      "model": "tethered:block/heart_tree"
+    },
+    "stage=2": {
+      "model": "tethered:block/heart_tree"
+    },
+    "stage=3": {
+      "model": "tethered:block/heart_tree"
+    },
+    "stage=4": {
+      "model": "tethered:block/heart_tree"
+    },
+    "stage=5": {
+      "model": "tethered:block/heart_tree"
+    }
+  }
+}
