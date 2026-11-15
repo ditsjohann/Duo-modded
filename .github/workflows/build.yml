@@ -35,3 +35,22 @@ jobs:
           tail -60 server.log
           grep -q "Built the Tethered starting island" server.log
           grep -q "SMOKE TEST PASSED" server.log
+
+  modpack:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: tethered-mod
+          path: jar
+      - name: Build the .mrpack from modpack/mods.txt
+        run: |
+          NEO=$(grep '^neo_version=' gradle.properties | cut -d= -f2)
+          JAR=$(ls jar/*.jar | head -1)
+          python3 modpack/build_pack.py modpack/mods.txt "$JAR" "$NEO" out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tethered-pack
+          path: out/

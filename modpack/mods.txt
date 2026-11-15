@@ -1,0 +1,175 @@
+# Mods for the Tethered pack (Minecraft 1.21.1, NeoForge).
+# One mod per line: "Name | modrinth-slug". The slug is optional; without it the
+# builder searches Modrinth by name. Lines starting with # are skipped.
+# Mods each of these need are added automatically.
+
+# --- Pack foundation
+FTB Quests
+FTB Library
+FTB Teams
+KubeJS | kubejs
+JEI | jei
+Jade | jade
+Xaero's Minimap | xaeros-minimap
+Curios API | curios
+# Skyblock Builder: skipped, the Tethered mod builds the sky world itself
+# Sinytra Connector: skipped, only needed for Fabric mods
+
+# --- Duo stuff
+Simple Voice Chat | simple-voice-chat
+Emotecraft | emotecraft
+Comforts | comforts
+Waystones | waystones
+Carry On | carry-on
+e4mc | e4mc
+
+# --- Performance & quality of life
+Sodium | sodium
+Iris | iris
+ModernFix | modernfix
+FerriteCore | ferrite-core
+Lithium | lithium
+Entity Culling | entityculling
+ImmediatelyFast | immediatelyfast
+AppleSkin | appleskin
+Mouse Tweaks | mouse-tweaks
+Controlling | controlling
+Clumps | clumps
+
+# --- Fixes & stability
+AllTheLeaks
+Neruina | neruina
+Packet Fixer | packet-fixer
+Connectivity
+AttributeFix | attributefix
+Model Gap Fix
+Let Me Despawn
+FPS Reducer
+Smooth Boot (Reloaded)
+Spark | spark
+Chunky | chunky
+
+# --- Sky island resources
+Ex Deorum | ex-deorum
+Botany Pots | botany-pots
+Botany Trees | botany-trees
+
+# --- Food & date nights
+Farmer's Delight | farmers-delight
+[Let's Do] Farm & Charm
+[Let's Do] Candlelight | lets-do-candlelight-farmcharm-compat
+[Let's Do] Vinery
+[Let's Do] Bakery
+Cooking for Blockheads | cooking-for-blockheads
+Mystical Agriculture
+
+# --- Building & decor
+Macaw's Bridges | macaws-bridges
+Macaw's Furniture | macaws-furniture
+Macaw's Roofs | macaws-roofs
+Macaw's Windows | macaws-windows
+Macaw's Doors | macaws-doors
+Handcrafted | handcrafted
+Another Furniture | another-furniture
+Supplementaries | supplementaries
+Amendments | amendments
+Chipped | chipped
+Quark | quark
+
+# --- Storage
+Sophisticated Backpacks | sophisticated-backpacks
+Sophisticated Storage | sophisticated-storage
+Tom's Simple Storage | toms-storage
+Functional Storage | functional-storage
+Pipez | pipez
+
+# --- Tech
+Create | create
+Create Crafts & Additions | createaddition
+Create: Steam 'n' Rails | create-steam-n-rails-1.21.1
+Applied Energistics 2 | ae2
+Powah
+# Mekanism: optional, left out (very heavy for a cozy pack)
+
+# --- Magic
+Ars Nouveau | ars-nouveau
+Iron's Spells 'n Spellbooks | irons-spells-n-spellbooks
+Botania | botania
+Occultism | occultism
+Apotheosis | apotheosis
+
+# --- Adventure & bosses
+The Twilight Forest
+The Aether | aether
+L_Ender's Cataclysm
+Mowzie's Mobs | mowzies-mobs
+Born in Chaos
+Artifacts | artifacts
+Better Combat | better-combat
+Combat Roll | combat-roll
+Naturalist | naturalist
+Friends & Foes | friends-and-foes
+
+# --- Hard mode
+Tough As Nails | tough-as-nails
+Serene Seasons | serene-seasons
+Improved Mobs
+In Control!
+Gateways to Eternity
+Hostile Neural Networks
+Mutant Monsters
+Deeper and Darker | deeperdarker
+Ice and Fire CE | iceandfire-ce
+Spartan Weaponry
+Champions
+Majrusz's Progressive Difficulty
+# Epic Fight: skipped, it clashes with Better Combat
+
+# --- More decor
+MrCrayfish's Furniture Mod: Refurbished
+Decorative Blocks
+Beautify: Refabricated
+Dramatic Doors
+Framed Blocks
+Building Gadgets 2
+Storage Drawers
+Every Compat (Wood Good) | every-compat
+Fairy Lights
+Create Deco
+Little Tiles
+Biomes O' Plenty | biomes-o-plenty
+Oh The Biomes We've Gone
+Regions Unexplored
+
+# --- Atmosphere
+Sound Physics Remastered | sound-physics-remastered
+Falling Leaves
+Particle Rain
+Visuality
+Not Enough Animations
+First-person Model
+Chat Heads
+
+# --- More worlds
+Deep Aether | deep-aether
+The Undergarden
+Eternal Starlight
+Blue Skies
+
+# --- Random fun & memories
+Exposure | exposure
+Exposure: Polaroid
+Immersive Paintings | immersive-paintings
+Etched
+Paragliders | paragliders
+Immersive Aircraft | immersive-aircraft
+Aquaculture 2
+Tide
+Doggy Talents Next
+Lootr | lootr
+SecurityCraft
+Create Slice & Dice
+Create Enchantment Industry
+ParCool | parcool
+# Cobblemon: optional, left out (huge, almost a separate game)
+# Corail Tombstone: skipped, clashes with the Tethered downed/revive system
