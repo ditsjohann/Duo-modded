@@ -65,11 +65,14 @@ def norm(s):
 def resolve(name, slug):
     """Returns (project, version, how) or (None, None, why)."""
     if slug:
+        # An exact slug is never replaced by a search guess (searching picked wrong mods before).
         project = get(f"/project/{slug}")
-        if project:
-            version = best_version(project["id"])
-            if version:
-                return project, version, "slug"
+        if not project:
+            return None, None, f"'{slug}' is not on Modrinth (maybe CurseForge only)"
+        version = best_version(project["id"])
+        if not version:
+            return None, None, f"'{slug}' has no NeoForge 1.21.1 version on Modrinth"
+        return project, version, "slug"
     facets = json.dumps([[f"versions:{MC}"], [f"categories:{LOADER}"], ["project_type:mod"]])
     found = get("/search", {"query": name, "facets": facets, "limit": 10})
     hits = (found or {}).get("hits", [])

@@ -4,9 +4,8 @@
 # Mods each of these need are added automatically.
 
 # --- Pack foundation
-FTB Quests
-FTB Library
-FTB Teams
+# FTB Quests / Library / Teams: CurseForge only, not on Modrinth. Trying Heracles (a quest book on Modrinth) instead.
+Heracles | heracles
 KubeJS | kubejs
 JEI | jei
 Jade | jade
@@ -37,15 +36,15 @@ Controlling | controlling
 Clumps | clumps
 
 # --- Fixes & stability
-AllTheLeaks
+AllTheLeaks | alltheleaks
 Neruina | neruina
 Packet Fixer | packet-fixer
-Connectivity
+Connectivity | connectivity
 AttributeFix | attributefix
-Model Gap Fix
-Let Me Despawn
-FPS Reducer
-Smooth Boot (Reloaded)
+Model Gap Fix | modelfix
+Let Me Despawn | lmd
+FPS Reducer | fps-reducer
+Smooth Boot (Reloaded) | smooth-boot
 Spark | spark
 Chunky | chunky
 
@@ -56,12 +55,12 @@ Botany Trees | botany-trees
 
 # --- Food & date nights
 Farmer's Delight | farmers-delight
-[Let's Do] Farm & Charm
+[Let's Do] Farm & Charm | lets-do-farm-charm
 [Let's Do] Candlelight | lets-do-candlelight-farmcharm-compat
-[Let's Do] Vinery
-[Let's Do] Bakery
+[Let's Do] Vinery | lets-do-vinery
+[Let's Do] Bakery | lets-do-bakery-farmcharm-compat
 Cooking for Blockheads | cooking-for-blockheads
-Mystical Agriculture
+Mystical Agriculture | mystical-agriculture
 
 # --- Building & decor
 Macaw's Bridges | macaws-bridges
@@ -88,7 +87,7 @@ Create | create
 Create Crafts & Additions | createaddition
 Create: Steam 'n' Rails | create-steam-n-rails-1.21.1
 Applied Energistics 2 | ae2
-Powah
+Powah | powah
 # Mekanism: optional, left out (very heavy for a cozy pack)
 
 # --- Magic
@@ -99,11 +98,11 @@ Occultism | occultism
 Apotheosis | apotheosis
 
 # --- Adventure & bosses
-The Twilight Forest
+The Twilight Forest | the-twilight-forest
 The Aether | aether
-L_Ender's Cataclysm
+L_Ender's Cataclysm | l_enders-cataclysm
 Mowzie's Mobs | mowzies-mobs
-Born in Chaos
+Born in Chaos | borninchaos
 Artifacts | artifacts
 Better Combat | better-combat
 Combat Roll | combat-roll
@@ -113,63 +112,63 @@ Friends & Foes | friends-and-foes
 # --- Hard mode
 Tough As Nails | tough-as-nails
 Serene Seasons | serene-seasons
-Improved Mobs
-In Control!
-Gateways to Eternity
-Hostile Neural Networks
-Mutant Monsters
+Improved Mobs | improved-mobs
+In Control! | in-control
+Gateways to Eternity | gateways-to-eternity
+Hostile Neural Networks | hostile-neural-networks
+Mutant Monsters | mutant-monsters
 Deeper and Darker | deeperdarker
 Ice and Fire CE | iceandfire-ce
-Spartan Weaponry
-Champions
-Majrusz's Progressive Difficulty
+Spartan Weaponry | spartan-weaponry-reborn
+Champions | mobchampions
+Majrusz's Progressive Difficulty | majruszs-progressive-difficulty
 # Epic Fight: skipped, it clashes with Better Combat
 
 # --- More decor
-MrCrayfish's Furniture Mod: Refurbished
-Decorative Blocks
-Beautify: Refabricated
-Dramatic Doors
-Framed Blocks
-Building Gadgets 2
-Storage Drawers
+MrCrayfish's Furniture Mod: Refurbished | refurbished-furniture
+Decorative Blocks | decorative-blocks
+Beautify: Refabricated | beautify-refabricated
+Dramatic Doors | dramatic-doors
+Framed Blocks | framedblocks
+Building Gadgets 2 | building-gadgets-2
+Storage Drawers | storagedrawers
 Every Compat (Wood Good) | every-compat
-Fairy Lights
-Create Deco
-Little Tiles
+Fairy Lights | fairy-lights-fabric
+Create Deco | create-deco
+Little Tiles | littletiles
 Biomes O' Plenty | biomes-o-plenty
-Oh The Biomes We've Gone
-Regions Unexplored
+Oh The Biomes We've Gone | oh-the-biomes-weve-gone
+Regions Unexplored | regions-unexplored
 
 # --- Atmosphere
 Sound Physics Remastered | sound-physics-remastered
-Falling Leaves
-Particle Rain
-Visuality
-Not Enough Animations
-First-person Model
-Chat Heads
+Falling Leaves | falling-leaves
+Particle Rain | particle-rain
+Visuality | visuality-forge
+Not Enough Animations | not-enough-animations
+First-person Model | first-person-model
+Chat Heads | chat-heads
 
 # --- More worlds
 Deep Aether | deep-aether
-The Undergarden
-Eternal Starlight
-Blue Skies
+The Undergarden | the-undergarden
+Eternal Starlight | eternal-starlight
+Blue Skies | blue-skies
 
 # --- Random fun & memories
 Exposure | exposure
-Exposure: Polaroid
+Exposure: Polaroid | exposure-polaroid
 Immersive Paintings | immersive-paintings
-Etched
+Etched | etched
 Paragliders | paragliders
 Immersive Aircraft | immersive-aircraft
-Aquaculture 2
-Tide
-Doggy Talents Next
+Aquaculture 2 | aquaculture
+Tide | tide
+Doggy Talents Next | doggy-talents-next
 Lootr | lootr
-SecurityCraft
-Create Slice & Dice
-Create Enchantment Industry
+SecurityCraft | security-craft
+Create Slice & Dice | slice-and-dice
+Create Enchantment Industry | create-enchantment-industry
 ParCool | parcool
 # Cobblemon: optional, left out (huge, almost a separate game)
 # Corail Tombstone: skipped, clashes with the Tethered downed/revive system
