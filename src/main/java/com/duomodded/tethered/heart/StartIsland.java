@@ -41,7 +41,7 @@ public final class StartIsland {
 
     public static boolean isVoidWorld(ServerLevel level) {
         return level.getChunkSource().getGenerator() instanceof FlatLevelSource flat
-                && flat.settings().getLayers().stream().allMatch(BlockState::isAir);
+                && flat.settings().getLayers().stream().allMatch(s -> s == null || s.isAir()); // air layers are stored as null
     }
 
     public static void generate(ServerLevel level, BlockPos center) {
