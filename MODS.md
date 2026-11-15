@@ -3,8 +3,9 @@
 **Target:** Minecraft **1.21.1**, **NeoForge**
 **Concept:** Tethered + Heart Tree. Two players tied by a rope on a sky island; a tree you grow together spawns new island rings, and each ring unlocks a chapter of mods.
 
-> **Status:** This is a first draft from known mods. A few were checked for a NeoForge 1.21.1 build
-> (marked ✅). The rest still need checking on Modrinth/CurseForge before we pin exact versions.
+> **Status:** This is a draft from known mods. ✅ = checked that a NeoForge 1.21.1 build exists.
+> Unmarked = I expect it exists, but it still needs checking. ❓ = not sure it was ever made for 1.21.1; check first.
+> Nothing has exact versions pinned yet.
 
 **Stage key:** 🌱 Sapling · 🌿 Sprout · 🌳 Young Tree · 🏭 Grown Tree · 🌑 Old Tree · 🌸 Bloom · ⚙️ always on
 
@@ -123,12 +124,91 @@
 | 72 | Naturalist | Real-world animals (only spawn in biomes we put on islands) |
 | 73 | Friends & Foes | Extra vanilla-style mobs |
 
+## 11. Hard mode 💀 (make survival actually hard)
+| # | Mod | What it does here |
+|---|-----|-------------------|
+| 74 | Tough As Nails | Thirst and body temperature. Sky islands are cold at night |
+| 75 | Serene Seasons | Real seasons, so crops only grow in some of them. Plan your farm together |
+| 76 | Improved Mobs | Mobs break blocks, use items, build up to you. Scary on small islands |
+| 77 | In Control! | Our own spawn rules: e.g. stronger mobs on later island rings |
+| 78 | Gateways to Eternity | Portals that throw waves of mobs at you. Great duo fights |
+| 79 | Hostile Neural Networks | Farm mob drops by "training" models. A hard tech side quest |
+| 80 | Epic Fight ❓ | Souls-like combat with dodges and stamina. **Use this OR Better Combat, not both** |
+| 81 | Mutant Monsters | Huge mutant versions of zombies, creepers, etc. |
+| 82 | Deeper and Darker | The scariest Warden-zone dimension. Late-game challenge |
+| 83 | Ice and Fire CE ✅ | **Dragons**. Community-run version, very hard. Only start in a new world |
+| 84 | Spartan Weaponry | Lots of weapon types (spears, glaives, crossbows…) |
+| 85 | Champions ❓ | Elite mobs with special powers |
+| 86 | Majrusz's Progressive Difficulty ❓ | The game gets harder the further you get |
+
+## 12. More decor 🏡
+| # | Mod | What it does here |
+|---|-----|-------------------|
+| 87 | MrCrayfish's Furniture: Refurbished | Furniture that actually works: kitchens, TVs, mailboxes |
+| 88 | Decorative Blocks | Beams, chains, braziers, lattices |
+| 89 | Beautify: Refabricated | Hanging plants, trellises, blinds, picture frames |
+| 90 | Dramatic Doors | Tall double doors |
+| 91 | Framed Blocks | Copy any block's look onto stairs, slabs, doors… |
+| 92 | Building Gadgets 2 | Build big shapes quickly (expanding islands takes a lot of blocks) |
+| 93 | Storage Drawers | Classic drawers that also look nice as decor |
+| 94 | Every Compat (Wood Good) | Gives every wood type furniture variants. Pairs with Macaw's |
+| 95 | Fairy Lights ❓ | String lights between posts. Romantic island evenings |
+| 96 | Create Deco ❓ | Industrial decor for the Workshop islands |
+| 97 | Little Tiles ❓ | Build tiny detailed blocks. Very fiddly, very pretty |
+| 98 | Biomes O' Plenty | New wood types, flowers and biomes for the island rings |
+| 99 | Oh The Biomes We've Gone | Even more biomes and woods |
+| 100 | Regions Unexplored | Pretty biomes, nice flowers |
+
+## 13. Atmosphere & visuals ✨
+| # | Mod | What it does here |
+|---|-----|-------------------|
+| 101 | Distant Horizons | See islands far, far away. Gorgeous with shaders |
+| 102 | Sound Physics Remastered | Echoes and realistic sound |
+| 103 | Falling Leaves | Leaves drift down from trees (Heart Tree vibes!) |
+| 104 | Particle Rain | Nicer rain and snow |
+| 105 | Visuality | Small particles: sparkles, drips |
+| 106 | Not Enough Animations | Better player animations (eating, maps, ladders) |
+| 107 | First-person Model | See your own body. You'll see the rope tied to you |
+| 108 | Chat Heads | Player faces in chat |
+
+## 14. More worlds to explore 🌍
+| # | Mod | What it does here |
+|---|-----|-------------------|
+| 109 | Deep Aether | Adds lots to the Aether. Fits the sky theme |
+| 110 | The Undergarden | A dark underground dimension |
+| 111 | Eternal Starlight | A starry dimension with its own bosses. Pretty and romantic |
+| 112 | Blue Skies ❓ | Two bright sky dimensions with a boss progression |
+| 113 | The Graveyard | Spooky graveyards and crypts |
+
+## 15. Random fun & memories 🎲
+| # | Mod | What it does here |
+|---|-----|-------------------|
+| 114 | Exposure ✅ | **Real film cameras**. Take photos of each other, develop them, hang them up |
+| 115 | Exposure: Polaroid ✅ | Instant Polaroid photos |
+| 116 | Immersive Paintings ✅ | Upload your own pictures as paintings. Real photos of you two in your house |
+| 117 | Etched ❓ | Make music discs from links. **Your song** in-game |
+| 118 | Paraglider ✅ | Glide between islands (stamina-based). Fun to combine with the rope |
+| 119 | Immersive Aircraft | Build planes and gyrocopters to fly between islands |
+| 120 | Small Ships ❓ | Sailing ships |
+| 121 | Aquaculture 2 | Better fishing, new fish, fish-themed weapons |
+| 122 | Tide | Fishing overhaul with a fish journal |
+| 123 | Doggy Talents Next | Train a dog together, teach it skills |
+| 124 | Lootr | **Each of you gets your own loot** from the same chest. Very important for duo |
+| 125 | SecurityCraft | Cameras, keycards, traps. Great for pranking each other |
+| 126 | Cobblemon *(optional)* | Pokémon-style creatures. Huge, almost a game on its own |
+| 127 | Create: Slice & Dice | Lets Create machines cook Farmer's Delight food |
+| 128 | Create Enchantment Industry ❓ | Automate enchanting with Create |
+| 129 | ParCool | Parkour: wall-run, vault, roll. Funny with the rope |
+| 130 | Corail Tombstone ❓ | Graves that keep your items. **Might clash with our downed/revive**, so maybe skip |
+
 ---
 
 ## Things to know
 - **Void world:** Mods that add structures or mobs to the normal world only appear if our island rings use those biomes, or inside dimensions like Twilight Forest and the Aether. Our Heart Tree generator gets to choose biomes per ring, so this is fine.
 - **Pick one:** AE2 *or* Refined Storage. Mekanism is optional.
-- **RAM:** Around 70 mods means giving Minecraft about **6–8 GB**.
+- **Pick one:** Epic Fight *or* Better Combat + Combat Roll. Tough As Nails also has a rival called Cold Sweat, so use only one temperature mod.
+- **Heavy mods:** Cobblemon, Mekanism, Ice and Fire and Distant Horizons are each big. Cut some if things get laggy.
+- **RAM:** About 130 mods means giving Minecraft **8–10 GB**. A PC with 16 GB+ is recommended for both of you.
 - **Our own mod, "Tethered"**, adds the rope, brace/haul/swing/slingshot, the Heart Tree and the island rings.
   The pack's quests are built around it.
 
