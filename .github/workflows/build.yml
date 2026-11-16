@@ -15,8 +15,14 @@ jobs:
           distribution: temurin
           java-version: 21
       - uses: gradle/actions/setup-gradle@v4
+      - name: Find the newest NeoForge 21.1
+        run: |
+          NEO=$(curl -s https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml \
+            | grep -oE '<version>21\.1\.[0-9]+</version>' | sed -E 's/<\/?version>//g' | sort -V | tail -1)
+          echo "Newest NeoForge 21.1: $NEO"
+          echo "NEO=$NEO" >> "$GITHUB_ENV"
       - name: Build
-        run: chmod +x gradlew && ./gradlew build --stacktrace
+        run: chmod +x gradlew && ./gradlew build --stacktrace -Pneo_version=$NEO
       - uses: actions/upload-artifact@v4
         with:
           name: tethered-mod
@@ -26,7 +32,7 @@ jobs:
           mkdir -p run
           echo "eula=true" > run/eula.txt
           printf 'level-type=tethered\\:tethered_sky\nonline-mode=false\n' > run/server.properties
-          timeout 900 ./gradlew runServer -PsmokeTest --console=plain > server.log 2>&1 || true
+          timeout 900 ./gradlew runServer -PsmokeTest -Pneo_version=$NEO --console=plain > server.log 2>&1 || true
           echo "----- tethered lines -----"
           grep -iE "tethered|SMOKE TEST" server.log || true
           echo "----- errors / exceptions -----"
@@ -45,9 +51,14 @@ jobs:
         with:
           name: tethered-mod
           path: jar
+      - name: Find the newest NeoForge 21.1
+        run: |
+          NEO=$(curl -s https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml \
+            | grep -oE '<version>21\.1\.[0-9]+</version>' | sed -E 's/<\/?version>//g' | sort -V | tail -1)
+          echo "Newest NeoForge 21.1: $NEO"
+          echo "NEO=$NEO" >> "$GITHUB_ENV"
       - name: Build the .mrpack from modpack/mods.txt
         run: |
-          NEO=$(grep '^neo_version=' gradle.properties | cut -d= -f2)
           JAR=$(ls jar/*.jar | head -1)
           python3 modpack/build_pack.py modpack/mods.txt "$JAR" "$NEO" out
       - uses: actions/upload-artifact@v4
@@ -70,13 +81,19 @@ jobs:
         with:
           name: tethered-pack
           path: pack
+      - name: Find the newest NeoForge 21.1
+        run: |
+          NEO=$(curl -s https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml \
+            | grep -oE '<version>21\.1\.[0-9]+</version>' | sed -E 's/<\/?version>//g' | sort -V | tail -1)
+          echo "Newest NeoForge 21.1: $NEO"
+          echo "NEO=$NEO" >> "$GITHUB_ENV"
       - name: Install the pack's server mods
         run: python3 modpack/install_server_mods.py pack/tethered-pack.mrpack run/mods
       - name: Server smoke test with the whole pack
         run: |
           echo "eula=true" > run/eula.txt
           printf 'level-type=tethered\\:tethered_sky\nonline-mode=false\n' > run/server.properties
-          ./gradlew runServer -PsmokeTest --console=plain > pack-server.log 2>&1 &
+          ./gradlew runServer -PsmokeTest -Pneo_version=$NEO --console=plain > pack-server.log 2>&1 &
           for i in $(seq 1 150); do
             if grep -qE "SMOKE TEST (PASSED|FAILED)|Stopping server" pack-server.log; then break; fi
             if ! pgrep -f forgeserverdev > /dev/null && [ $i -gt 24 ]; then break; fi

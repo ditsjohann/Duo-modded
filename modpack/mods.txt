@@ -92,6 +92,7 @@ Powah | powah
 # --- Magic
 Ars Nouveau | ars-nouveau
 Iron's Spells 'n Spellbooks | irons-spells-n-spellbooks
+Iron's Lib | irons-lib
 Botania | botania
 Occultism | occultism
 Apotheosis | apotheosis
