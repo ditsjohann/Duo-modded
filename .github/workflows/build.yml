@@ -54,3 +54,44 @@ jobs:
         with:
           name: tethered-pack
           path: out/
+
+  pack-smoke:
+    # Starts a Tethered Sky server with the WHOLE modpack, to catch freezes/crashes between mods.
+    needs: modpack
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: tethered-pack
+          path: pack
+      - name: Install the pack's server mods
+        run: python3 modpack/install_server_mods.py pack/tethered-pack.mrpack run/mods
+      - name: Server smoke test with the whole pack
+        run: |
+          echo "eula=true" > run/eula.txt
+          printf 'level-type=tethered\\:tethered_sky\nonline-mode=false\n' > run/server.properties
+          ./gradlew runServer -PsmokeTest --console=plain > pack-server.log 2>&1 &
+          for i in $(seq 1 150); do
+            if grep -qE "SMOKE TEST (PASSED|FAILED)|Stopping server" pack-server.log; then break; fi
+            if ! pgrep -f forgeserverdev > /dev/null && [ $i -gt 24 ]; then break; fi
+            sleep 6
+          done
+          if ! grep -qE "SMOKE TEST (PASSED|FAILED)" pack-server.log; then
+            echo "===== NO RESULT: SERVER LOOKS STUCK. THREAD DUMP OF THE SERVER THREAD ====="
+            for p in $(pgrep -f forgeserverdev); do jstack "$p" | grep -A 60 '"Server thread"'; done
+          fi
+          echo "----- tethered lines -----"
+          grep -iE "tethered|SMOKE TEST" pack-server.log | head -80 || true
+          echo "----- errors / exceptions -----"
+          grep -nE "ERROR|Exception|FATAL" pack-server.log | head -80 || true
+          echo "----- log tail -----"
+          tail -120 pack-server.log
+          for f in run/crash-reports/*.txt; do [ -f "$f" ] && head -80 "$f"; done
+          pkill -f forgeserverdev || true
+          grep -q "SMOKE TEST PASSED" pack-server.log
