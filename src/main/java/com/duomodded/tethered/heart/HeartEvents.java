@@ -31,30 +31,42 @@ public final class HeartEvents {
         if (Boolean.getBoolean("tethered.smokeTest")) smokeTest(event.getServer());
     }
 
-    /** CI only (-Dtethered.smokeTest=true): grow the tree through every stage, then stop the server. */
+    /**
+     * CI only (-Dtethered.smokeTest=true): grow the tree through every stage, build every island,
+     * then stop the server. The result also goes to tethered-smoke.txt, in case another mod hides the log.
+     */
     private static void smokeTest(MinecraftServer server) {
-        BlockPos pos = TetherData.get(server).heartTreePos();
-        ServerLevel level = server.overworld();
-        if (pos == null || !(level.getBlockEntity(pos) instanceof HeartTreeBlockEntity tree)) {
-            Tethered.LOGGER.error("SMOKE TEST FAILED: no Heart Tree found");
-        } else {
-            int max = StageLoader.maxStage();
-            while (tree.forceGrow(level)) {
-                Tethered.LOGGER.info("SMOKE TEST: Heart Tree grew to stage {} of {}", tree.stage(), max);
-            }
-            IslandManager.unlockAll(server);
-            TetherData data = TetherData.get(server);
-            Tethered.LOGGER.info("SMOKE TEST: {} islands unlocked, {} built, {} quest chapters, {} quests",
-                    data.unlockedIslands().size(), data.generatedIslands().size(),
-                    QuestLoader.chapters().size(), QuestLoader.all().size());
-            QuestManager.checkAll(server, null);
-            QuestManager.syncAll(server);
-            boolean islandsOk = !IslandLoader.all().isEmpty() && data.generatedIslands().size() == IslandLoader.all().size();
-            if (tree.stage() == max && max > 0 && islandsOk && !QuestLoader.all().isEmpty()) {
-                Tethered.LOGGER.info("SMOKE TEST PASSED");
+        StringBuilder report = new StringBuilder();
+        try {
+            BlockPos pos = TetherData.get(server).heartTreePos();
+            ServerLevel level = server.overworld();
+            if (pos == null || !(level.getBlockEntity(pos) instanceof HeartTreeBlockEntity tree)) {
+                report.append("SMOKE TEST FAILED: no Heart Tree found (start island built: ")
+                        .append(TetherData.get(server).startIslandGenerated()).append(")\n");
             } else {
-                Tethered.LOGGER.error("SMOKE TEST FAILED: stopped at stage {} of {}", tree.stage(), max);
+                int max = StageLoader.maxStage();
+                while (tree.forceGrow(level)) {
+                    report.append("grew to stage ").append(tree.stage()).append(" of ").append(max).append('\n');
+                }
+                IslandManager.unlockAll(server);
+                TetherData data = TetherData.get(server);
+                QuestManager.checkAll(server, null);
+                QuestManager.syncAll(server);
+                report.append("islands built: ").append(data.generatedIslands().size()).append(" of ")
+                        .append(IslandLoader.all().size()).append(", quests: ").append(QuestLoader.all().size()).append('\n');
+                boolean islandsOk = !IslandLoader.all().isEmpty() && data.generatedIslands().size() == IslandLoader.all().size();
+                report.append(tree.stage() == max && max > 0 && islandsOk && !QuestLoader.all().isEmpty()
+                        ? "SMOKE TEST PASSED\n" : "SMOKE TEST FAILED\n");
             }
+        } catch (Throwable t) {
+            report.append("SMOKE TEST FAILED: ").append(t).append('\n');
+            for (StackTraceElement e : t.getStackTrace()) report.append("  at ").append(e).append('\n');
+        }
+        for (String line : report.toString().split("\n")) Tethered.LOGGER.info("SMOKE: {}", line);
+        try {
+            java.nio.file.Files.writeString(java.nio.file.Path.of("tethered-smoke.txt"), report.toString());
+        } catch (java.io.IOException ignored) {
+            // nothing else we can do
         }
         server.halt(false);
     }

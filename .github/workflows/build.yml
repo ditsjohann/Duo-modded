@@ -97,11 +97,11 @@ jobs:
           ./gradlew runServer -PsmokeTest -Pneo_version=$NEO --console=plain > pack-server.log 2>&1 &
           GRADLE_PID=$!
           for i in $(seq 1 200); do
-            if grep -qE "SMOKE TEST (PASSED|FAILED)|Failed to start the minecraft server|This crash report has been saved" pack-server.log; then break; fi
+            if [ -f run/tethered-smoke.txt ] || grep -qE "Failed to start the minecraft server|This crash report has been saved" pack-server.log; then break; fi
             if ! kill -0 $GRADLE_PID 2>/dev/null; then break; fi
             sleep 6
           done
-          if ! grep -qE "SMOKE TEST (PASSED|FAILED)" pack-server.log && kill -0 $GRADLE_PID 2>/dev/null; then
+          if [ ! -f run/tethered-smoke.txt ] && kill -0 $GRADLE_PID 2>/dev/null; then
             echo "===== NO RESULT AFTER 20 MIN: SERVER LOOKS STUCK. THREAD DUMP ====="
             for p in $(jps -l | grep -iE "devlaunch|bootstrap" | cut -d' ' -f1); do jstack "$p" | grep -A 80 '"Server thread"'; done
           fi
@@ -115,7 +115,11 @@ jobs:
           [ -f run/logs/latest.log ] && grep -vE $'^\tat ' run/logs/latest.log | tail -60
           for f in run/crash-reports/*.txt; do [ -f "$f" ] && head -80 "$f"; done
           kill $GRADLE_PID 2>/dev/null || true
-          grep -q "SMOKE TEST PASSED" pack-server.log
+          echo "----- tethered-smoke.txt (written by the mod itself) -----"
+          cat run/tethered-smoke.txt 2>/dev/null || echo "(no file: the smoke test never ran)"
+          echo "----- world files -----"
+          ls -la run/world run/world/data 2>/dev/null | head -30 || true
+          grep -q "SMOKE TEST PASSED" run/tethered-smoke.txt
       - uses: actions/upload-artifact@v4
         if: always()
         with:
