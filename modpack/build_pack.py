@@ -143,7 +143,14 @@ def main():
             if not dep_pid or dep_pid in chosen:
                 continue
             dep_project = get(f"/project/{dep_pid}")
-            dep_version = best_version(dep_pid) if dep_project else None
+            dep_version = None
+            if dep_project and dep.get("version_id"):
+                # The mod asks for an exact version of the library: use it if it fits 1.21.1 NeoForge.
+                pinned = get(f"/version/{dep['version_id']}")
+                if pinned and MC in pinned.get("game_versions", []) and LOADER in pinned.get("loaders", []):
+                    dep_version = pinned
+            if dep_project and dep_version is None:
+                dep_version = best_version(dep_pid)
             if not dep_project or not dep_version:
                 warnings.append(f"{project['title']} needs {dep_project['title'] if dep_project else dep_pid}, "
                                 f"which has no NeoForge 1.21.1 version. {project['title']} may not load.")
