@@ -100,7 +100,7 @@ Apotheosis | apotheosis
 # --- Adventure & bosses
 The Twilight Forest | the-twilight-forest
 The Aether | aether
-L_Ender's Cataclysm | l_enders-cataclysm
+# L_Ender's Cataclysm: removed, it breaks datapack loading in this pack (world won't load)
 Mowzie's Mobs | mowzies-mobs
 Born in Chaos | borninchaos
 Artifacts | artifacts
