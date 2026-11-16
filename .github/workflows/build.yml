@@ -90,6 +90,7 @@ jobs:
       - name: Install the pack's server mods
         run: python3 modpack/install_server_mods.py pack/tethered-pack.mrpack run/mods
       - name: Server smoke test with the whole pack
+        timeout-minutes: 30
         run: |
           echo "eula=true" > run/eula.txt
           printf 'level-type=tethered\\:tethered_sky\nonline-mode=false\n' > run/server.properties
@@ -108,8 +109,18 @@ jobs:
           grep -iE "tethered|SMOKE TEST" pack-server.log | head -80 || true
           echo "----- errors / exceptions -----"
           grep -nE "ERROR|Exception|FATAL" pack-server.log | head -80 || true
-          echo "----- log tail -----"
-          tail -120 pack-server.log
+          echo "----- log tail (no stack frames) -----"
+          grep -vE $'^\tat |^\t\.\.\. ' pack-server.log | tail -150
+          echo "----- latest.log tail -----"
+          [ -f run/logs/latest.log ] && grep -vE $'^\tat ' run/logs/latest.log | tail -60
           for f in run/crash-reports/*.txt; do [ -f "$f" ] && head -80 "$f"; done
           kill $GRADLE_PID 2>/dev/null || true
           grep -q "SMOKE TEST PASSED" pack-server.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pack-server-logs
+          path: |
+            pack-server.log
+            run/logs/
+            run/crash-reports/
