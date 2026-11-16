@@ -132,7 +132,7 @@ Dramatic Doors | dramatic-doors
 Framed Blocks | framedblocks
 Building Gadgets 2 | building-gadgets-2
 Storage Drawers | storagedrawers
-Every Compat (Wood Good) | every-compat
+# Every Compat (Wood Good) | every-compat   # removed: adds ~30,000 extra blocks (58% of all blocks), makes JEI freeze the loading screen for minutes
 Fairy Lights | fairy-lights-fabric
 Create Deco | create-deco
 Little Tiles | littletiles

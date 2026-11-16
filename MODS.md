@@ -166,7 +166,7 @@
 | 102 | Framed Blocks | Copy any block's look onto stairs, slabs, doors… |
 | 103 | Building Gadgets 2 | Build big shapes quickly (expanding islands takes a lot of blocks) |
 | 104 | Storage Drawers | Classic drawers that also look nice as decor |
-| 105 | Every Compat (Wood Good) | Gives every wood type furniture variants. Pairs with Macaw's |
+| 105 | Every Compat (Wood Good) | **Removed**: it added ~30,000 blocks and made the game freeze on "Loading terrain" |
 | 106 | Fairy Lights ❓ | String lights between posts. Romantic island evenings |
 | 107 | Create Deco ❓ | Industrial decor for the Workshop islands |
 | 108 | Little Tiles ❓ | Build tiny detailed blocks. Very fiddly, very pretty |
