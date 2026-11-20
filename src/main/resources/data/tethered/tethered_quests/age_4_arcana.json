@@ -1,0 +1,213 @@
+{
+  "title": "V. The Whispering Weave",
+  "age": 4,
+  "order": 4,
+  "icon": "minecraft:amethyst_shard",
+  "description": "Magic returns: spells, spirits and enchantments.",
+  "quests": [
+    {
+      "id": "enchant",
+      "title": "Words of Power",
+      "description": "Build an enchanting table and surround it with books.",
+      "icon": "minecraft:enchanting_table",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "minecraft:enchanting_table"
+        },
+        {
+          "type": "item",
+          "count": 15,
+          "consume": false,
+          "item": "minecraft:bookshelf"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:lapis_lazuli",
+          "count": 16
+        }
+      ]
+    },
+    {
+      "id": "brew",
+      "title": "The Brewing Stand",
+      "description": "Nether wart came back with Arcana. Brew something.",
+      "icon": "minecraft:brewing_stand",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "minecraft:brewing_stand"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 40
+        }
+      ]
+    },
+    {
+      "id": "ars",
+      "title": "Ars Nouveau",
+      "description": "Craft a novice spell book and an imbuement chamber.",
+      "icon": "ars_nouveau:novice_spell_book",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "ars_nouveau:novice_spell_book"
+        },
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "ars_nouveau:imbuement_chamber"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "ars_nouveau:source_gem",
+          "count": 8
+        }
+      ],
+      "mod": "ars_nouveau"
+    },
+    {
+      "id": "irons",
+      "title": "Iron's Spells",
+      "description": "Gather arcane essence and inscribe your first spell.",
+      "icon": "irons_spellbooks:arcane_essence",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 16,
+          "consume": false,
+          "item": "irons_spellbooks:arcane_essence"
+        },
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "irons_spellbooks:inscription_table"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ],
+      "mod": "irons_spellbooks"
+    },
+    {
+      "id": "spirits",
+      "title": "Occultism",
+      "description": "Read the Dictionary of Spirits. Carefully.",
+      "icon": "occultism:dictionary_of_spirits",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "occultism:dictionary_of_spirits"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 40
+        }
+      ],
+      "mod": "occultism",
+      "optional": true
+    },
+    {
+      "id": "shelves",
+      "title": "Apotheosis",
+      "description": "Apothic Enchanting: build better bookshelves for stronger enchantments.",
+      "icon": "apothic_enchanting:hellshelf",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 4,
+          "consume": false,
+          "item": "apothic_enchanting:hellshelf"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ],
+      "mod": "apothic_enchanting",
+      "optional": true
+    },
+    {
+      "id": "boons",
+      "title": "Favored",
+      "description": "Between the two of you, choose four Boons.",
+      "icon": "tethered:weavers_favor",
+      "tasks": [
+        {
+          "type": "boons",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "type": "threads",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "arcanum",
+      "title": "Arcanum",
+      "description": "Follow the Rootway to the drifting library.",
+      "icon": "minecraft:bookshelf",
+      "tasks": [
+        {
+          "type": "visit",
+          "island": "arcanum"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ]
+    },
+    {
+      "id": "elements",
+      "title": "The Elements Return",
+      "description": "Make the offering and defeat Cinderwing.",
+      "icon": "minecraft:blaze_powder",
+      "tasks": [
+        {
+          "type": "age",
+          "age": 5
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 150
+        }
+      ],
+      "requires": [
+        "enchant",
+        "arcanum"
+      ]
+    }
+  ]
+}

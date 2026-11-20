@@ -30,9 +30,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The Weaver's Journal. Three tabs:
- * Map (the islands, Rootways and where you are; click an attuned island to travel),
- * Quests (chapters per island, tasks, rewards, hand-in button) and Tree (stage and blessings).
+ * The Weaver's Journal. Four tabs:
+ * Heartstone (the Age, memories, the offering, the Trial, blessings and your Boons),
+ * Quests (a chapter per Age and per island, tasks, rewards, hand-in button),
+ * Map (the Last Stone, the Lost Shards, Rootways and where you are; click to travel) and
+ * Story (the lore of every Age you've brought back).
  */
 public class JournalScreen extends Screen {
     private static final int BG = 0xF01C1722;
@@ -49,6 +51,7 @@ public class JournalScreen extends Screen {
     @Nullable
     private static String selectedQuest;
     private static int questScroll;
+    private static int storyScroll;
 
     private int left;
     private int top;
@@ -91,7 +94,7 @@ public class JournalScreen extends Screen {
         g.renderOutline(left, top, w, h, BORDER);
         g.drawString(font, title, left + 8, top + 7, PINK, false);
 
-        String[] tabs = {"screen.tethered.tab.map", "screen.tethered.tab.quests", "screen.tethered.tab.tree"};
+        String[] tabs = {"screen.tethered.tab.heart", "screen.tethered.tab.quests", "screen.tethered.tab.map", "screen.tethered.tab.story"};
         int tx = left + w - 6;
         for (int i = tabs.length - 1; i >= 0; i--) {
             Component label = Component.translatable(tabs[i]);
@@ -111,9 +114,10 @@ public class JournalScreen extends Screen {
         int ch = h - 27;
         JsonObject data = ClientJournalState.get();
         switch (tab) {
-            case 0 -> renderMap(g, data, cx, cy, cw, ch, mouseX, mouseY);
+            case 0 -> renderHeart(g, data, cx, cy, cw, ch, mouseX, mouseY);
             case 1 -> renderQuests(g, data, cx, cy, cw, ch, mouseX, mouseY);
-            default -> renderTree(g, data, cx, cy, cw, ch);
+            case 2 -> renderMap(g, data, cx, cy, cw, ch, mouseX, mouseY);
+            default -> renderStory(g, data, cx, cy, cw, ch);
         }
 
         if (tooltip != null) g.renderComponentTooltip(font, tooltip, mouseX, mouseY);
@@ -201,11 +205,12 @@ public class JournalScreen extends Screen {
         g.drawCenteredString(font, "❤", tX, tZ - 4, WHITE);
         if (Math.abs(mx - tX) <= 6 && Math.abs(my - tZ) <= 6) {
             List<Component> tip = new ArrayList<>();
-            tip.add(Component.translatable("block.tethered.heart_tree").withStyle(s -> s.withColor(0xFF6FA5)));
-            tip.add(Component.translatable("screen.tethered.tree.stage", (int) num(data, "stage", 0), str(data, "stageName", "")));
-            if (travel) tip.add(Component.translatable("screen.tethered.map.click_travel").withStyle(s -> s.withColor(GOLD & 0xFFFFFF)));
+            tip.add(Component.translatable("screen.tethered.map.last_stone").withStyle(s -> s.withColor(0xFF6FA5)));
+            tip.add(Component.literal(str(data, "ageTitle", "") + " — " + str(data, "ageName", "")));
+            if (travel) tip.add(Component.translatable("screen.tethered.map.click_heart").withStyle(s -> s.withColor(GOLD & 0xFFFFFF)));
             tooltip = tip;
-            if (travel) hits.add(new Hit(tX - 6, tZ - 6, tX + 7, tZ + 7, () -> sendAction(JournalActionPayload.TRAVEL, "tree")));
+            if (travel) hits.add(new Hit(tX - 6, tZ - 6, tX + 7, tZ + 7, () -> sendAction(JournalActionPayload.TRAVEL,
+                    hasShiftDown() ? "tree" : "heart")));
         }
 
         // You and your partner
@@ -281,7 +286,9 @@ public class JournalScreen extends Screen {
         g.fill(qx, cy, qx + qw, cy + ch, 0xFF221C29);
 
         if (!bool(chapter, "unlocked")) {
-            drawWrapped(g, Component.translatable("screen.tethered.quests.locked"), qx + qw + 8, cy + 6, cw - colW - qw - 16, GRAY);
+            Component why = chapter.has("island") ? Component.translatable("screen.tethered.quests.locked")
+                    : Component.translatable("screen.tethered.quests.locked_age", ageTitle(data, (int) num(chapter, "age", 0)));
+            drawWrapped(g, why, qx + qw + 8, cy + 6, cw - colW - qw - 16, GRAY);
             return;
         }
 
@@ -385,30 +392,170 @@ public class JournalScreen extends Screen {
         }
     }
 
-    // ------------------------------------------------------------------ tree
+    // ------------------------------------------------------------------ heartstone
 
-    private void renderTree(GuiGraphics g, JsonObject data, int cx, int cy, int cw, int ch) {
-        int stage = (int) num(data, "stage", 0);
-        int x = cx + 8;
-        int y = cy + 6;
-        g.drawString(font, Component.translatable("screen.tethered.tree.stage", stage, str(data, "stageName", "Seed")), x, y, PINK, false);
-        y += 12;
-        String next = str(data, "nextStageName", "");
-        if (!next.isEmpty()) {
-            y = drawWrapped(g, Component.translatable("screen.tethered.tree.next", next), x, y, cw - 16, 0xFFCFC8D6) + 6;
+    private void renderHeart(GuiGraphics g, JsonObject data, int cx, int cy, int cw, int ch, int mx, int my) {
+        if (!bool(data, "tetheredWorld")) {
+            drawWrapped(g, Component.translatable("screen.tethered.map.blank"), cx + 10, cy + 10, cw - 20, GRAY);
+            return;
+        }
+        int colW = cw / 2 - 4;
+        int x = cx + 6;
+        int y = cy + 4;
+        int ageColor = 0xFF000000 | (int) num(data, "ageColor", 0xB07AA1);
+        g.drawString(font, "⟡ " + str(data, "ageTitle", ""), x, y, ageColor, false);
+        y += 11;
+        g.drawString(font, str(data, "ageName", ""), x, y, 0xFFCFC8D6, false);
+        y += 14;
+
+        int need = (int) num(data, "breaksNeeded", 0);
+        int breaks = (int) num(data, "ageBreaks", 0);
+        if (need > 0) {
+            g.drawString(font, Component.translatable("screen.tethered.heart.next", str(data, "nextTitle", "")), x, y, PINK, false);
+            y += 11;
+            g.drawString(font, Component.translatable("screen.tethered.heart.memories", Math.min(breaks, need), need), x, y,
+                    breaks >= need ? GREEN : WHITE, false);
+            y += 10;
+            int bw = colW - 8;
+            g.fill(x, y, x + bw, y + 4, 0xFF2C2433);
+            g.fill(x, y, x + (int) (bw * Math.min(1.0, breaks / (double) Math.max(1, need))), y + 4, ageColor);
+            y += 9;
+            g.drawString(font, Component.translatable("screen.tethered.heart.offering"), x, y, PINK, false);
+            y += 11;
+            for (JsonElement e : arr(data, "offering")) {
+                JsonObject o = e.getAsJsonObject();
+                int value = (int) num(o, "value", 0);
+                int count = (int) num(o, "count", 1);
+                boolean done = value >= count;
+                ItemStack icon = o.has("item") ? stack(str(o, "item", "")) : taskIcon(withType(o));
+                if (!icon.isEmpty()) {
+                    g.pose().pushPose();
+                    g.pose().translate(x, y - 2, 0);
+                    g.pose().scale(0.75f, 0.75f, 1f);
+                    g.renderItem(icon, 0, 0);
+                    g.pose().popPose();
+                }
+                String name = o.has("label") ? str(o, "label", "") : itemName(withType(o));
+                g.drawString(font, font.plainSubstrByWidth((done ? "✔ " : "") + name, colW - 50), x + 14, y, done ? GREEN : WHITE, false);
+                g.drawString(font, value + "/" + count, x + colW - 34, y, done ? GREEN : GRAY, false);
+                y += 11;
+            }
+            if (data.has("trialName")) {
+                y += 3;
+                String state = bool(data, "trialActive") ? "screen.tethered.heart.trial_active"
+                        : bool(data, "trialReady") ? "screen.tethered.heart.trial_ready" : "screen.tethered.heart.trial_later";
+                y = drawWrapped(g, Component.translatable("screen.tethered.heart.trial", str(data, "trialName", "")),
+                        x, y, colW - 6, 0xFFC9A0FF);
+                y = drawWrapped(g, Component.translatable(state), x, y, colW - 6, GRAY);
+            }
         } else {
-            y = drawWrapped(g, Component.translatable("msg.tethered.tree.full_bloom"), x, y, cw - 16, GOLD) + 6;
+            y = drawWrapped(g, Component.translatable("msg.tethered.heart.whole"), x, y, colW - 6, GOLD);
         }
-        g.drawString(font, Component.translatable("screen.tethered.tree.blessings"), x, y, GOLD, false);
-        y += 12;
+
+        // Right column: blessings and Boons
+        int rx = cx + colW + 10;
+        int ry = cy + 4;
+        int age = (int) num(data, "age", 0);
+        g.drawString(font, Component.translatable("screen.tethered.tree.blessings"), rx, ry, GOLD, false);
+        ry += 11;
         for (int i = 1; i <= 7; i++) {
-            boolean active = stage >= i;
+            boolean active = age >= i;
             Component name = Component.translatable("blessing.tethered." + i);
-            Component desc = Component.translatable("blessing.tethered." + i + ".desc");
-            g.drawString(font, Component.literal(active ? "✔ " : i + ". ").append(name), x, y, active ? GREEN : GRAY, false);
-            y = drawWrapped(g, desc, x + 14, y + 10, cw - 30, active ? 0xFFCFC8D6 : 0xFF6E6878) + 3;
-            if (y > cy + ch - 10) break;
+            g.drawString(font, Component.literal(active ? "✔ " : "· ").append(name), rx, ry, active ? GREEN : 0xFF6E6878, false);
+            if (mx >= rx && mx < rx + colW && my >= ry && my < ry + 10) {
+                tooltip = List.of(name, Component.translatable("blessing.tethered." + i + ".desc"));
+            }
+            ry += 10;
         }
+        ry += 6;
+        g.drawString(font, Component.translatable("screen.tethered.heart.boons"), rx, ry, GOLD, false);
+        ry += 11;
+        JsonObject mine = null;
+        if (minecraft != null && minecraft.player != null && data.has("boons")) {
+            String me = minecraft.player.getUUID().toString();
+            JsonObject all = data.getAsJsonObject("boons");
+            if (all.has(me)) mine = all.getAsJsonObject(me);
+        }
+        if (mine == null || mine.size() == 0) {
+            ry = drawWrapped(g, Component.translatable("screen.tethered.heart.no_boons"), rx, ry, colW - 6, GRAY);
+        } else {
+            for (String id : mine.keySet()) {
+                int rank = mine.get(id).getAsInt();
+                if (rank <= 0) continue;
+                Component name = Component.translatable("boon.tethered." + id);
+                g.drawString(font, Component.literal("★" + rank + " ").append(name), rx, ry, 0xFFFFD27A, false);
+                if (mx >= rx && mx < rx + colW && my >= ry && my < ry + 10) {
+                    tooltip = List.of(name, Component.translatable("boon.tethered." + id + ".desc"));
+                }
+                ry += 10;
+                if (ry > cy + ch - 26) break;
+            }
+        }
+        if (minecraft != null && minecraft.player != null
+                && minecraft.player.getInventory().contains(new ItemStack(com.duomodded.tethered.registry.ModRegistry.WEAVERS_FAVOR.get()))) {
+            Component label = Component.translatable("screen.tethered.heart.choose_boon");
+            int bw = font.width(label) + 12;
+            int by = cy + ch - 18;
+            g.fill(rx, by, rx + bw, by + 14, 0xFF6B3F63);
+            g.renderOutline(rx, by, bw, 14, GOLD);
+            g.drawString(font, label, rx + 6, by + 3, WHITE, false);
+            hits.add(new Hit(rx, by, rx + bw, by + 14, () -> {
+                sendAction(JournalActionPayload.BOONS, "");
+                onClose();
+            }));
+        }
+    }
+
+    private static JsonObject withType(JsonObject o) {
+        JsonObject copy = o.deepCopy();
+        copy.addProperty("type", "item");
+        return copy;
+    }
+
+    private static String ageTitle(JsonObject data, int order) {
+        for (JsonElement e : arr(data, "ages")) {
+            JsonObject a = e.getAsJsonObject();
+            if ((int) num(a, "order", -1) == order) return str(a, "title", "Age " + order);
+        }
+        return "Age " + order;
+    }
+
+    // ------------------------------------------------------------------ story
+
+    private void renderStory(GuiGraphics g, JsonObject data, int cx, int cy, int cw, int ch) {
+        List<FormattedCharSequence> lines = new ArrayList<>();
+        List<Integer> colors = new ArrayList<>();
+        for (JsonElement e : arr(data, "ages")) {
+            JsonObject a = e.getAsJsonObject();
+            boolean unlocked = bool(a, "unlocked");
+            int color = 0xFF000000 | (int) num(a, "color", 0xB07AA1);
+            String head = unlocked ? str(a, "title", "") + " — " + str(a, "name", "") : "??? — " + Component.translatable("screen.tethered.story.unknown").getString();
+            for (FormattedCharSequence l : font.split(Component.literal(head), cw - 16)) {
+                lines.add(l);
+                colors.add(unlocked ? color : GRAY);
+            }
+            if (unlocked) {
+                for (JsonElement p : arr(a, "lore")) {
+                    for (FormattedCharSequence l : font.split(Component.literal(p.getAsString()), cw - 24)) {
+                        lines.add(l);
+                        colors.add(0xFFCFC8D6);
+                    }
+                    lines.add(FormattedCharSequence.EMPTY);
+                    colors.add(0);
+                }
+            }
+            lines.add(FormattedCharSequence.EMPTY);
+            colors.add(0);
+        }
+        int visible = (ch - 8) / 10;
+        storyScroll = Mth.clamp(storyScroll, 0, Math.max(0, lines.size() - visible));
+        int y = cy + 4;
+        for (int i = storyScroll; i < lines.size() && i < storyScroll + visible; i++) {
+            boolean head = colors.get(i) != 0xFFCFC8D6;
+            g.drawString(font, lines.get(i), cx + (head ? 8 : 14), y, colors.get(i) == 0 ? WHITE : colors.get(i), false);
+            y += 10;
+        }
+        if (lines.size() > visible) small(g, Component.translatable("screen.tethered.story.scroll").getString(), cx + cw - 60, cy + ch - 8, GRAY);
     }
 
     // ------------------------------------------------------------------ text helpers
@@ -424,7 +571,12 @@ public class JournalScreen extends Screen {
             case "advancement" -> Component.translatable("task.tethered.advancement", advancementName(str(t, "id", ""))).getString();
             case "visit" -> Component.translatable("task.tethered.visit", islandName(str(t, "id", ""))).getString();
             case "attune" -> Component.translatable("task.tethered.attune", islandName(str(t, "id", ""))).getString();
-            case "tree_stage" -> Component.translatable("task.tethered.tree_stage", count).getString();
+            case "age" -> Component.translatable("task.tethered.age", ageTitle(ClientJournalState.get(), count)).getString();
+            case "heart" -> Component.translatable("task.tethered.heart", count).getString();
+            case "event" -> Component.translatable("task.tethered.event", count,
+                    Component.translatable("event.tethered.type." + str(t, "id", "")).getString()).getString();
+            case "dimension" -> Component.translatable("task.tethered.dimension", dimensionName(str(t, "id", ""))).getString();
+            case "boons" -> Component.translatable("task.tethered.boons", count).getString();
             case "together" -> Component.translatable("task.tethered.together").getString();
             default -> type;
         };
@@ -438,6 +590,8 @@ public class JournalScreen extends Screen {
             case "xp" -> Component.translatable("reward.tethered.xp", count).getString();
             case "unlock" -> Component.translatable("reward.tethered.unlock", islandName(str(r, "island", ""))).getString();
             case "ending" -> Component.translatable("reward.tethered.ending").getString();
+            case "favor" -> Component.translatable("reward.tethered.favor", count).getString();
+            case "threads" -> count + " × " + Component.translatable("item.tethered.lost_thread").getString();
             default -> "?";
         };
     }
@@ -473,6 +627,12 @@ public class JournalScreen extends Screen {
         if (rl == null) return id;
         return BuiltInRegistries.ENTITY_TYPE.getOptional(rl).map(EntityType::getDescription)
                 .map(Component::getString).orElse(id);
+    }
+
+    private static String dimensionName(String id) {
+        String key = "dimension." + id.replace(':', '.');
+        return net.minecraft.client.resources.language.I18n.exists(key) ? Component.translatable(key).getString()
+                : id.substring(id.indexOf(':') + 1).replace('_', ' ');
     }
 
     private String advancementName(String id) {
@@ -567,6 +727,10 @@ public class JournalScreen extends Screen {
     public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) {
         if (tab == 1) {
             questScroll = Math.max(0, questScroll - (int) Math.signum(scrollY));
+            return true;
+        }
+        if (tab == 3) {
+            storyScroll = Math.max(0, storyScroll - 3 * (int) Math.signum(scrollY));
             return true;
         }
         return super.mouseScrolled(mouseX, mouseY, scrollX, scrollY);

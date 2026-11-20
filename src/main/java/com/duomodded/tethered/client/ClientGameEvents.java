@@ -26,13 +26,18 @@ public final class ClientGameEvents {
             return;
         }
 
+        while (Keys.ENDER_CALL.consumeClick()) send(TetherActionPayload.ENDER_CALL, true);
+        if (!ClientTetherState.get().rope()) {
+            haulWasDown = false;
+            if (!mc.isPaused()) RopePhysics.tick(mc);
+            return;
+        }
         boolean haul = Keys.HAUL.isDown();
         if (haul != haulWasDown) {
             haulWasDown = haul;
             send(TetherActionPayload.HAUL, haul);
         }
         while (Keys.LAUNCH.consumeClick()) send(TetherActionPayload.LAUNCH, true);
-        while (Keys.ENDER_CALL.consumeClick()) send(TetherActionPayload.ENDER_CALL, true);
         while (Keys.UNHOOK.consumeClick()) send(TetherActionPayload.UNHOOK, true);
 
         if (!mc.isPaused()) RopePhysics.tick(mc);

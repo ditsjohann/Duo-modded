@@ -9,6 +9,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 public record JournalActionPayload(int action, String arg) implements CustomPacketPayload {
     public static final int SUBMIT = 0;
     public static final int TRAVEL = 1;
+    public static final int BOONS = 2;
 
     public static final Type<JournalActionPayload> TYPE = new Type<>(Tethered.id("journal_action"));
     public static final StreamCodec<FriendlyByteBuf, JournalActionPayload> CODEC =

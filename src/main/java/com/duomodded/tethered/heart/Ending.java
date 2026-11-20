@@ -112,7 +112,7 @@ public final class Ending {
         return true;
     }
 
-    static void title(ServerPlayer p, Component title, Component subtitle) {
+    public static void title(ServerPlayer p, Component title, Component subtitle) {
         p.connection.send(new ClientboundSetTitlesAnimationPacket(10, 70, 20));
         p.connection.send(new ClientboundSetTitleTextPacket(title));
         p.connection.send(new ClientboundSetSubtitleTextPacket(subtitle));

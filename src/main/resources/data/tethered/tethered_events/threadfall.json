@@ -1,0 +1,17 @@
+{
+  "type": "threadfall",
+  "name": "Threadfall",
+  "color": "#F2C94C",
+  "time": "any",
+  "min_age": 0,
+  "weight": 8,
+  "warning": "Glittering threads are falling through the cracks of the world. Catch them!",
+  "success": "The last threads settle. The air smells like starlight.",
+  "duration": 45,
+  "rewards": {
+    "threads": [
+      0,
+      0
+    ]
+  }
+}

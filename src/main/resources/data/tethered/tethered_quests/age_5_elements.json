@@ -1,0 +1,176 @@
+{
+  "title": "VI. Frost and Flame",
+  "age": 5,
+  "order": 5,
+  "icon": "minecraft:blaze_powder",
+  "description": "Fire and ice. The Nether can be opened again.",
+  "quests": [
+    {
+      "id": "portal",
+      "title": "The Burning Door",
+      "description": "Build a Nether portal from obsidian and step through, together.",
+      "icon": "minecraft:obsidian",
+      "tasks": [
+        {
+          "type": "dimension",
+          "dimension": "minecraft:the_nether"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ]
+    },
+    {
+      "id": "blazes",
+      "title": "Blaze Rods",
+      "description": "Defeat blazes in a fortress, or catch the ones the Heartstone spits out.",
+      "icon": "minecraft:blaze_rod",
+      "tasks": [
+        {
+          "type": "kill",
+          "entity": "minecraft:blaze",
+          "count": 6
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:blaze_rod",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "id": "skulls",
+      "title": "Three Skulls",
+      "description": "Wither skeleton skulls. You'll need them later for the Loom.",
+      "icon": "minecraft:wither_skeleton_skull",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 3,
+          "consume": false,
+          "item": "minecraft:wither_skeleton_skull"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "threads",
+          "count": 8
+        }
+      ],
+      "requires": [
+        "portal"
+      ]
+    },
+    {
+      "id": "crimson",
+      "title": "Crimson Night",
+      "description": "Survive the Crimson Weave.",
+      "icon": "minecraft:redstone",
+      "tasks": [
+        {
+          "type": "event",
+          "event": "crimson_weave",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "favor",
+          "count": 1
+        }
+      ],
+      "optional": true
+    },
+    {
+      "id": "dragon",
+      "title": "Dragon Hunters",
+      "description": "Ice and Fire: dragons roam. Bring back dragon scales.",
+      "icon": "iceandfire:dragonscales_red",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "tag": "iceandfire:dragon_scales"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 120
+        },
+        {
+          "type": "favor",
+          "count": 1
+        }
+      ],
+      "mod": "iceandfire",
+      "optional": true
+    },
+    {
+      "id": "warm",
+      "title": "Cold Comfort",
+      "description": "Tough As Nails: keep warm and keep your water clean.",
+      "icon": "minecraft:campfire",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "minecraft:campfire"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 30
+        }
+      ]
+    },
+    {
+      "id": "frostfall",
+      "title": "Frostfall",
+      "description": "Follow the Rootway into the cold.",
+      "icon": "minecraft:snow_block",
+      "tasks": [
+        {
+          "type": "visit",
+          "island": "frostfall"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 80
+        }
+      ]
+    },
+    {
+      "id": "deep",
+      "title": "What Sleeps Below",
+      "description": "Make the offering and defeat Gravemaw.",
+      "icon": "minecraft:echo_shard",
+      "tasks": [
+        {
+          "type": "age",
+          "age": 6
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 180
+        }
+      ],
+      "requires": [
+        "portal",
+        "frostfall"
+      ]
+    }
+  ]
+}

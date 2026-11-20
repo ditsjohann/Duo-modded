@@ -1,0 +1,304 @@
+{
+  "order": 4,
+  "title": "Age of Arcana",
+  "name": "The Whispering Weave",
+  "color": "#9B6BFF",
+  "icon": "minecraft:amethyst_shard",
+  "lore": [
+    "Some threads were never meant to be seen. The Heartstone remembers magic: source and spirit, runes and spells, the whispering weave between things.",
+    "The Hollow Magus was once a student of the Weaver who tried to read the Loom's pattern and went mad. Her spells still have the Weaver's handwriting in them.",
+    "Arcanum drifts into view, its libraries half unravelled. Whatever you learn there, learn it together."
+  ],
+  "weaver": "Magic is just remembering very, very hard.",
+  "awaken": {
+    "breaks": 240,
+    "offering": [
+      {
+        "count": 1,
+        "item": "tethered:heart_shard"
+      },
+      {
+        "count": 32,
+        "item": "minecraft:iron_ingot"
+      },
+      {
+        "count": 16,
+        "item": "minecraft:copper_ingot"
+      },
+      {
+        "count": 16,
+        "item": "minecraft:redstone"
+      },
+      {
+        "count": 8,
+        "item": "minecraft:gold_ingot"
+      },
+      {
+        "count": 8,
+        "item": "create:andesite_alloy",
+        "mod": "create"
+      },
+      {
+        "count": 16,
+        "item": "tethered:lost_thread"
+      }
+    ],
+    "trial": {
+      "name": "The Hollow Magus",
+      "entity": [
+        "irons_spellbooks:archevoker",
+        "minecraft:evoker"
+      ],
+      "health": 160,
+      "damage": 1.3,
+      "scale": 1.3,
+      "armor": 4,
+      "intro": "Pages fly from nowhere. The Hollow Magus remembers every curse she ever wrote.",
+      "minions": [
+        {
+          "entity": "minecraft:vex",
+          "every": 12,
+          "count": 2,
+          "max": 6
+        }
+      ]
+    }
+  },
+  "keep_previous": 0.2,
+  "unlocks": [
+    "arcanum"
+  ],
+  "blocks": [
+    {
+      "block": "minecraft:amethyst_block",
+      "weight": 6
+    },
+    {
+      "block": "minecraft:budding_amethyst",
+      "weight": 1
+    },
+    {
+      "block": "minecraft:bookshelf",
+      "weight": 6
+    },
+    {
+      "block": "minecraft:chiseled_bookshelf",
+      "weight": 2
+    },
+    {
+      "block": "minecraft:obsidian",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:crying_obsidian",
+      "weight": 2
+    },
+    {
+      "block": "minecraft:lapis_ore",
+      "weight": 6
+    },
+    {
+      "block": "minecraft:gold_ore",
+      "weight": 4
+    },
+    {
+      "block": "ars_nouveau:sourcestone",
+      "weight": 8
+    },
+    {
+      "block": "ars_nouveau:blue_archwood_log",
+      "weight": 3
+    },
+    {
+      "block": "ars_nouveau:red_archwood_log",
+      "weight": 3
+    },
+    {
+      "block": "ars_nouveau:purple_archwood_log",
+      "weight": 3
+    },
+    {
+      "block": "ars_nouveau:green_archwood_log",
+      "weight": 3
+    },
+    {
+      "block": "ars_nouveau:source_gem_block",
+      "weight": 1
+    },
+    {
+      "block": "occultism:otherstone",
+      "weight": 4
+    },
+    {
+      "block": "occultism:otherworld_log",
+      "weight": 3
+    },
+    {
+      "block": "irons_spellbooks:arcane_debris",
+      "weight": 2
+    },
+    {
+      "block": "irons_spellbooks:mithril_ore",
+      "weight": 1
+    },
+    {
+      "block": "mysticalagriculture:prosperity_ore",
+      "weight": 3
+    },
+    {
+      "block": "tethered:deepslate_thread_ore",
+      "weight": 3
+    }
+  ],
+  "mobs": {
+    "chance": 0.06,
+    "list": [
+      {
+        "entity": "minecraft:witch",
+        "weight": 6
+      },
+      {
+        "entity": "minecraft:evoker",
+        "weight": 1
+      },
+      {
+        "entity": "minecraft:allay",
+        "weight": 2
+      },
+      {
+        "entity": "friendsandfoes:illusioner",
+        "weight": 2
+      },
+      {
+        "entity": "ars_nouveau:wilden_hunter",
+        "weight": 3
+      },
+      {
+        "entity": "ars_nouveau:wilden_stalker",
+        "weight": 2
+      },
+      {
+        "entity": "irons_spellbooks:necromancer",
+        "weight": 2
+      },
+      {
+        "entity": "irons_spellbooks:apothecarist",
+        "weight": 2
+      }
+    ]
+  },
+  "cache": {
+    "chance": 0.025,
+    "rolls": 5,
+    "items": [
+      {
+        "item": "ars_nouveau:novice_spell_book",
+        "min": 1,
+        "max": 1,
+        "weight": 2
+      },
+      {
+        "item": "ars_nouveau:source_gem",
+        "min": 4,
+        "max": 8,
+        "weight": 10
+      },
+      {
+        "item": "ars_nouveau:worn_notebook",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "irons_spellbooks:arcane_essence",
+        "min": 4,
+        "max": 8,
+        "weight": 10
+      },
+      {
+        "item": "irons_spellbooks:blank_rune",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "irons_spellbooks:copper_spell_book",
+        "min": 1,
+        "max": 1,
+        "weight": 2
+      },
+      {
+        "item": "irons_spellbooks:upgrade_orb",
+        "min": 1,
+        "max": 1,
+        "weight": 1
+      },
+      {
+        "item": "occultism:dictionary_of_spirits",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "occultism:datura_seeds",
+        "min": 1,
+        "max": 3,
+        "weight": 10
+      },
+      {
+        "item": "apothic_enchanting:hellshelf",
+        "min": 1,
+        "max": 1,
+        "weight": 2
+      },
+      {
+        "item": "minecraft:book",
+        "min": 2,
+        "max": 6,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:experience_bottle",
+        "min": 4,
+        "max": 8,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:lapis_lazuli",
+        "min": 6,
+        "max": 12,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:amethyst_shard",
+        "min": 4,
+        "max": 8,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:glass_bottle",
+        "min": 2,
+        "max": 4,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:nether_wart",
+        "min": 1,
+        "max": 3,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:brewing_stand",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "tethered:lost_thread",
+        "min": 3,
+        "max": 6,
+        "weight": 10
+      }
+    ]
+  }
+}

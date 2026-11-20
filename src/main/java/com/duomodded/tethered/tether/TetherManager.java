@@ -142,7 +142,7 @@ public final class TetherManager {
         }
         if (link.currentLength > max) link.currentLength = max;
 
-        if (link.slack || a.isSpectator() || b.isSpectator()) return;
+        if (!TetherConfig.ROPE_PHYSICS.get() || link.slack || a.isSpectator() || b.isSpectator()) return;
 
         // Different dimensions (e.g. logged in elsewhere): bring b to a.
         if (a.level() != b.level()) {
@@ -257,7 +257,7 @@ public final class TetherManager {
 
         event.setCanceled(true);
         p.setHealth(1f);
-        DOWNED.put(id, TetherConfig.DOWNED_SECONDS.get() * 20);
+        DOWNED.put(id, TetherConfig.DOWNED_SECONDS.get() * 20 + com.duomodded.tethered.boon.Boons.lifelineTicks(p));
         applyDownedEffects(p);
         p.sendSystemMessage(Component.translatable("msg.tethered.you_down").withStyle(ChatFormatting.RED));
         partner.sendSystemMessage(Component.translatable("msg.tethered.partner_down", p.getDisplayName()).withStyle(ChatFormatting.RED));
@@ -336,6 +336,7 @@ public final class TetherManager {
         if (!(event.getEntity() instanceof ServerPlayer p) || p.getServer() == null) return;
         TetherData.Link link = TetherData.get(p.getServer()).getLink(p.getUUID());
         ServerPlayer partner = partnerOf(p);
+        if (!TetherConfig.ROPE_PHYSICS.get()) return;
         if (link == null || link.slack || partner == null || partner.isSpectator()) return;
         if (partner.level().dimension() == event.getTo()) return;
 
@@ -369,6 +370,8 @@ public final class TetherManager {
         if (link == null) return;
         ServerPlayer partner = server.getPlayerList().getPlayer(link.other(p.getUUID()));
 
+        boolean rope = TetherConfig.ROPE_PHYSICS.get();
+        if (!rope && action.action() != TetherActionPayload.ENDER_CALL) return;
         switch (action.action()) {
             case TetherActionPayload.HAUL -> {
                 if (action.down() && !isDowned(p.getUUID())) link.hauling.add(p.getUUID());
@@ -401,13 +404,19 @@ public final class TetherManager {
     }
 
     private static void enderCall(ServerPlayer p, @Nullable ServerPlayer partner, TetherData.Link link, MinecraftServer server) {
-        if (link.tier < RopeTier.ENDER.level) {
-            p.displayClientMessage(Component.translatable("msg.tethered.ender_needed"), true);
+        // Rope mode: needs the Ender Thread. Otherwise the Thread Call wakes with the Age of Iron.
+        boolean allowed = TetherConfig.ROPE_PHYSICS.get()
+                ? link.tier >= RopeTier.ENDER.level
+                : TetherData.get(server).age() >= com.duomodded.tethered.heart.Blessings.HEART_PATHS;
+        if (!allowed) {
+            p.displayClientMessage(Component.translatable(TetherConfig.ROPE_PHYSICS.get()
+                    ? "msg.tethered.ender_needed" : "msg.tethered.call_locked"), true);
             return;
         }
         if (partner == null || !partner.isAlive()) return;
         int now = now(server);
         int cooldown = TetherConfig.ENDER_CALL_COOLDOWN.get() * 20;
+        if (TetherData.get(server).age() >= com.duomodded.tethered.heart.Blessings.DEEP_ROOTS) cooldown /= 2;
         Integer last = ENDER_COOLDOWN.get(p.getUUID());
         if (last != null && now - last < cooldown) {
             int secs = (cooldown - (now - last)) / 20 + 1;
@@ -472,7 +481,8 @@ public final class TetherManager {
                 selfDowned,
                 DOWNED.getOrDefault(p.getUUID(), 0),
                 revive,
-                Math.max(1, TetherConfig.REVIVE_SECONDS.get() * 20));
+                Math.max(1, TetherConfig.REVIVE_SECONDS.get() * 20),
+                TetherConfig.ROPE_PHYSICS.get());
         PacketDistributor.sendToPlayer(p, state);
     }
 }

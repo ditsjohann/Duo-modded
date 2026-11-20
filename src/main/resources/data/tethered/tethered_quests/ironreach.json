@@ -1,6 +1,6 @@
 {
   "title": "Ironreach",
-  "order": 2,
+  "order": 22,
   "icon": "minecraft:iron_pickaxe",
   "quests": [
     {
@@ -151,15 +151,15 @@
     },
     {
       "id": "chain",
-      "title": "Links of Iron",
-      "description": "Craft a Chain Tether (needs tree stage Young Tree to use).",
-      "icon": "tethered:chain_tether",
+      "title": "Pull a Thread",
+      "description": "Mine Thread Ore in the Last Stone and bring Lost Threads.",
+      "icon": "tethered:lost_thread",
       "tasks": [
         {
           "type": "item",
-          "item": "tethered:chain_tether",
-          "count": 1,
-          "consume": false
+          "item": "tethered:lost_thread",
+          "count": 8,
+          "consume": true
         }
       ],
       "rewards": [

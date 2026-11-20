@@ -1,0 +1,153 @@
+{
+  "title": "VIII. The Sky Unfolds",
+  "age": 7,
+  "order": 7,
+  "icon": "minecraft:feather",
+  "description": "Clouds, flight and the Aether.",
+  "quests": [
+    {
+      "id": "aether",
+      "title": "The Aether",
+      "description": "The Aether: light a glowstone portal with water and go up.",
+      "icon": "minecraft:glowstone",
+      "tasks": [
+        {
+          "type": "dimension",
+          "dimension": "aether:the_aether"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 120
+        }
+      ],
+      "mod": "aether"
+    },
+    {
+      "id": "glide",
+      "title": "Paraglider",
+      "description": "Paragliders: ride the wind between islands.",
+      "icon": "paraglider:paraglider",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "paraglider:paraglider"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ],
+      "mod": "paraglider"
+    },
+    {
+      "id": "plane",
+      "title": "Wings of Wood",
+      "description": "Immersive Aircraft: build a biplane and fly your partner somewhere nice.",
+      "icon": "immersive_aircraft:biplane",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "immersive_aircraft:biplane"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 120
+        },
+        {
+          "type": "favor",
+          "count": 1
+        }
+      ],
+      "mod": "immersive_aircraft"
+    },
+    {
+      "id": "starlight",
+      "title": "Eternal Starlight",
+      "description": "Eternal Starlight: find the way to the world of endless night.",
+      "icon": "minecraft:ender_eye",
+      "tasks": [
+        {
+          "type": "dimension",
+          "dimension": "eternal_starlight:starlight"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 120
+        }
+      ],
+      "mod": "eternal_starlight",
+      "optional": true
+    },
+    {
+      "id": "storm",
+      "title": "Storm Chasers",
+      "description": "Survive an Unraveling Storm.",
+      "icon": "minecraft:lightning_rod",
+      "tasks": [
+        {
+          "type": "event",
+          "event": "unraveling_storm",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "threads",
+          "count": 8
+        }
+      ],
+      "optional": true
+    },
+    {
+      "id": "bloomreach",
+      "title": "Bloomreach",
+      "description": "Follow the last Rootway to the Weaver's garden.",
+      "icon": "minecraft:cherry_sapling",
+      "tasks": [
+        {
+          "type": "visit",
+          "island": "bloomreach"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 120
+        }
+      ]
+    },
+    {
+      "id": "weaver",
+      "title": "The Final Thread",
+      "description": "Make the offering and defeat the Herald of Unmaking.",
+      "icon": "minecraft:nether_star",
+      "tasks": [
+        {
+          "type": "age",
+          "age": 8
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 250
+        }
+      ],
+      "requires": [
+        "bloomreach"
+      ]
+    }
+  ]
+}

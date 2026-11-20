@@ -21,7 +21,8 @@ public final class TetherHud {
         if (me == null || mc.options.hideGui) return;
         Font font = mc.font;
         if (!s.linked()) {
-            wayfinder(g, font, me, 6, 6);
+            int y0 = ageLine(g, font, 6, 6);
+            wayfinder(g, font, me, 6, y0);
             return;
         }
 
@@ -54,12 +55,17 @@ public final class TetherHud {
             y += 11;
         }
 
-        Component rope = Component.translatable("hud.tethered.rope", tier.displayName(),
-                String.format("%.1f", s.currentLength()), String.format("%.0f", s.maxLength()));
-        g.drawString(font, rope, x, y, 0xFF000000 | tier.color, true);
-        y += 11;
+        if (s.rope()) {
+            Component rope = Component.translatable("hud.tethered.rope", tier.displayName(),
+                    String.format("%.1f", s.currentLength()), String.format("%.0f", s.maxLength()));
+            g.drawString(font, rope, x, y, 0xFF000000 | tier.color, true);
+            y += 11;
+        }
+        y = ageLine(g, font, x, y);
 
-        if (s.slack()) {
+        if (!s.rope()) {
+            // no rope: nothing to brace
+        } else if (s.slack()) {
             g.drawString(font, Component.translatable("hud.tethered.slack"), x, y, 0xFFF2C94C, true);
             y += 11;
         } else if (me.isShiftKeyDown() && me.onGround()) {
@@ -85,6 +91,23 @@ public final class TetherHud {
             g.drawCenteredString(font, Component.translatable("hud.tethered.you_down_hint", s.partnerName()), cx, cy - 28, 0xFFFFFFFF);
             bar(g, cx, cy - 16, s.reviveProgress(), s.reviveTotal(), 0xFF55FF55);
         }
+    }
+
+    /** "Age of Roots · 37/80" (or what the Heartstone wants next). */
+    private static int ageLine(GuiGraphics g, Font font, int x, int y) {
+        com.google.gson.JsonObject data = ClientJournalState.get();
+        if (!data.has("ageTitle")) return y;
+        String title = data.get("ageTitle").getAsString();
+        int breaks = data.has("ageBreaks") ? data.get("ageBreaks").getAsInt() : 0;
+        int need = data.has("breaksNeeded") ? data.get("breaksNeeded").getAsInt() : 0;
+        String status;
+        if (need <= 0) status = "";
+        else if (breaks < need) status = "  ·  " + breaks + "/" + need;
+        else if (data.has("trialReady") && data.get("trialReady").getAsBoolean()) status = "  ·  " + Component.translatable("hud.tethered.trial").getString();
+        else status = "  ·  " + Component.translatable("hud.tethered.offering").getString();
+        int color = data.has("ageColor") ? 0xFF000000 | data.get("ageColor").getAsInt() : 0xFFB07AA1;
+        g.drawString(font, "⟡ " + title + status, x, y, color, true);
+        return y + 11;
     }
 
     /** "Next: Hearthmeadow 210m ->" for the first unlocked island you haven't attuned yet. */

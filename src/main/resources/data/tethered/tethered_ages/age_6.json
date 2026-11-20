@@ -1,0 +1,315 @@
+{
+  "order": 6,
+  "title": "Age of the Deep",
+  "name": "What Sleeps Below",
+  "color": "#2FB8A8",
+  "icon": "minecraft:echo_shard",
+  "lore": [
+    "Below every story there is a quieter one. The Heartstone remembers the deep places: the sculk that listens, the Undergarden that never saw the sun, the echoing Otherside.",
+    "Gravemaw ate whole chapters of the world and was still hungry. Its belly is full of things you already lost.",
+    "Gloomhollow rises from the dark. The Wither sleeps beneath it, and you'll need its star before the end."
+  ],
+  "weaver": "Don't be afraid of the dark. Be afraid of being in it alone.",
+  "awaken": {
+    "breaks": 360,
+    "offering": [
+      {
+        "count": 1,
+        "item": "tethered:heart_shard"
+      },
+      {
+        "count": 10,
+        "item": "minecraft:obsidian"
+      },
+      {
+        "count": 8,
+        "item": "minecraft:blaze_rod"
+      },
+      {
+        "count": 16,
+        "item": "minecraft:quartz"
+      },
+      {
+        "count": 8,
+        "item": "minecraft:packed_ice"
+      },
+      {
+        "count": 24,
+        "item": "tethered:lost_thread"
+      }
+    ],
+    "trial": {
+      "name": "Gravemaw",
+      "entity": [
+        "mutantmonsters:mutant_zombie",
+        "minecraft:zombie"
+      ],
+      "health": 260,
+      "damage": 1.3,
+      "scale": 1.1,
+      "armor": 6,
+      "intro": "The floor of the Hollow Heart opens like a mouth.",
+      "minions": [
+        {
+          "entity": "minecraft:husk",
+          "every": 10,
+          "count": 2,
+          "max": 6
+        }
+      ]
+    }
+  },
+  "keep_previous": 0.15,
+  "unlocks": [
+    "gloomhollow"
+  ],
+  "blocks": [
+    {
+      "block": "minecraft:deepslate",
+      "weight": 8
+    },
+    {
+      "block": "minecraft:cobbled_deepslate",
+      "weight": 6
+    },
+    {
+      "block": "minecraft:deepslate_diamond_ore",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:deepslate_emerald_ore",
+      "weight": 2
+    },
+    {
+      "block": "minecraft:deepslate_redstone_ore",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:deepslate_gold_ore",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:sculk",
+      "weight": 6
+    },
+    {
+      "block": "minecraft:sculk_catalyst",
+      "weight": 1
+    },
+    {
+      "block": "minecraft:tuff",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:smooth_basalt",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:amethyst_block",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:dripstone_block",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:moss_block",
+      "weight": 2
+    },
+    {
+      "block": "undergarden:depthrock",
+      "weight": 6
+    },
+    {
+      "block": "undergarden:shiverstone",
+      "weight": 3
+    },
+    {
+      "block": "undergarden:cloggrum_ore",
+      "weight": 3
+    },
+    {
+      "block": "undergarden:froststeel_ore",
+      "weight": 2
+    },
+    {
+      "block": "undergarden:utherium_ore",
+      "weight": 2
+    },
+    {
+      "block": "undergarden:regalium_ore",
+      "weight": 1
+    },
+    {
+      "block": "undergarden:smogstem_log",
+      "weight": 2
+    },
+    {
+      "block": "undergarden:wigglewood_log",
+      "weight": 2
+    },
+    {
+      "block": "deeperdarker:gloomslate",
+      "weight": 5
+    },
+    {
+      "block": "deeperdarker:sculk_stone",
+      "weight": 4
+    },
+    {
+      "block": "deeperdarker:echo_log",
+      "weight": 2
+    },
+    {
+      "block": "tethered:deepslate_thread_ore",
+      "weight": 3
+    }
+  ],
+  "mobs": {
+    "chance": 0.07,
+    "list": [
+      {
+        "entity": "minecraft:cave_spider",
+        "weight": 5
+      },
+      {
+        "entity": "minecraft:zombie",
+        "weight": 4
+      },
+      {
+        "entity": "minecraft:enderman",
+        "weight": 3
+      },
+      {
+        "entity": "deeperdarker:sculk_snapper",
+        "weight": 2
+      },
+      {
+        "entity": "deeperdarker:shattered",
+        "weight": 2
+      },
+      {
+        "entity": "undergarden:rotling",
+        "weight": 3
+      },
+      {
+        "entity": "undergarden:rotwalker",
+        "weight": 2
+      },
+      {
+        "entity": "undergarden:scintling",
+        "weight": 2
+      },
+      {
+        "entity": "undergarden:gloomper",
+        "weight": 2
+      },
+      {
+        "entity": "undergarden:brute",
+        "weight": 1
+      },
+      {
+        "entity": "mutantmonsters:mutant_skeleton",
+        "weight": 1
+      },
+      {
+        "entity": "mutantmonsters:spider_pig",
+        "weight": 1
+      },
+      {
+        "entity": "mowziesmobs:grottol",
+        "weight": 1
+      }
+    ]
+  },
+  "cache": {
+    "chance": 0.025,
+    "rolls": 5,
+    "items": [
+      {
+        "item": "undergarden:catalyst",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "minecraft:echo_shard",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:diamond",
+        "min": 1,
+        "max": 3,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:emerald",
+        "min": 2,
+        "max": 4,
+        "weight": 10
+      },
+      {
+        "item": "hostilenetworks:deep_learner",
+        "min": 1,
+        "max": 1,
+        "weight": 2
+      },
+      {
+        "item": "hostilenetworks:blank_data_model",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "hostilenetworks:prediction_matrix",
+        "min": 2,
+        "max": 4,
+        "weight": 10
+      },
+      {
+        "item": "mysticalagriculture:prosperity_shard",
+        "min": 4,
+        "max": 8,
+        "weight": 10
+      },
+      {
+        "item": "ae2:fluix_crystal",
+        "min": 2,
+        "max": 6,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:totem_of_undying",
+        "min": 1,
+        "max": 1,
+        "weight": 1
+      },
+      {
+        "item": "minecraft:sculk_sensor",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "minecraft:disc_fragment_5",
+        "min": 1,
+        "max": 3,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:recovery_compass",
+        "min": 1,
+        "max": 1,
+        "weight": 2
+      },
+      {
+        "item": "tethered:lost_thread",
+        "min": 4,
+        "max": 7,
+        "weight": 10
+      }
+    ]
+  }
+}

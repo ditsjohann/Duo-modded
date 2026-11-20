@@ -17,7 +17,7 @@ public final class RopePhysics {
     public static void tick(Minecraft mc) {
         LocalPlayer me = mc.player;
         TetherStatePayload state = ClientTetherState.get();
-        if (me == null || mc.level == null || !state.linked() || state.slack() || !state.sameLevel()) return;
+        if (me == null || mc.level == null || !state.linked() || !state.rope() || state.slack() || !state.sameLevel()) return;
         if (me.isSpectator() || me.getAbilities().flying || !me.isAlive()) return;
 
         Player partner = mc.level.getPlayerByUUID(state.partner());

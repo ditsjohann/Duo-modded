@@ -1,0 +1,67 @@
+{
+  "title": "X. Everything, Remembered",
+  "age": 9,
+  "order": 9,
+  "icon": "tethered:loom_heart",
+  "description": "The world is whole again. Go and enjoy it.",
+  "quests": [
+    {
+      "id": "question",
+      "title": "The Weaver's Question",
+      "description": "The Weaver waits at her Tree on the summit. Answer her together.",
+      "icon": "minecraft:cherry_sapling",
+      "tasks": [
+        {
+          "type": "together"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "ending",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "thousand",
+      "title": "A Thousand Memories",
+      "description": "Break the Heartstone a thousand times in total.",
+      "icon": "tethered:heartstone",
+      "tasks": [
+        {
+          "type": "heart",
+          "count": 1000
+        }
+      ],
+      "rewards": [
+        {
+          "type": "favor",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "cake",
+      "title": "Happily Ever After",
+      "description": "Bake a cake and share it.",
+      "icon": "minecraft:cake",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": true,
+          "item": "minecraft:cake"
+        },
+        {
+          "type": "together"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 100
+        }
+      ]
+    }
+  ]
+}

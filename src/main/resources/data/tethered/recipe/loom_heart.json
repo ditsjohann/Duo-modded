@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "TDT",
+    "GNG",
+    "TDT"
+  ],
+  "key": {
+    "T": {
+      "item": "tethered:lost_thread"
+    },
+    "D": {
+      "item": "minecraft:diamond_block"
+    },
+    "G": {
+      "item": "minecraft:gold_block"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "id": "tethered:loom_heart",
+    "count": 1
+  }
+}

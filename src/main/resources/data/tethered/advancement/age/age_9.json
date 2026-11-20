@@ -1,0 +1,23 @@
+{
+  "parent": "tethered:age/age_8",
+  "display": {
+    "icon": {
+      "id": "tethered:loom_heart"
+    },
+    "title": {
+      "translate": "advancements.tethered.age.age_9.title"
+    },
+    "description": {
+      "translate": "advancements.tethered.age.age_9.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

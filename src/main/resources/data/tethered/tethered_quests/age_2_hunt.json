@@ -1,0 +1,239 @@
+{
+  "title": "III. Fang and Feather",
+  "age": 2,
+  "order": 2,
+  "icon": "minecraft:bone",
+  "description": "Beasts return, and so do monsters. Learn to fight.",
+  "quests": [
+    {
+      "id": "zombies",
+      "title": "Hold the Line",
+      "description": "The Hollow and the dead come for the thread. Defeat zombies.",
+      "icon": "minecraft:rotten_flesh",
+      "tasks": [
+        {
+          "type": "kill",
+          "entity": "minecraft:zombie",
+          "count": 15
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:iron_ingot",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "archers",
+      "title": "Bone and Bowstring",
+      "description": "Defeat skeletons.",
+      "icon": "minecraft:bow",
+      "tasks": [
+        {
+          "type": "kill",
+          "entity": "minecraft:skeleton",
+          "count": 10
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:arrow",
+          "count": 24
+        }
+      ]
+    },
+    {
+      "id": "friend",
+      "title": "Best Friend",
+      "description": "Tame an animal. A dog makes everything better.",
+      "icon": "minecraft:bone",
+      "tasks": [
+        {
+          "type": "advancement",
+          "id": "minecraft:husbandry/tame_an_animal"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:lead",
+          "count": 2
+        },
+        {
+          "type": "xp",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "id": "treats",
+      "title": "Good Dog",
+      "description": "Doggy Talents: train your dog with treats and give it talents.",
+      "icon": "doggytalents:training_treat",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 4,
+          "consume": false,
+          "item": "doggytalents:training_treat"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 30
+        }
+      ],
+      "requires": [
+        "friend"
+      ],
+      "mod": "doggytalents"
+    },
+    {
+      "id": "armor",
+      "title": "Iron Skin",
+      "description": "Wear iron armor before the nights get worse.",
+      "icon": "minecraft:iron_chestplate",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "minecraft:iron_chestplate"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "threads",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "blade",
+      "title": "A Proper Blade",
+      "description": "Spartan Weaponry: craft a longsword, katana, spear... something with reach.",
+      "icon": "spartanweaponry:iron_longsword",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "spartanweaponry:iron_longsword"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 30
+        }
+      ],
+      "mod": "spartanweaponry",
+      "optional": true
+    },
+    {
+      "id": "foliaath",
+      "title": "Snapping Jaws",
+      "description": "Mowzie's Mobs: a Foliaath hides in the leaves. Defeat one.",
+      "icon": "mowziesmobs:foliaath_seed",
+      "tasks": [
+        {
+          "type": "kill",
+          "entity": "mowziesmobs:foliaath",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 40
+        }
+      ],
+      "mod": "mowziesmobs",
+      "optional": true
+    },
+    {
+      "id": "chaos",
+      "title": "Born in Chaos",
+      "description": "Born in Chaos: these creatures come from the frayed edges. Defeat Bone Imps.",
+      "icon": "minecraft:skeleton_skull",
+      "tasks": [
+        {
+          "type": "kill",
+          "entity": "born_in_chaos_v1:bone_imp",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "type": "threads",
+          "count": 4
+        }
+      ],
+      "mod": "born_in_chaos_v1",
+      "optional": true
+    },
+    {
+      "id": "tides",
+      "title": "Tide Breakers",
+      "description": "Win two Hollow Tides together.",
+      "icon": "minecraft:bell",
+      "tasks": [
+        {
+          "type": "event",
+          "event": "hollow_tide",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "type": "favor",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "ironreach",
+      "title": "Ironreach",
+      "description": "Follow the second Rootway to Ironreach.",
+      "icon": "minecraft:iron_ore",
+      "tasks": [
+        {
+          "type": "visit",
+          "island": "ironreach"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 50
+        }
+      ]
+    },
+    {
+      "id": "iron",
+      "title": "The Forge Remembers",
+      "description": "Make the offering and beat the Wroughtnaut.",
+      "icon": "minecraft:iron_ingot",
+      "tasks": [
+        {
+          "type": "age",
+          "age": 3
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 100
+        }
+      ],
+      "requires": [
+        "zombies",
+        "ironreach"
+      ]
+    }
+  ]
+}

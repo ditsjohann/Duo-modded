@@ -1,0 +1,368 @@
+{
+  "order": 3,
+  "title": "Age of Iron",
+  "name": "The Forge Remembers",
+  "color": "#D8D8D8",
+  "icon": "minecraft:iron_ingot",
+  "lore": [
+    "Ore glitters in the Heartstone's memory now: iron, copper, gold, the patient grind of gears. The old craft-folk built machines that turned water into motion and motion into wonder.",
+    "The Wroughtnaut stood guard over the forge-memories for ten thousand years. It doesn't remember why. It only remembers how to hit very hard.",
+    "With the Thread Call awake, you can always feel where your partner is. Pull, and you're beside them."
+  ],
+  "weaver": "Build. Every wheel you turn is a thread pulled back into place.",
+  "awaken": {
+    "breaks": 180,
+    "offering": [
+      {
+        "count": 1,
+        "item": "tethered:heart_shard"
+      },
+      {
+        "count": 16,
+        "item": "minecraft:leather"
+      },
+      {
+        "count": 16,
+        "item": "minecraft:bone"
+      },
+      {
+        "count": 16,
+        "item": "minecraft:string"
+      },
+      {
+        "count": 8,
+        "item": "minecraft:iron_ingot"
+      },
+      {
+        "count": 12,
+        "item": "tethered:lost_thread"
+      }
+    ],
+    "trial": {
+      "name": "The Wroughtnaut",
+      "entity": [
+        "mowziesmobs:ferrous_wroughtnaut",
+        "minecraft:vindicator"
+      ],
+      "health": 110,
+      "damage": 1.2,
+      "scale": 1.15,
+      "armor": 4,
+      "intro": "Iron screams. The Wroughtnaut raises its axe. Hit it from behind.",
+      "minions": [
+        {
+          "entity": "minecraft:zombie",
+          "every": 12,
+          "count": 2,
+          "max": 6
+        }
+      ],
+      "equipment": {
+        "mainhand": "minecraft:iron_axe"
+      }
+    }
+  },
+  "keep_previous": 0.2,
+  "unlocks": [
+    "windward_docks"
+  ],
+  "blocks": [
+    {
+      "block": "minecraft:iron_ore",
+      "weight": 12
+    },
+    {
+      "block": "minecraft:deepslate_iron_ore",
+      "weight": 6
+    },
+    {
+      "block": "minecraft:copper_ore",
+      "weight": 8
+    },
+    {
+      "block": "minecraft:gold_ore",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:redstone_ore",
+      "weight": 6
+    },
+    {
+      "block": "minecraft:lapis_ore",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:raw_iron_block",
+      "weight": 1
+    },
+    {
+      "block": "minecraft:raw_copper_block",
+      "weight": 2
+    },
+    {
+      "block": "minecraft:tuff",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:calcite",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:dripstone_block",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:deepslate",
+      "weight": 6
+    },
+    {
+      "block": "create:zinc_ore",
+      "weight": 6
+    },
+    {
+      "block": "create:deepslate_zinc_ore",
+      "weight": 3
+    },
+    {
+      "block": "create:limestone",
+      "weight": 3
+    },
+    {
+      "block": "create:asurine",
+      "weight": 2
+    },
+    {
+      "block": "create:crimsite",
+      "weight": 2
+    },
+    {
+      "block": "create:ochrum",
+      "weight": 2
+    },
+    {
+      "block": "create:veridium",
+      "weight": 2
+    },
+    {
+      "block": "create:scoria",
+      "weight": 2
+    },
+    {
+      "block": "powah:uraninite_ore",
+      "weight": 2
+    },
+    {
+      "block": "mysticalagriculture:inferium_ore",
+      "weight": 4
+    },
+    {
+      "block": "mysticalagriculture:prosperity_ore",
+      "weight": 2
+    },
+    {
+      "block": "occultism:silver_ore",
+      "weight": 2
+    },
+    {
+      "block": "iceandfire:silver_ore",
+      "weight": 2
+    },
+    {
+      "block": "ae2:flawless_budding_quartz",
+      "weight": 1
+    },
+    {
+      "block": "ae2:sky_stone_block",
+      "weight": 2
+    },
+    {
+      "block": "tethered:thread_ore",
+      "weight": 3
+    }
+  ],
+  "mobs": {
+    "chance": 0.06,
+    "list": [
+      {
+        "entity": "minecraft:zombie",
+        "weight": 8
+      },
+      {
+        "entity": "minecraft:skeleton",
+        "weight": 8
+      },
+      {
+        "entity": "minecraft:pillager",
+        "weight": 3
+      },
+      {
+        "entity": "minecraft:vindicator",
+        "weight": 1
+      },
+      {
+        "entity": "friendsandfoes:copper_golem",
+        "weight": 2
+      },
+      {
+        "entity": "friendsandfoes:tuff_golem",
+        "weight": 1
+      },
+      {
+        "entity": "quark:stoneling",
+        "weight": 3
+      },
+      {
+        "entity": "born_in_chaos_v1:barrel_zombie",
+        "weight": 3
+      },
+      {
+        "entity": "mowziesmobs:grottol",
+        "weight": 2
+      }
+    ]
+  },
+  "cache": {
+    "chance": 0.025,
+    "rolls": 5,
+    "items": [
+      {
+        "item": "create:andesite_alloy",
+        "min": 4,
+        "max": 12,
+        "weight": 10
+      },
+      {
+        "item": "create:cogwheel",
+        "min": 4,
+        "max": 8,
+        "weight": 10
+      },
+      {
+        "item": "create:shaft",
+        "min": 4,
+        "max": 8,
+        "weight": 10
+      },
+      {
+        "item": "create:wrench",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "create:goggles",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "create:water_wheel",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "create:brass_ingot",
+        "min": 2,
+        "max": 6,
+        "weight": 10
+      },
+      {
+        "item": "pipez:item_pipe",
+        "min": 4,
+        "max": 8,
+        "weight": 10
+      },
+      {
+        "item": "pipez:fluid_pipe",
+        "min": 4,
+        "max": 8,
+        "weight": 10
+      },
+      {
+        "item": "sophisticatedbackpacks:backpack",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "minecraft:iron_pickaxe",
+        "min": 1,
+        "max": 1,
+        "weight": 4
+      },
+      {
+        "item": "minecraft:iron_ingot",
+        "min": 4,
+        "max": 8,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:bucket",
+        "min": 1,
+        "max": 1,
+        "weight": 4
+      },
+      {
+        "item": "minecraft:minecart",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "minecraft:rail",
+        "min": 8,
+        "max": 16,
+        "weight": 10
+      },
+      {
+        "item": "ae2:certus_quartz_crystal",
+        "min": 2,
+        "max": 6,
+        "weight": 10
+      },
+      {
+        "item": "ae2:charged_certus_quartz_crystal",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "mysticalagriculture:inferium_essence",
+        "min": 4,
+        "max": 12,
+        "weight": 10
+      },
+      {
+        "item": "mysticalagriculture:inferium_seeds",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "powah:dielectric_paste",
+        "min": 4,
+        "max": 8,
+        "weight": 10
+      },
+      {
+        "item": "waystones:warp_dust",
+        "min": 4,
+        "max": 8,
+        "weight": 10
+      },
+      {
+        "item": "waystones:waystone",
+        "min": 1,
+        "max": 1,
+        "weight": 2
+      },
+      {
+        "item": "tethered:lost_thread",
+        "min": 3,
+        "max": 5,
+        "weight": 10
+      }
+    ]
+  }
+}

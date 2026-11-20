@@ -1,0 +1,485 @@
+{
+  "order": 1,
+  "title": "Age of Roots",
+  "name": "The First Green",
+  "color": "#7BD389",
+  "icon": "minecraft:oak_sapling",
+  "lore": [
+    "The Heartstone remembers soil, then seeds, then the slow patience of trees. Roots push through the cracks of the Last Stone as if they had only been sleeping.",
+    "Far above, at the very top of the stone, something stirs: the Weaver's Tree. A single heart-shaped bud.",
+    "Out in the Void, the first root-bridge finds its way to Hearthmeadow, a scrap of the old meadows that clung to its own memory."
+  ],
+  "weaver": "Grow something together. Anything. That's how worlds begin.",
+  "awaken": {
+    "breaks": 60,
+    "offering": [
+      {
+        "count": 32,
+        "item": "minecraft:cobblestone"
+      },
+      {
+        "count": 16,
+        "tag": "minecraft:logs"
+      },
+      {
+        "count": 8,
+        "item": "minecraft:torch"
+      },
+      {
+        "count": 4,
+        "item": "tethered:lost_thread"
+      }
+    ],
+    "trial": {
+      "name": "Stoneborn, the First Guardian",
+      "entity": [
+        "minecraft:husk"
+      ],
+      "health": 50,
+      "damage": 1.2,
+      "scale": 1.5,
+      "armor": 2,
+      "intro": "The stone shudders. Something made of the first grey thread pulls itself out of the floor.",
+      "minions": [
+        {
+          "entity": "minecraft:silverfish",
+          "every": 8,
+          "count": 2,
+          "max": 6
+        }
+      ],
+      "equipment": {
+        "mainhand": "minecraft:stone_sword"
+      }
+    }
+  },
+  "keep_previous": 0.3,
+  "unlocks": [
+    "hearthmeadow"
+  ],
+  "blocks": [
+    {
+      "block": "minecraft:grass_block",
+      "weight": 20
+    },
+    {
+      "block": "minecraft:dirt",
+      "weight": 10
+    },
+    {
+      "block": "minecraft:coarse_dirt",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:podzol",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:rooted_dirt",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:moss_block",
+      "weight": 6
+    },
+    {
+      "block": "minecraft:mud",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:oak_log",
+      "weight": 10
+    },
+    {
+      "block": "minecraft:birch_log",
+      "weight": 8
+    },
+    {
+      "block": "minecraft:spruce_log",
+      "weight": 8
+    },
+    {
+      "block": "minecraft:jungle_log",
+      "weight": 5
+    },
+    {
+      "block": "minecraft:acacia_log",
+      "weight": 5
+    },
+    {
+      "block": "minecraft:dark_oak_log",
+      "weight": 5
+    },
+    {
+      "block": "minecraft:cherry_log",
+      "weight": 5
+    },
+    {
+      "block": "minecraft:mangrove_log",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:oak_leaves",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:birch_leaves",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:spruce_leaves",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:cherry_leaves",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:azalea_leaves",
+      "weight": 2
+    },
+    {
+      "block": "minecraft:flowering_azalea_leaves",
+      "weight": 2
+    },
+    {
+      "block": "minecraft:pumpkin",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:melon",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:hay_block",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:brown_mushroom_block",
+      "weight": 2
+    },
+    {
+      "block": "minecraft:red_mushroom_block",
+      "weight": 2
+    },
+    {
+      "block": "biomesoplenty:fir_log",
+      "weight": 3
+    },
+    {
+      "block": "biomesoplenty:redwood_log",
+      "weight": 3
+    },
+    {
+      "block": "biomesoplenty:mahogany_log",
+      "weight": 3
+    },
+    {
+      "block": "biomesoplenty:jacaranda_log",
+      "weight": 3
+    },
+    {
+      "block": "biomesoplenty:willow_log",
+      "weight": 3
+    },
+    {
+      "block": "biomesoplenty:palm_log",
+      "weight": 3
+    },
+    {
+      "block": "biomesoplenty:maple_log",
+      "weight": 3
+    },
+    {
+      "block": "biomeswevegone:aspen_log",
+      "weight": 2
+    },
+    {
+      "block": "biomeswevegone:baobab_log",
+      "weight": 2
+    },
+    {
+      "block": "biomeswevegone:ebony_log",
+      "weight": 2
+    },
+    {
+      "block": "biomeswevegone:sakura_log",
+      "weight": 2
+    },
+    {
+      "block": "biomeswevegone:rainbow_eucalyptus_log",
+      "weight": 2
+    },
+    {
+      "block": "regions_unexplored:redwood_log",
+      "weight": 2
+    },
+    {
+      "block": "regions_unexplored:magnolia_log",
+      "weight": 2
+    },
+    {
+      "block": "regions_unexplored:eucalyptus_log",
+      "weight": 2
+    },
+    {
+      "block": "farmersdelight:rich_soil",
+      "weight": 2
+    }
+  ],
+  "mobs": {
+    "chance": 0.05,
+    "list": [
+      {
+        "entity": "minecraft:cow",
+        "weight": 10
+      },
+      {
+        "entity": "minecraft:sheep",
+        "weight": 10
+      },
+      {
+        "entity": "minecraft:pig",
+        "weight": 10
+      },
+      {
+        "entity": "minecraft:chicken",
+        "weight": 10
+      },
+      {
+        "entity": "minecraft:rabbit",
+        "weight": 6
+      },
+      {
+        "entity": "minecraft:horse",
+        "weight": 3
+      },
+      {
+        "entity": "minecraft:bee",
+        "weight": 3
+      },
+      {
+        "entity": "minecraft:fox",
+        "weight": 3
+      },
+      {
+        "entity": "naturalist:deer",
+        "weight": 4
+      },
+      {
+        "entity": "naturalist:butterfly",
+        "weight": 3
+      },
+      {
+        "entity": "naturalist:snail",
+        "weight": 2
+      },
+      {
+        "entity": "friendsandfoes:moobloom",
+        "weight": 3
+      },
+      {
+        "entity": "quark:crab",
+        "weight": 2
+      }
+    ]
+  },
+  "cache": {
+    "chance": 0.025,
+    "rolls": 4,
+    "items": [
+      {
+        "item": "minecraft:oak_sapling",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:birch_sapling",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:spruce_sapling",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:jungle_sapling",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:acacia_sapling",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:dark_oak_sapling",
+        "min": 2,
+        "max": 4,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:cherry_sapling",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:mangrove_propagule",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:carrot",
+        "min": 1,
+        "max": 3,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:potato",
+        "min": 1,
+        "max": 3,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:beetroot_seeds",
+        "min": 2,
+        "max": 4,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:sweet_berries",
+        "min": 1,
+        "max": 3,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:glow_berries",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:cocoa_beans",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:bamboo",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:kelp",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:egg",
+        "min": 1,
+        "max": 3,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:lead",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:name_tag",
+        "min": 1,
+        "max": 1,
+        "weight": 2
+      },
+      {
+        "item": "minecraft:bone_meal",
+        "min": 4,
+        "max": 8,
+        "weight": 10
+      },
+      {
+        "item": "farmersdelight:cabbage_seeds",
+        "min": 1,
+        "max": 3,
+        "weight": 10
+      },
+      {
+        "item": "farmersdelight:tomato_seeds",
+        "min": 1,
+        "max": 3,
+        "weight": 10
+      },
+      {
+        "item": "farmersdelight:onion",
+        "min": 1,
+        "max": 3,
+        "weight": 10
+      },
+      {
+        "item": "farmersdelight:rice",
+        "min": 1,
+        "max": 3,
+        "weight": 10
+      },
+      {
+        "item": "vinery:red_grape",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "botanypots:terracotta_botany_pot",
+        "min": 1,
+        "max": 1,
+        "weight": 4
+      },
+      {
+        "item": "comforts:sleeping_bag_red",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "exdeorum:oak_sieve",
+        "min": 1,
+        "max": 1,
+        "weight": 4
+      },
+      {
+        "item": "biomesoplenty:fir_sapling",
+        "min": 1,
+        "max": 1,
+        "weight": 4
+      },
+      {
+        "item": "biomesoplenty:jacaranda_sapling",
+        "min": 1,
+        "max": 1,
+        "weight": 4
+      },
+      {
+        "item": "biomeswevegone:sakura_sapling",
+        "min": 1,
+        "max": 1,
+        "weight": 4
+      },
+      {
+        "item": "tethered:lost_thread",
+        "min": 2,
+        "max": 4,
+        "weight": 10
+      }
+    ]
+  }
+}

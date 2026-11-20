@@ -1,0 +1,186 @@
+{
+  "type": "crimson_weave",
+  "name": "The Crimson Weave",
+  "color": "#D7263D",
+  "time": "night",
+  "min_age": 2,
+  "weight": 6,
+  "warning": "The threads turn red. Tonight every monster is stronger, and every one of them carries thread.",
+  "success": "Dawn unpicks the Crimson Weave, one stitch at a time.",
+  "duration": 300,
+  "mobs": [
+    {
+      "entity": "minecraft:zombie",
+      "min_age": 0,
+      "weight": 10
+    },
+    {
+      "entity": "minecraft:skeleton",
+      "min_age": 0,
+      "weight": 8
+    },
+    {
+      "entity": "minecraft:spider",
+      "min_age": 0,
+      "weight": 8
+    },
+    {
+      "entity": "minecraft:husk",
+      "min_age": 1,
+      "weight": 5
+    },
+    {
+      "entity": "minecraft:stray",
+      "min_age": 1,
+      "weight": 4
+    },
+    {
+      "entity": "minecraft:creeper",
+      "min_age": 1,
+      "weight": 5
+    },
+    {
+      "entity": "minecraft:cave_spider",
+      "min_age": 1,
+      "weight": 4
+    },
+    {
+      "entity": "born_in_chaos_v1:decaying_zombie",
+      "min_age": 2,
+      "weight": 5
+    },
+    {
+      "entity": "born_in_chaos_v1:bone_imp",
+      "min_age": 2,
+      "weight": 4
+    },
+    {
+      "entity": "born_in_chaos_v1:barrel_zombie",
+      "min_age": 2,
+      "weight": 3
+    },
+    {
+      "entity": "born_in_chaos_v1:dread_hound",
+      "min_age": 3,
+      "weight": 3
+    },
+    {
+      "entity": "born_in_chaos_v1:door_knight",
+      "min_age": 4,
+      "weight": 2
+    },
+    {
+      "entity": "born_in_chaos_v1:siamese_skeletons",
+      "min_age": 4,
+      "weight": 2
+    },
+    {
+      "entity": "minecraft:pillager",
+      "min_age": 3,
+      "weight": 4
+    },
+    {
+      "entity": "minecraft:vindicator",
+      "min_age": 4,
+      "weight": 3
+    },
+    {
+      "entity": "minecraft:witch",
+      "min_age": 3,
+      "weight": 3
+    },
+    {
+      "entity": "minecraft:zombie_villager",
+      "min_age": 2,
+      "weight": 3
+    },
+    {
+      "entity": "ars_nouveau:wilden_hunter",
+      "min_age": 4,
+      "weight": 3
+    },
+    {
+      "entity": "irons_spellbooks:necromancer",
+      "min_age": 4,
+      "weight": 2
+    },
+    {
+      "entity": "minecraft:wither_skeleton",
+      "min_age": 5,
+      "weight": 3
+    },
+    {
+      "entity": "minecraft:blaze",
+      "min_age": 5,
+      "weight": 2
+    },
+    {
+      "entity": "minecraft:magma_cube",
+      "min_age": 5,
+      "weight": 2
+    },
+    {
+      "entity": "friendsandfoes:iceologer",
+      "min_age": 5,
+      "weight": 2
+    },
+    {
+      "entity": "undergarden:rotwalker",
+      "min_age": 6,
+      "weight": 3
+    },
+    {
+      "entity": "undergarden:rotbeast",
+      "min_age": 6,
+      "weight": 1
+    },
+    {
+      "entity": "deeperdarker:shattered",
+      "min_age": 6,
+      "weight": 2
+    },
+    {
+      "entity": "mutantmonsters:mutant_skeleton",
+      "min_age": 6,
+      "weight": 1
+    },
+    {
+      "entity": "minecraft:phantom",
+      "min_age": 7,
+      "weight": 3
+    },
+    {
+      "entity": "aether:zephyr",
+      "min_age": 7,
+      "weight": 1
+    },
+    {
+      "entity": "minecraft:enderman",
+      "min_age": 7,
+      "weight": 3
+    },
+    {
+      "entity": "mutantmonsters:mutant_zombie",
+      "min_age": 8,
+      "weight": 1
+    },
+    {
+      "entity": "minecraft:evoker",
+      "min_age": 8,
+      "weight": 2
+    },
+    {
+      "entity": "minecraft:ravager",
+      "min_age": 8,
+      "weight": 1
+    }
+  ],
+  "rewards": {
+    "threads": [
+      2,
+      5
+    ],
+    "favor_chance": 0.15,
+    "cache_rolls": 1
+  }
+}

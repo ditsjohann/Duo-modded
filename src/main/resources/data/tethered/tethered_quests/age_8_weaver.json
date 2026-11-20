@@ -1,0 +1,116 @@
+{
+  "title": "IX. The Final Thread",
+  "age": 8,
+  "order": 8,
+  "icon": "minecraft:nether_star",
+  "description": "Forge the Loom Heart. Face the Unraveler.",
+  "quests": [
+    {
+      "id": "wither",
+      "title": "The Wither",
+      "description": "Summon and defeat the Wither for its star. Do it together.",
+      "icon": "minecraft:wither_skeleton_skull",
+      "tasks": [
+        {
+          "type": "kill",
+          "entity": "minecraft:wither",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 200
+        },
+        {
+          "type": "favor",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "loom",
+      "title": "The Loom Heart",
+      "description": "Craft the Loom Heart: a nether star, diamond and gold blocks and Lost Threads.",
+      "icon": "tethered:loom_heart",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "tethered:loom_heart"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "threads",
+          "count": 16
+        }
+      ],
+      "requires": [
+        "wither"
+      ]
+    },
+    {
+      "id": "veterans",
+      "title": "Veterans of the Tide",
+      "description": "Win six Hollow Tides in total.",
+      "icon": "minecraft:bell",
+      "tasks": [
+        {
+          "type": "event",
+          "event": "hollow_tide",
+          "count": 6
+        }
+      ],
+      "rewards": [
+        {
+          "type": "favor",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "boons",
+      "title": "Woven Strong",
+      "description": "Choose twelve Boons between you.",
+      "icon": "tethered:weavers_favor",
+      "tasks": [
+        {
+          "type": "boons",
+          "count": 12
+        }
+      ],
+      "rewards": [
+        {
+          "type": "threads",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "id": "unraveler",
+      "title": "The Unraveler",
+      "description": "Give the Heartstone the Loom Heart and defeat the Unraveler. Together.",
+      "icon": "tethered:loom_heart",
+      "tasks": [
+        {
+          "type": "age",
+          "age": 9
+        },
+        {
+          "type": "together"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 500
+        }
+      ],
+      "requires": [
+        "loom"
+      ]
+    }
+  ]
+}

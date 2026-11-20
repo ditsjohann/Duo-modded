@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "TTT",
+    "TDT",
+    "TTT"
+  ],
+  "key": {
+    "T": {
+      "item": "tethered:lost_thread"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "id": "tethered:weavers_favor",
+    "count": 1
+  }
+}

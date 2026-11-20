@@ -18,7 +18,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-/** World-wide save data: who is tied to whom, plus Heart Tree progress. Stored on the overworld. */
+/**
+ * World-wide save data, stored on the overworld: who is tied to whom, and the shared story progress
+ * (the Heartstone's Age, its memories, the offering, trials, events, quests and everyone's Boons).
+ */
 public final class TetherData extends SavedData {
     private static final String NAME = "tethered";
 
@@ -38,6 +41,23 @@ public final class TetherData extends SavedData {
     private final Map<String, Integer> taskProgress = new HashMap<>();
     private final Set<UUID> journalGiven = new HashSet<>();
     private boolean endingUnlocked;
+
+    // The Heartstone (One Block) and the Ages
+    @Nullable
+    private BlockPos heartPos;
+    private int ageBreaks;
+    private int totalBreaks;
+    private int openingIndex;
+    private int[] offering = new int[0];
+    private boolean trialReady;
+    @Nullable
+    private UUID trialGuardian;
+    private final Map<String, Integer> eventStats = new HashMap<>();
+    private final Set<String> dimensions = new HashSet<>();
+    private final Map<UUID, Map<String, Integer>> boons = new HashMap<>();
+    private final Map<UUID, List<String>> boonOffers = new HashMap<>();
+    private long lastEventEnd;
+    private long lastNightRolled = -1;
 
     /** Extra rope length from the Heart Tree's "Deep Roots" blessing (kept in sync with the stage). */
     public static volatile float ropeBonus;
@@ -172,6 +192,58 @@ public final class TetherData extends SavedData {
 
     public boolean endingUnlocked() { return endingUnlocked; }
 
+    // ---- the Heartstone and the Ages (heartStage is the current Age)
+    @Nullable public BlockPos heartPos() { return heartPos; }
+    public void setHeartPos(BlockPos pos) { heartPos = pos.immutable(); setDirty(); }
+    public int age() { return heartStage; }
+    public int ageBreaks() { return ageBreaks; }
+    public int totalBreaks() { return totalBreaks; }
+    public void addBreak() { ageBreaks++; totalBreaks++; setDirty(); }
+    public void addBreaks(int n) { ageBreaks += n; totalBreaks += n; setDirty(); }
+    public int openingIndex() { return openingIndex; }
+    public void setOpeningIndex(int i) { openingIndex = i; setDirty(); }
+    public int[] offering(int size) {
+        if (offering.length != size) offering = java.util.Arrays.copyOf(offering, size);
+        return offering;
+    }
+    public boolean trialReady() { return trialReady; }
+    public void setTrialReady(boolean ready) { trialReady = ready; setDirty(); }
+    @Nullable public UUID trialGuardian() { return trialGuardian; }
+    public void setTrialGuardian(@Nullable UUID id) { trialGuardian = id; setDirty(); }
+
+    /** Moves the story into the next Age and resets everything that belongs to the old one. */
+    public void beginAge(int age) {
+        setHeartStage(age);
+        ageBreaks = 0;
+        openingIndex = 0;
+        offering = new int[0];
+        trialReady = false;
+        trialGuardian = null;
+        setDirty();
+    }
+
+    public Map<String, Integer> eventStats() { return eventStats; }
+    public void countEvent(String type) { eventStats.merge(type, 1, Integer::sum); setDirty(); }
+    public Set<String> dimensions() { return dimensions; }
+    public long lastEventEnd() { return lastEventEnd; }
+    public void setLastEventEnd(long t) { lastEventEnd = t; setDirty(); }
+    public long lastNightRolled() { return lastNightRolled; }
+    public void setLastNightRolled(long day) { lastNightRolled = day; setDirty(); }
+
+    // ---- Boons (per player)
+    public Map<String, Integer> boons(UUID id) { return boons.computeIfAbsent(id, k -> new HashMap<>()); }
+    public Map<UUID, Map<String, Integer>> allBoons() { return boons; }
+    @Nullable public List<String> boonOffer(UUID id) { return boonOffers.get(id); }
+    public void setBoonOffer(UUID id, @Nullable List<String> offer) {
+        if (offer == null) boonOffers.remove(id); else boonOffers.put(id, new ArrayList<>(offer));
+        setDirty();
+    }
+    public int boonsChosen() {
+        int n = 0;
+        for (Map<String, Integer> m : boons.values()) for (int r : m.values()) n += r;
+        return n;
+    }
+
     public void setEndingUnlocked() {
         endingUnlocked = true;
         setDirty();
@@ -221,6 +293,30 @@ public final class TetherData extends SavedData {
         for (UUID id : journalGiven) given.add(net.minecraft.nbt.StringTag.valueOf(id.toString()));
         tag.put("journalGiven", given);
         tag.putBoolean("endingUnlocked", endingUnlocked);
+
+        if (heartPos != null) tag.putLong("heartPos", heartPos.asLong());
+        tag.putInt("ageBreaks", ageBreaks);
+        tag.putInt("totalBreaks", totalBreaks);
+        tag.putInt("openingIndex", openingIndex);
+        tag.putIntArray("offering", offering);
+        tag.putBoolean("trialReady", trialReady);
+        if (trialGuardian != null) tag.putUUID("trialGuardian", trialGuardian);
+        CompoundTag events = new CompoundTag();
+        eventStats.forEach(events::putInt);
+        tag.put("eventStats", events);
+        tag.put("dimensions", strings(dimensions));
+        CompoundTag boonTag = new CompoundTag();
+        boons.forEach((id, ranks) -> {
+            CompoundTag t = new CompoundTag();
+            ranks.forEach(t::putInt);
+            boonTag.put(id.toString(), t);
+        });
+        tag.put("boons", boonTag);
+        CompoundTag offerTag = new CompoundTag();
+        boonOffers.forEach((id, offer) -> offerTag.put(id.toString(), strings(new LinkedHashSet<>(offer))));
+        tag.put("boonOffers", offerTag);
+        tag.putLong("lastEventEnd", lastEventEnd);
+        tag.putLong("lastNightRolled", lastNightRolled);
         return tag;
     }
 
@@ -263,6 +359,41 @@ public final class TetherData extends SavedData {
             }
         }
         data.endingUnlocked = tag.getBoolean("endingUnlocked");
+
+        if (tag.contains("heartPos")) data.heartPos = BlockPos.of(tag.getLong("heartPos"));
+        data.ageBreaks = tag.getInt("ageBreaks");
+        data.totalBreaks = tag.getInt("totalBreaks");
+        data.openingIndex = tag.getInt("openingIndex");
+        data.offering = tag.getIntArray("offering");
+        data.trialReady = tag.getBoolean("trialReady");
+        if (tag.hasUUID("trialGuardian")) data.trialGuardian = tag.getUUID("trialGuardian");
+        CompoundTag events = tag.getCompound("eventStats");
+        for (String key : events.getAllKeys()) data.eventStats.put(key, events.getInt(key));
+        readStrings(tag, "dimensions", data.dimensions);
+        CompoundTag boonTag = tag.getCompound("boons");
+        for (String key : boonTag.getAllKeys()) {
+            try {
+                Map<String, Integer> ranks = new HashMap<>();
+                CompoundTag t = boonTag.getCompound(key);
+                for (String b : t.getAllKeys()) ranks.put(b, t.getInt(b));
+                data.boons.put(UUID.fromString(key), ranks);
+            } catch (IllegalArgumentException ignored) {
+                // skip bad entry
+            }
+        }
+        CompoundTag offerTag = tag.getCompound("boonOffers");
+        for (String key : offerTag.getAllKeys()) {
+            try {
+                ListTag l = offerTag.getList(key, Tag.TAG_STRING);
+                List<String> offer = new ArrayList<>();
+                for (int i = 0; i < l.size(); i++) offer.add(l.getString(i));
+                data.boonOffers.put(UUID.fromString(key), offer);
+            } catch (IllegalArgumentException ignored) {
+                // skip bad entry
+            }
+        }
+        data.lastEventEnd = tag.getLong("lastEventEnd");
+        data.lastNightRolled = tag.contains("lastNightRolled") ? tag.getLong("lastNightRolled") : -1;
         return data;
     }
 }

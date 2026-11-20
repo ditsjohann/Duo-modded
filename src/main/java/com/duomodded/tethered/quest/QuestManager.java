@@ -3,8 +3,10 @@ package com.duomodded.tethered.quest;
 import com.duomodded.tethered.Tethered;
 import com.duomodded.tethered.heart.Blessings;
 import com.duomodded.tethered.heart.Ending;
-import com.duomodded.tethered.heart.StageDef;
-import com.duomodded.tethered.heart.StageLoader;
+import com.duomodded.tethered.age.AgeDef;
+import com.duomodded.tethered.age.AgeLoader;
+import com.duomodded.tethered.age.Heartstone;
+import com.duomodded.tethered.event.WorldEvents;
 import com.duomodded.tethered.network.JournalSyncPayload;
 import com.duomodded.tethered.registry.ModRegistry;
 import com.duomodded.tethered.tether.TetherData;
@@ -32,6 +34,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
 /**
  * Quest progress is shared by the whole world (it's a duo world: one story for the two of you).
@@ -54,15 +57,18 @@ public final class QuestManager {
         TetherData data = TetherData.get(server);
         if (data.completedQuests().contains(quest.id())) return Status.DONE;
         QuestDefs.Chapter chapter = chapterOf(quest);
-        if (chapter != null && chapter.island() != null && !data.unlockedIslands().contains(chapter.island())) {
-            return Status.LOCKED;
-        }
+        if (chapter != null && !chapterOpen(data, chapter)) return Status.LOCKED;
         for (String req : quest.requires()) {
             QuestDefs.Quest r = QuestLoader.quest(req);
             if (r == null || r.hidden()) continue;
             if (!data.completedQuests().contains(req)) return Status.LOCKED;
         }
         return Status.AVAILABLE;
+    }
+
+    private static boolean chapterOpen(TetherData data, QuestDefs.Chapter chapter) {
+        if (chapter.island() != null && !data.unlockedIslands().contains(chapter.island())) return false;
+        return data.age() >= chapter.age();
     }
 
     @Nullable
@@ -104,7 +110,11 @@ public final class QuestManager {
             }
             case "visit" -> data.visitedIslands().contains(task.id().getPath()) ? 1 : 0;
             case "attune" -> data.attunedIslands().contains(task.id().getPath()) ? 1 : 0;
-            case "tree_stage" -> Math.min(task.count(), data.heartStage());
+            case "age" -> Math.min(task.count(), data.age());
+            case "heart" -> Math.min(task.count(), data.totalBreaks());
+            case "event" -> Math.min(task.count(), data.eventStats().getOrDefault(task.id().getPath(), 0));
+            case "dimension" -> data.dimensions().contains(task.id().toString()) ? 1 : 0;
+            case "boons" -> Math.min(task.count(), data.boonsChosen());
             case "together" -> pairTogether(server) ? 1 : 0;
             default -> 0;
         };
@@ -112,7 +122,7 @@ public final class QuestManager {
 
     public static int taskTarget(QuestDefs.Task task) {
         return switch (task.type()) {
-            case "item", "kill", "tree_stage" -> task.count();
+            case "item", "kill", "age", "heart", "event", "boons" -> task.count();
             default -> 1;
         };
     }
@@ -201,6 +211,16 @@ public final class QuestManager {
         }
     }
 
+    @SubscribeEvent
+    public static void onDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer p) || p.getServer() == null) return;
+        TetherData data = TetherData.get(p.getServer());
+        if (data.dimensions().add(event.getTo().location().toString())) {
+            data.setDirty();
+            markDirty();
+        }
+    }
+
     /** "Hand in" button: takes the needed items from the player's inventory. */
     public static void submit(ServerPlayer player, String questId) {
         MinecraftServer server = player.getServer();
@@ -273,6 +293,12 @@ public final class QuestManager {
                     data.setEndingUnlocked();
                     Ending.offerAll(server);
                 }
+                case "favor" -> {
+                    for (ServerPlayer p : players) give(p, new ItemStack(ModRegistry.WEAVERS_FAVOR.get(), Math.max(1, reward.count())));
+                }
+                case "threads" -> {
+                    if (receiver != null) give(receiver, new ItemStack(ModRegistry.LOST_THREAD.get(), Math.max(1, reward.count())));
+                }
                 default -> { }
             }
         }
@@ -300,16 +326,74 @@ public final class QuestManager {
     private static JsonObject buildJson(MinecraftServer server) {
         TetherData data = TetherData.get(server);
         JsonObject root = new JsonObject();
-        int stage = data.heartStage();
-        root.addProperty("stage", stage);
-        root.addProperty("maxStage", StageLoader.maxStage());
-        root.addProperty("stageName", StageLoader.nameOf(stage));
-        StageDef next = StageLoader.get(stage + 1);
-        root.addProperty("nextStageName", next != null ? next.name() : "");
+        int age = data.age();
+        root.addProperty("stage", age);
+        root.addProperty("age", age);
+        root.addProperty("maxAge", AgeLoader.maxAge());
+        AgeDef current = AgeLoader.get(age);
+        root.addProperty("ageTitle", current == null ? "" : current.title());
+        root.addProperty("ageName", AgeLoader.nameOf(age));
+        root.addProperty("ageColor", current == null ? 0xB07AA1 : current.color());
+        root.addProperty("ageBreaks", data.ageBreaks());
+        root.addProperty("totalBreaks", data.totalBreaks());
+        AgeDef next = AgeLoader.get(age + 1);
+        root.addProperty("breaksNeeded", next == null ? 0 : Heartstone.breaksNeeded(age + 1));
+        root.addProperty("trialReady", data.trialReady());
+        root.addProperty("trialActive", data.trialGuardian() != null);
+        if (next != null) {
+            root.addProperty("nextTitle", next.title());
+            root.addProperty("nextName", next.name());
+            if (next.trial() != null) root.addProperty("trialName", next.trial().name());
+            JsonArray offering = new JsonArray();
+            int[] prog = data.offering(next.offering().size());
+            for (int i = 0; i < next.offering().size(); i++) {
+                AgeDef.Offer req = next.offering().get(i);
+                JsonObject o = new JsonObject();
+                if (req.item() != null) o.addProperty("item", BuiltInRegistries.ITEM.getKey(req.item()).toString());
+                if (req.tag() != null) o.addProperty("tag", req.tag().location().toString());
+                if (!req.label().isEmpty()) o.addProperty("label", req.label());
+                o.addProperty("count", req.count());
+                o.addProperty("value", prog[i]);
+                offering.add(o);
+            }
+            root.add("offering", offering);
+        }
+        JsonArray ages = new JsonArray();
+        for (AgeDef def : AgeLoader.all()) {
+            JsonObject a = new JsonObject();
+            a.addProperty("order", def.order());
+            a.addProperty("title", def.title());
+            a.addProperty("name", def.name());
+            a.addProperty("color", def.color());
+            a.addProperty("icon", def.icon());
+            a.addProperty("unlocked", def.order() <= age);
+            JsonArray lore = new JsonArray();
+            if (def.order() <= age) for (String line : def.lore()) lore.add(line);
+            a.add("lore", lore);
+            ages.add(a);
+        }
+        root.add("ages", ages);
+        JsonObject boons = new JsonObject();
+        data.allBoons().forEach((id, ranks) -> {
+            JsonObject b = new JsonObject();
+            ranks.forEach(b::addProperty);
+            boons.add(id.toString(), b);
+        });
+        root.add("boons", boons);
+        JsonObject events = new JsonObject();
+        data.eventStats().forEach(events::addProperty);
+        root.add("events", events);
+        String activeEvent = WorldEvents.activeId();
+        if (activeEvent != null) root.addProperty("activeEvent", activeEvent);
         BlockPos tree = data.heartTreePos();
         if (tree != null) {
             root.addProperty("treeX", tree.getX());
             root.addProperty("treeZ", tree.getZ());
+        }
+        BlockPos core = data.heartPos();
+        if (core != null) {
+            root.addProperty("heartX", core.getX());
+            root.addProperty("heartZ", core.getZ());
         }
         root.addProperty("tetheredWorld", data.startIslandGenerated());
 
@@ -338,7 +422,9 @@ public final class QuestManager {
             c.addProperty("title", chapter.title());
             c.addProperty("icon", chapter.icon());
             if (chapter.island() != null) c.addProperty("island", chapter.island());
-            c.addProperty("unlocked", chapter.island() == null || data.unlockedIslands().contains(chapter.island()));
+            c.addProperty("unlocked", chapterOpen(data, chapter));
+            c.addProperty("age", chapter.age());
+            if (!chapter.description().isEmpty()) c.addProperty("desc", chapter.description());
             JsonArray quests = new JsonArray();
             int done = 0;
             int total = 0;
@@ -363,7 +449,7 @@ public final class QuestManager {
                     if (task.item() != null) t.addProperty("item", BuiltInRegistries.ITEM.getKey(task.item()).toString());
                     if (task.tag() != null) t.addProperty("tag", task.tag().location().toString());
                     if (task.id() != null) t.addProperty("id", task.type().equals("visit") || task.type().equals("attune")
-                            ? task.id().getPath() : task.id().toString());
+                            || task.type().equals("event") ? task.id().getPath() : task.id().toString());
                     t.addProperty("count", taskTarget(task));
                     t.addProperty("value", status == Status.DONE ? taskTarget(task) : taskValue(server, quest, i));
                     t.addProperty("consume", task.consume());

@@ -1,0 +1,100 @@
+{
+  "has_precipitation": true,
+  "temperature": 0.6,
+  "downfall": 0.3,
+  "effects": {
+    "sky_color": 6316179,
+    "fog_color": 6967412,
+    "water_color": 4159204,
+    "water_fog_color": 329011,
+    "grass_color": 8432492,
+    "foliage_color": 7909467,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "music": {
+      "sound": "minecraft:music.overworld.deep_dark",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": false
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:zombie",
+        "weight": 95,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:skeleton",
+        "weight": 90,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:spider",
+        "weight": 90,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "minecraft:creeper",
+        "weight": 70,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "minecraft:cave_spider",
+        "weight": 30,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:zombie_villager",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "minecraft:witch",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "minecraft:slime",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "minecraft:enderman",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "creature": [],
+    "ambient": [
+      {
+        "type": "minecraft:bat",
+        "weight": 10,
+        "minCount": 4,
+        "maxCount": 6
+      }
+    ],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": []
+}

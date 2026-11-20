@@ -23,15 +23,15 @@ import net.neoforged.neoforge.event.entity.living.FinalizeSpawnEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 
 /**
- * What the Heart Tree gives back. Each stage unlocks one blessing for the whole world:
+ * What each Age gives back to the whole world, in order:
  * 1 Green Thumb, 2 Together, 3 Heart Paths, 4 Deep Roots, 5 Shared Table, 6 Heartward, 7 Bloom.
  */
 @EventBusSubscriber(modid = Tethered.MODID)
 public final class Blessings {
     public static final int GREEN_THUMB = 1;   // crops near the tree grow faster
     public static final int TOGETHER = 2;      // regeneration while you stay close
-    public static final int HEART_PATHS = 3;   // fast travel between the tree and attuned anchors
-    public static final int DEEP_ROOTS = 4;    // +4 rope length
+    public static final int HEART_PATHS = 3;   // fast travel + the Thread Call (teleport to your partner)
+    public static final int DEEP_ROOTS = 4;    // Thread Call recharges twice as fast (+4 rope length in rope mode)
     public static final int SHARED_TABLE = 5;  // eating also feeds your partner a little
     public static final int HEARTWARD = 6;     // no monsters spawn near the tree
     public static final int BLOOM = 7;         // the way to Bloomreach and the Weaver's question
@@ -46,7 +46,7 @@ public final class Blessings {
         return TetherData.get(server).heartStage() >= blessing;
     }
 
-    /** Green Thumb: called from the tree's ticker. Gives crops and saplings nearby extra growth ticks. */
+    /** Green Thumb: called around the Heartstone. Gives crops and saplings nearby extra growth ticks. */
     public static void growCrops(ServerLevel level, BlockPos tree, RandomSource random) {
         for (int i = 0; i < 6; i++) {
             BlockPos pos = tree.offset(random.nextInt(49) - 24, random.nextInt(9) - 4, random.nextInt(49) - 24);
@@ -79,16 +79,18 @@ public final class Blessings {
         partner.getFoodData().eat(nutrition, saturation / Math.max(1f, nutrition * 2f));
     }
 
-    /** Heartward: no monsters spawn naturally within 48 blocks of the Heart Tree. */
+    /** Heartward: no monsters spawn naturally within 48 blocks of the Heartstone or the World Tree. */
     @SubscribeEvent
     public static void onFinalizeSpawn(FinalizeSpawnEvent event) {
         if (!(event.getEntity() instanceof Enemy)) return;
         if (event.getSpawnType() != MobSpawnType.NATURAL) return;
         if (!(event.getLevel().getLevel() instanceof ServerLevel level) || level.dimension() != Level.OVERWORLD) return;
         TetherData data = TetherData.get(level.getServer());
+        if (data.heartStage() < HEARTWARD) return;
+        BlockPos at = event.getEntity().blockPosition();
         BlockPos tree = data.heartTreePos();
-        if (tree == null || data.heartStage() < HEARTWARD) return;
-        if (event.getEntity().blockPosition().distSqr(tree) < 48 * 48) {
+        BlockPos core = data.heartPos();
+        if ((tree != null && at.distSqr(tree) < 48 * 48) || (core != null && at.distSqr(core) < 48 * 48)) {
             event.setSpawnCancelled(true);
         }
     }

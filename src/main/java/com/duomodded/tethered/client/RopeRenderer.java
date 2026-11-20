@@ -27,7 +27,7 @@ public final class RopeRenderer {
         LocalPlayer me = mc.player;
         ClientLevel level = mc.level;
         TetherStatePayload state = ClientTetherState.get();
-        if (me == null || level == null || !state.linked() || !state.sameLevel()) return;
+        if (me == null || level == null || !state.linked() || !state.rope() || !state.sameLevel()) return;
         Player partner = level.getPlayerByUUID(state.partner());
         if (partner == null) return;
 

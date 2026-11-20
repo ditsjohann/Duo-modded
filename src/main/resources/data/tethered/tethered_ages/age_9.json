@@ -1,0 +1,175 @@
+{
+  "order": 9,
+  "title": "The Rewoven World",
+  "name": "Everything, Remembered",
+  "color": "#FFB6D5",
+  "icon": "tethered:loom_heart",
+  "lore": [
+    "The Unraveler falls, and as he falls he comes apart into every thread he ever stole. They drift home like snow.",
+    "The Loom turns again. Somewhere beyond the Void, oceans remember their tides and mountains remember how tall they were.",
+    "The Weaver waits at her Tree with one last question for the two of you."
+  ],
+  "weaver": "You did it. Together. Now, the thread that ties you. Shall I cut it?",
+  "awaken": {
+    "breaks": 540,
+    "offering": [
+      {
+        "count": 1,
+        "item": "tethered:loom_heart"
+      },
+      {
+        "count": 48,
+        "item": "tethered:lost_thread"
+      }
+    ],
+    "trial": {
+      "name": "The Unraveler",
+      "entity": [
+        "minecraft:wither_skeleton"
+      ],
+      "health": 600,
+      "damage": 2.0,
+      "scale": 2.6,
+      "armor": 10,
+      "speed": 1.15,
+      "intro": "Every thread in the room goes slack. The Unraveler steps out of the Void, and he is so very hungry.",
+      "effects": [
+        "minecraft:fire_resistance"
+      ],
+      "equipment": {
+        "mainhand": "minecraft:netherite_sword",
+        "head": "minecraft:netherite_helmet"
+      },
+      "minions": [
+        {
+          "entity": "minecraft:wither_skeleton",
+          "every": 15,
+          "count": 2,
+          "max": 6
+        },
+        {
+          "entity": "minecraft:vex",
+          "every": 10,
+          "count": 3,
+          "max": 9
+        }
+      ]
+    }
+  },
+  "keep_previous": 1.0,
+  "blocks": [
+    {
+      "block": "minecraft:diamond_ore",
+      "weight": 2
+    },
+    {
+      "block": "minecraft:emerald_ore",
+      "weight": 2
+    },
+    {
+      "block": "minecraft:ancient_debris",
+      "weight": 1
+    },
+    {
+      "block": "minecraft:cherry_log",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:cherry_leaves",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:flowering_azalea_leaves",
+      "weight": 3
+    }
+  ],
+  "mobs": {
+    "chance": 0.05,
+    "list": [
+      {
+        "entity": "minecraft:allay",
+        "weight": 3
+      },
+      {
+        "entity": "minecraft:axolotl",
+        "weight": 1
+      },
+      {
+        "entity": "minecraft:cat",
+        "weight": 2
+      },
+      {
+        "entity": "minecraft:fox",
+        "weight": 2
+      },
+      {
+        "entity": "minecraft:rabbit",
+        "weight": 2
+      },
+      {
+        "entity": "minecraft:bee",
+        "weight": 2
+      }
+    ]
+  },
+  "cache": {
+    "chance": 0.03,
+    "rolls": 6,
+    "items": [
+      {
+        "item": "minecraft:diamond",
+        "min": 2,
+        "max": 6,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:netherite_scrap",
+        "min": 1,
+        "max": 3,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:enchanted_golden_apple",
+        "min": 1,
+        "max": 1,
+        "weight": 2
+      },
+      {
+        "item": "minecraft:totem_of_undying",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "minecraft:elytra",
+        "min": 1,
+        "max": 1,
+        "weight": 2
+      },
+      {
+        "item": "tethered:weavers_favor",
+        "min": 1,
+        "max": 1,
+        "weight": 2
+      },
+      {
+        "item": "tethered:lost_thread",
+        "min": 8,
+        "max": 16,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:cake",
+        "min": 1,
+        "max": 1,
+        "weight": 4
+      },
+      {
+        "item": "minecraft:cherry_sapling",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      }
+    ]
+  }
+}

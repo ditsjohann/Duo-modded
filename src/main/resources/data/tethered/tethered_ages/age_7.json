@@ -1,0 +1,330 @@
+{
+  "order": 7,
+  "title": "Age of the Heavens",
+  "name": "The Sky Unfolds",
+  "color": "#8FD3FF",
+  "icon": "minecraft:feather",
+  "lore": [
+    "The sky comes back first as a colour, then as clouds, then as a whole other world above the world: the Aether, golden and strange.",
+    "Skyrender was the wind that tore the clouds apart. With it gone, you can fly: glider, airship or wings.",
+    "Bloomreach, the Weaver's garden, appears at the edge of everything. Her voice is clearer there."
+  ],
+  "weaver": "Look how far you've come. Now look up.",
+  "awaken": {
+    "breaks": 420,
+    "offering": [
+      {
+        "count": 1,
+        "item": "tethered:heart_shard"
+      },
+      {
+        "count": 4,
+        "item": "minecraft:diamond"
+      },
+      {
+        "count": 16,
+        "item": "minecraft:sculk"
+      },
+      {
+        "count": 8,
+        "item": "minecraft:amethyst_block"
+      },
+      {
+        "count": 4,
+        "item": "minecraft:ender_pearl"
+      },
+      {
+        "count": 28,
+        "item": "tethered:lost_thread"
+      }
+    ],
+    "trial": {
+      "name": "Skyrender",
+      "entity": [
+        "minecraft:phantom"
+      ],
+      "health": 240,
+      "damage": 1.6,
+      "scale": 3.0,
+      "armor": 4,
+      "intro": "The air screams around the Heartstone. Look up.",
+      "minions": [
+        {
+          "entity": "minecraft:phantom",
+          "every": 12,
+          "count": 2,
+          "max": 6
+        }
+      ]
+    }
+  },
+  "keep_previous": 0.15,
+  "unlocks": [
+    "bloomreach"
+  ],
+  "blocks": [
+    {
+      "block": "minecraft:glowstone",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:end_stone",
+      "weight": 6
+    },
+    {
+      "block": "minecraft:end_stone_bricks",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:purpur_block",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:obsidian",
+      "weight": 3
+    },
+    {
+      "block": "aether:holystone",
+      "weight": 8
+    },
+    {
+      "block": "aether:mossy_holystone",
+      "weight": 3
+    },
+    {
+      "block": "aether:skyroot_log",
+      "weight": 5
+    },
+    {
+      "block": "aether:golden_oak_log",
+      "weight": 2
+    },
+    {
+      "block": "aether:ambrosium_ore",
+      "weight": 4
+    },
+    {
+      "block": "aether:zanite_ore",
+      "weight": 4
+    },
+    {
+      "block": "aether:gravitite_ore",
+      "weight": 1
+    },
+    {
+      "block": "aether:quicksoil",
+      "weight": 3
+    },
+    {
+      "block": "aether:icestone",
+      "weight": 2
+    },
+    {
+      "block": "aether:cold_aercloud",
+      "weight": 2
+    },
+    {
+      "block": "aether:blue_aercloud",
+      "weight": 1
+    },
+    {
+      "block": "aether:aether_dirt",
+      "weight": 3
+    },
+    {
+      "block": "deep_aether:roseroot_log",
+      "weight": 3
+    },
+    {
+      "block": "deep_aether:aether_mud",
+      "weight": 2
+    },
+    {
+      "block": "eternal_starlight:grimstone",
+      "weight": 4
+    },
+    {
+      "block": "eternal_starlight:lunar_log",
+      "weight": 2
+    },
+    {
+      "block": "eternal_starlight:northland_log",
+      "weight": 2
+    },
+    {
+      "block": "eternal_starlight:voidstone",
+      "weight": 2
+    }
+  ],
+  "mobs": {
+    "chance": 0.06,
+    "list": [
+      {
+        "entity": "minecraft:phantom",
+        "weight": 3
+      },
+      {
+        "entity": "minecraft:parrot",
+        "weight": 3
+      },
+      {
+        "entity": "minecraft:allay",
+        "weight": 2
+      },
+      {
+        "entity": "minecraft:breeze",
+        "weight": 2
+      },
+      {
+        "entity": "aether:moa",
+        "weight": 3
+      },
+      {
+        "entity": "aether:sheepuff",
+        "weight": 3
+      },
+      {
+        "entity": "aether:aerbunny",
+        "weight": 3
+      },
+      {
+        "entity": "aether:flying_cow",
+        "weight": 2
+      },
+      {
+        "entity": "aether:phyg",
+        "weight": 2
+      },
+      {
+        "entity": "aether:zephyr",
+        "weight": 1
+      },
+      {
+        "entity": "aether:whirlwind",
+        "weight": 1
+      },
+      {
+        "entity": "iceandfire:hippogryph",
+        "weight": 1
+      },
+      {
+        "entity": "iceandfire:stymphalian_bird",
+        "weight": 1
+      }
+    ]
+  },
+  "cache": {
+    "chance": 0.025,
+    "rolls": 5,
+    "items": [
+      {
+        "item": "aether:ambrosium_shard",
+        "min": 4,
+        "max": 8,
+        "weight": 10
+      },
+      {
+        "item": "aether:zanite_gemstone",
+        "min": 2,
+        "max": 6,
+        "weight": 10
+      },
+      {
+        "item": "aether:cloud_parachute",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "aether:golden_parachute",
+        "min": 1,
+        "max": 1,
+        "weight": 2
+      },
+      {
+        "item": "paraglider:paraglider",
+        "min": 1,
+        "max": 1,
+        "weight": 2
+      },
+      {
+        "item": "immersive_aircraft:hull",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "immersive_aircraft:engine",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "immersive_aircraft:propeller",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "immersive_aircraft:sail",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:feather",
+        "min": 8,
+        "max": 16,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:phantom_membrane",
+        "min": 2,
+        "max": 4,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:elytra",
+        "min": 1,
+        "max": 1,
+        "weight": 1
+      },
+      {
+        "item": "minecraft:firework_rocket",
+        "min": 8,
+        "max": 16,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:ender_pearl",
+        "min": 2,
+        "max": 4,
+        "weight": 10
+      },
+      {
+        "item": "artifacts:cloud_in_a_bottle",
+        "min": 1,
+        "max": 1,
+        "weight": 1
+      },
+      {
+        "item": "minecraft:chorus_fruit",
+        "min": 4,
+        "max": 8,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:breeze_rod",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "tethered:lost_thread",
+        "min": 5,
+        "max": 8,
+        "weight": 10
+      }
+    ]
+  }
+}

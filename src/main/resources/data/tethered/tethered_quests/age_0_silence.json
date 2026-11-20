@@ -1,0 +1,256 @@
+{
+  "title": "I. The Last Stone",
+  "age": 0,
+  "order": 0,
+  "icon": "minecraft:cobblestone",
+  "description": "You wake inside the Last Stone with only each other and the Heartstone.",
+  "quests": [
+    {
+      "id": "awake",
+      "title": "Two Souls, One Thread",
+      "description": "The Weaver tied you together before she faded. Stand side by side in the Hollow Heart.",
+      "icon": "tethered:red_thread",
+      "tasks": [
+        {
+          "type": "together"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:torch",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "id": "strike",
+      "title": "Strike the Heartstone",
+      "description": "Break the block sitting on the Heartstone. It will weave a new one. Every block is a memory.",
+      "icon": "tethered:heartstone",
+      "tasks": [
+        {
+          "type": "heart",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 10
+        }
+      ],
+      "requires": [
+        "awake"
+      ]
+    },
+    {
+      "id": "timber",
+      "title": "Wood From Stone",
+      "description": "The Heartstone remembers trees first. Gather logs.",
+      "icon": "minecraft:oak_log",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 12,
+          "consume": false,
+          "tag": "minecraft:logs"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:bread",
+          "count": 4
+        }
+      ],
+      "requires": [
+        "strike"
+      ]
+    },
+    {
+      "id": "pick",
+      "title": "Dig Out",
+      "description": "Make a pickaxe. The only way out of the Last Stone is through it.",
+      "icon": "minecraft:stone_pickaxe",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "minecraft:stone_pickaxe"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:torch",
+          "count": 12
+        }
+      ],
+      "requires": [
+        "timber"
+      ]
+    },
+    {
+      "id": "thread",
+      "title": "A Lost Thread",
+      "description": "Thread Ore glimmers red in the rock. Mine it to find Lost Threads: the Heartstone, the Wandering Weaver and every offering want them.",
+      "icon": "tethered:lost_thread",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 3,
+          "consume": false,
+          "item": "tethered:lost_thread"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 20
+        }
+      ],
+      "requires": [
+        "pick"
+      ]
+    },
+    {
+      "id": "mantle",
+      "title": "Into the Mantle",
+      "description": "Deeper rock holds richer ore. Dig down until you find deepslate.",
+      "icon": "minecraft:cobbled_deepslate",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 16,
+          "consume": false,
+          "item": "minecraft:cobbled_deepslate"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "threads",
+          "count": 3
+        }
+      ],
+      "requires": [
+        "pick"
+      ]
+    },
+    {
+      "id": "water",
+      "title": "Water From Ice",
+      "description": "Ice melts into water. Two water sources make an endless one.",
+      "icon": "minecraft:water_bucket",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "minecraft:water_bucket"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:bone_meal",
+          "count": 8
+        }
+      ],
+      "requires": [
+        "timber"
+      ]
+    },
+    {
+      "id": "sieve",
+      "title": "Sift the Dust",
+      "description": "With Ex Deorum, dirt, gravel and dust can be sifted for seeds, ores and more.",
+      "icon": "exdeorum:oak_sieve",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "exdeorum:oak_sieve"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "exdeorum:string_mesh",
+          "count": 1
+        }
+      ],
+      "requires": [
+        "timber"
+      ],
+      "mod": "exdeorum"
+    },
+    {
+      "id": "memories",
+      "title": "Sixty Memories",
+      "description": "Break the Heartstone sixty times. When it remembers enough, it will ask for an offering.",
+      "icon": "minecraft:amethyst_shard",
+      "tasks": [
+        {
+          "type": "heart",
+          "count": 60
+        }
+      ],
+      "rewards": [
+        {
+          "type": "threads",
+          "count": 2
+        }
+      ],
+      "requires": [
+        "strike"
+      ]
+    },
+    {
+      "id": "roots",
+      "title": "The First Green",
+      "description": "Make the offering, then win the Trial against the Stoneborn. Right-click the Heartstone with an empty hand to start it.",
+      "icon": "minecraft:oak_sapling",
+      "tasks": [
+        {
+          "type": "age",
+          "age": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 50
+        }
+      ],
+      "requires": [
+        "memories"
+      ]
+    },
+    {
+      "id": "tide",
+      "title": "The First Tide",
+      "description": "Survive a Hollow Tide: the Unraveler's creatures climbing out of the dark at night.",
+      "icon": "minecraft:bell",
+      "tasks": [
+        {
+          "type": "event",
+          "event": "hollow_tide",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "threads",
+          "count": 4
+        }
+      ],
+      "requires": [
+        "strike"
+      ],
+      "optional": true
+    }
+  ]
+}

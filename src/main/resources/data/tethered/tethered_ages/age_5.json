@@ -1,0 +1,314 @@
+{
+  "order": 5,
+  "title": "Age of Frost and Flame",
+  "name": "The Elements Return",
+  "color": "#FF7B54",
+  "icon": "minecraft:blaze_powder",
+  "lore": [
+    "The world remembers fire and ice in the same breath: volcanoes and glaciers, the Nether's furnace heart, the cold silence of Frostfall.",
+    "Cinderwing burned the way the first sun burned. With it gone, the doorway to the Nether can be opened again, and older things wait on the other side.",
+    "Dragons have been seen over Frostfall. Don't go alone. You never have to."
+  ],
+  "weaver": "Warmth is something you carry for each other.",
+  "awaken": {
+    "breaks": 300,
+    "offering": [
+      {
+        "count": 1,
+        "item": "tethered:heart_shard"
+      },
+      {
+        "count": 16,
+        "item": "minecraft:lapis_lazuli"
+      },
+      {
+        "count": 8,
+        "item": "minecraft:amethyst_shard"
+      },
+      {
+        "count": 6,
+        "item": "minecraft:book"
+      },
+      {
+        "count": 2,
+        "item": "minecraft:diamond"
+      },
+      {
+        "count": 8,
+        "item": "ars_nouveau:source_gem",
+        "mod": "ars_nouveau"
+      },
+      {
+        "count": 20,
+        "item": "tethered:lost_thread"
+      }
+    ],
+    "trial": {
+      "name": "Cinderwing",
+      "entity": [
+        "minecraft:blaze"
+      ],
+      "health": 200,
+      "damage": 1.4,
+      "scale": 2.2,
+      "armor": 4,
+      "intro": "Heat rolls off the walls. Cinderwing has woken.",
+      "effects": [
+        "minecraft:fire_resistance"
+      ],
+      "minions": [
+        {
+          "entity": "minecraft:magma_cube",
+          "every": 10,
+          "count": 2,
+          "max": 6
+        }
+      ]
+    }
+  },
+  "keep_previous": 0.15,
+  "unlocks": [
+    "frostfall"
+  ],
+  "blocks": [
+    {
+      "block": "minecraft:ice",
+      "weight": 6
+    },
+    {
+      "block": "minecraft:packed_ice",
+      "weight": 6
+    },
+    {
+      "block": "minecraft:blue_ice",
+      "weight": 2
+    },
+    {
+      "block": "minecraft:snow_block",
+      "weight": 6
+    },
+    {
+      "block": "minecraft:magma_block",
+      "weight": 6
+    },
+    {
+      "block": "minecraft:netherrack",
+      "weight": 8
+    },
+    {
+      "block": "minecraft:nether_bricks",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:soul_sand",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:soul_soil",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:basalt",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:blackstone",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:nether_quartz_ore",
+      "weight": 5
+    },
+    {
+      "block": "minecraft:nether_gold_ore",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:glowstone",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:obsidian",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:shroomlight",
+      "weight": 2
+    },
+    {
+      "block": "minecraft:crimson_stem",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:warped_stem",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:crimson_nylium",
+      "weight": 2
+    },
+    {
+      "block": "minecraft:warped_nylium",
+      "weight": 2
+    },
+    {
+      "block": "iceandfire:sapphire_ore",
+      "weight": 2
+    },
+    {
+      "block": "iceandfire:silver_ore",
+      "weight": 2
+    },
+    {
+      "block": "mysticalagriculture:soulium_ore",
+      "weight": 2
+    },
+    {
+      "block": "exdeorum:crushed_netherrack",
+      "weight": 2
+    }
+  ],
+  "mobs": {
+    "chance": 0.07,
+    "list": [
+      {
+        "entity": "minecraft:blaze",
+        "weight": 4
+      },
+      {
+        "entity": "minecraft:magma_cube",
+        "weight": 4
+      },
+      {
+        "entity": "minecraft:stray",
+        "weight": 6
+      },
+      {
+        "entity": "minecraft:strider",
+        "weight": 2
+      },
+      {
+        "entity": "minecraft:snow_golem",
+        "weight": 2
+      },
+      {
+        "entity": "minecraft:polar_bear",
+        "weight": 2
+      },
+      {
+        "entity": "minecraft:wither_skeleton",
+        "weight": 2
+      },
+      {
+        "entity": "iceandfire:pixie",
+        "weight": 2
+      },
+      {
+        "entity": "friendsandfoes:iceologer",
+        "weight": 2
+      },
+      {
+        "entity": "friendsandfoes:wildfire",
+        "weight": 1
+      },
+      {
+        "entity": "mutantmonsters:mutant_snow_golem",
+        "weight": 1
+      },
+      {
+        "entity": "quark:foxhound",
+        "weight": 2
+      }
+    ]
+  },
+  "cache": {
+    "chance": 0.025,
+    "rolls": 5,
+    "items": [
+      {
+        "item": "minecraft:flint_and_steel",
+        "min": 1,
+        "max": 1,
+        "weight": 4
+      },
+      {
+        "item": "minecraft:fire_charge",
+        "min": 2,
+        "max": 4,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:blaze_rod",
+        "min": 1,
+        "max": 3,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:ghast_tear",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "minecraft:magma_cream",
+        "min": 2,
+        "max": 4,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:quartz",
+        "min": 8,
+        "max": 16,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:gold_ingot",
+        "min": 4,
+        "max": 8,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:golden_apple",
+        "min": 1,
+        "max": 1,
+        "weight": 2
+      },
+      {
+        "item": "minecraft:snowball",
+        "min": 8,
+        "max": 16,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:powder_snow_bucket",
+        "min": 1,
+        "max": 1,
+        "weight": 2
+      },
+      {
+        "item": "iceandfire:silver_ingot",
+        "min": 2,
+        "max": 4,
+        "weight": 10
+      },
+      {
+        "item": "iceandfire:sapphire_gem",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "toughasnails:leather_canteen",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "tethered:lost_thread",
+        "min": 4,
+        "max": 6,
+        "weight": 10
+      }
+    ]
+  }
+}

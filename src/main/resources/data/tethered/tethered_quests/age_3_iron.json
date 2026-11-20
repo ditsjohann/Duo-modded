@@ -1,0 +1,299 @@
+{
+  "title": "IV. The Forge Remembers",
+  "age": 3,
+  "order": 3,
+  "icon": "minecraft:iron_ingot",
+  "description": "Ore, machines and storage. Automate the Heartstone!",
+  "quests": [
+    {
+      "id": "ingots",
+      "title": "Iron Hoard",
+      "description": "Iron is everywhere now. Gather plenty.",
+      "icon": "minecraft:iron_ingot",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 48,
+          "consume": false,
+          "item": "minecraft:iron_ingot"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "threads",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "id": "call",
+      "title": "The Thread Call",
+      "description": "The Age of Iron woke the Thread Call: press H to pull yourself to your partner.",
+      "icon": "minecraft:ender_pearl",
+      "tasks": [
+        {
+          "type": "together"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "id": "alloy",
+      "title": "Andesite Alloy",
+      "description": "Create: the start of every contraption.",
+      "icon": "create:andesite_alloy",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 16,
+          "consume": false,
+          "item": "create:andesite_alloy"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "create:cogwheel",
+          "count": 8
+        }
+      ],
+      "mod": "create"
+    },
+    {
+      "id": "kinetic",
+      "title": "Turning Wheels",
+      "description": "Create: build a water wheel and a mechanical press.",
+      "icon": "create:water_wheel",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "create:water_wheel"
+        },
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "create:mechanical_press"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ],
+      "requires": [
+        "alloy"
+      ],
+      "mod": "create"
+    },
+    {
+      "id": "drill",
+      "title": "Mine the Heartstone",
+      "description": "Create: a mechanical drill (and a deployer) can break the Heartstone for you. Memories count all the same.",
+      "icon": "create:mechanical_drill",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "create:mechanical_drill"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "threads",
+          "count": 6
+        },
+        {
+          "type": "favor",
+          "count": 1
+        }
+      ],
+      "requires": [
+        "kinetic"
+      ],
+      "mod": "create"
+    },
+    {
+      "id": "brass",
+      "title": "Brass",
+      "description": "Create: mix copper and zinc into brass.",
+      "icon": "create:brass_ingot",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 8,
+          "consume": false,
+          "item": "create:brass_ingot"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ],
+      "requires": [
+        "kinetic"
+      ],
+      "mod": "create"
+    },
+    {
+      "id": "backpack",
+      "title": "Pack Your Bags",
+      "description": "Sophisticated Backpacks: you'll want a backpack out in the void.",
+      "icon": "sophisticatedbackpacks:backpack",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "sophisticatedbackpacks:backpack"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 30
+        }
+      ],
+      "mod": "sophisticatedbackpacks"
+    },
+    {
+      "id": "pipes",
+      "title": "Pipes",
+      "description": "Pipez: move items and fluids around your base.",
+      "icon": "pipez:item_pipe",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 8,
+          "consume": false,
+          "item": "pipez:item_pipe"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 30
+        }
+      ],
+      "mod": "pipez",
+      "optional": true
+    },
+    {
+      "id": "certus",
+      "title": "Certus Quartz",
+      "description": "Applied Energistics 2: grow certus quartz from budding quartz.",
+      "icon": "ae2:certus_quartz_crystal",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 8,
+          "consume": false,
+          "item": "ae2:certus_quartz_crystal"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 40
+        }
+      ],
+      "mod": "ae2",
+      "optional": true
+    },
+    {
+      "id": "essence",
+      "title": "Grow Your Ore",
+      "description": "Mystical Agriculture: gather inferium essence.",
+      "icon": "mysticalagriculture:inferium_essence",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 32,
+          "consume": false,
+          "item": "mysticalagriculture:inferium_essence"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 40
+        }
+      ],
+      "mod": "mysticalagriculture",
+      "optional": true
+    },
+    {
+      "id": "waystone",
+      "title": "A Place to Return To",
+      "description": "Waystones: set one up at home.",
+      "icon": "waystones:waystone",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "waystones:waystone"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 40
+        }
+      ],
+      "mod": "waystones",
+      "optional": true
+    },
+    {
+      "id": "docks",
+      "title": "Windward Docks",
+      "description": "Follow the Rootway to the high, windy Docks.",
+      "icon": "minecraft:feather",
+      "tasks": [
+        {
+          "type": "visit",
+          "island": "windward_docks"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ]
+    },
+    {
+      "id": "arcana",
+      "title": "The Whispering Weave",
+      "description": "Make the offering and defeat the Hollow Magus.",
+      "icon": "minecraft:amethyst_shard",
+      "tasks": [
+        {
+          "type": "age",
+          "age": 4
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 120
+        }
+      ],
+      "requires": [
+        "ingots",
+        "docks"
+      ]
+    }
+  ]
+}

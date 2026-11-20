@@ -28,7 +28,8 @@ public record TetherStatePayload(
         boolean selfDowned,
         int downedTicks,
         int reviveProgress,
-        int reviveTotal
+        int reviveTotal,
+        boolean rope
 ) implements CustomPacketPayload {
 
     public static final Type<TetherStatePayload> TYPE = new Type<>(Tethered.id("state"));
@@ -36,7 +37,7 @@ public record TetherStatePayload(
             CustomPacketPayload.codec(TetherStatePayload::write, TetherStatePayload::read);
 
     public static final TetherStatePayload NONE = new TetherStatePayload(false, new UUID(0L, 0L), "", false,
-            0, 0f, 0f, false, false, false, 0f, 20f, false, 0, 0, 0, false, 0, 0, 1);
+            0, 0f, 0f, false, false, false, 0f, 20f, false, 0, 0, 0, false, 0, 0, 1, false);
 
     private void write(FriendlyByteBuf buf) {
         buf.writeBoolean(linked);
@@ -59,6 +60,7 @@ public record TetherStatePayload(
         buf.writeVarInt(downedTicks);
         buf.writeVarInt(reviveProgress);
         buf.writeVarInt(reviveTotal);
+        buf.writeBoolean(rope);
     }
 
     private static TetherStatePayload read(FriendlyByteBuf buf) {
@@ -82,7 +84,8 @@ public record TetherStatePayload(
                 buf.readBoolean(),
                 buf.readVarInt(),
                 buf.readVarInt(),
-                buf.readVarInt());
+                buf.readVarInt(),
+                buf.readBoolean());
     }
 
     @Override

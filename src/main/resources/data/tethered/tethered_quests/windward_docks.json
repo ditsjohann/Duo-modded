@@ -1,6 +1,6 @@
 {
   "title": "Windward Docks",
-  "order": 3,
+  "order": 23,
   "icon": "minecraft:feather",
   "quests": [
     {
@@ -55,11 +55,11 @@
       "id": "glide",
       "title": "Wings for Two",
       "description": "Craft two paragliders, one each.",
-      "icon": "paragliders:paraglider",
+      "icon": "paraglider:paraglider",
       "tasks": [
         {
           "type": "item",
-          "item": "paragliders:paraglider",
+          "item": "paraglider:paraglider",
           "count": 2,
           "consume": false
         }
@@ -73,7 +73,7 @@
       "requires": [
         "anchor"
       ],
-      "mod": "paragliders",
+      "mod": "paraglider",
       "optional": true
     },
     {

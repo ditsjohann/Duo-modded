@@ -1,6 +1,7 @@
 package com.duomodded.tethered.quest;
 
 import com.duomodded.tethered.Tethered;
+import com.duomodded.tethered.util.Ids;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -26,7 +27,9 @@ import java.util.Optional;
  */
 public final class QuestDefs {
 
-    public record Chapter(String id, String title, @Nullable String island, int order, String icon, List<Quest> quests) {}
+    /** A chapter opens when its island is unlocked and/or the world has reached its Age. */
+    public record Chapter(String id, String title, @Nullable String island, int age, int order, String icon,
+                          String description, List<Quest> quests) {}
 
     public record Quest(String id, String title, String description, String icon, @Nullable String mod,
                         List<String> requires, List<Task> tasks, List<Reward> rewards, boolean optional, boolean valid) {
@@ -39,7 +42,8 @@ public final class QuestDefs {
 
     /**
      * Task types: item (bring items; "consume": false = just have them), advancement, kill, visit,
-     * attune, tree_stage, together (both of you standing close).
+     * attune, age (reach an Age), heart (break the Heartstone N times in total), event (win events
+     * of a type), dimension (set foot in a dimension), boons (pick N Boons), together (stand close).
      */
     public record Task(String type, @Nullable Item item, @Nullable TagKey<Item> tag, @Nullable ResourceLocation id,
                        int count, boolean consume, String label) {
@@ -50,7 +54,7 @@ public final class QuestDefs {
         }
     }
 
-    /** Reward types: item, shard, xp, unlock (island), ending. */
+    /** Reward types: item, shard, xp, unlock (island), ending, favor (a Weaver's Favor each), threads. */
     public record Reward(String type, @Nullable Item item, int count, @Nullable String island) {}
 
     static Chapter parseChapter(String id, JsonObject o) {
@@ -60,7 +64,8 @@ public final class QuestDefs {
         }
         String island = GsonHelper.getAsString(o, "island", "");
         return new Chapter(id, GsonHelper.getAsString(o, "title", id), island.isEmpty() ? null : island,
-                GsonHelper.getAsInt(o, "order", 0), GsonHelper.getAsString(o, "icon", "minecraft:book"), quests);
+                GsonHelper.getAsInt(o, "age", 0), GsonHelper.getAsInt(o, "order", 0),
+                GsonHelper.getAsString(o, "icon", "minecraft:book"), GsonHelper.getAsString(o, "description", ""), quests);
     }
 
     private static Quest parseQuest(String chapter, JsonObject o) {
@@ -89,28 +94,23 @@ public final class QuestDefs {
                     if (t.has("tag")) {
                         tag = TagKey.create(Registries.ITEM, ResourceLocation.parse(GsonHelper.getAsString(t, "tag").replace("#", "")));
                     } else {
-                        ResourceLocation itemId = ResourceLocation.parse(GsonHelper.getAsString(t, "item"));
-                        Optional<Item> found = BuiltInRegistries.ITEM.getOptional(itemId);
-                        if (found.isPresent()) {
-                            item = found.get();
-                        } else {
-                            valid = false;
-                            if (!modMissing) Tethered.LOGGER.warn("Quest {}: unknown item {}, hiding quest", id, itemId);
-                        }
+                        item = modMissing ? null : Ids.item(GsonHelper.getAsString(t, "item"), "quest " + id);
+                        if (item == null) valid = false;
                     }
                 }
                 case "kill" -> {
                     rid = ResourceLocation.parse(GsonHelper.getAsString(t, "entity"));
-                    Optional<EntityType<?>> found = BuiltInRegistries.ENTITY_TYPE.getOptional(rid);
-                    if (found.isEmpty()) {
-                        valid = false;
-                        if (!modMissing) Tethered.LOGGER.warn("Quest {}: unknown mob {}, hiding quest", id, rid);
-                    }
+                    if (modMissing || Ids.entity(rid.toString(), "quest " + id) == null) valid = false;
                 }
                 case "advancement" -> rid = ResourceLocation.parse(GsonHelper.getAsString(t, "id"));
                 case "visit", "attune" -> rid = ResourceLocation.fromNamespaceAndPath(Tethered.MODID, GsonHelper.getAsString(t, "island"));
-                case "tree_stage" -> count = GsonHelper.getAsInt(t, "stage", count);
-                case "together" -> { }
+                case "tree_stage", "age" -> {
+                    type = "age";
+                    count = GsonHelper.getAsInt(t, "age", GsonHelper.getAsInt(t, "stage", count));
+                }
+                case "heart", "boons", "together" -> { }
+                case "event" -> rid = ResourceLocation.fromNamespaceAndPath(Tethered.MODID, GsonHelper.getAsString(t, "event"));
+                case "dimension" -> rid = ResourceLocation.parse(GsonHelper.getAsString(t, "dimension"));
                 default -> {
                     valid = false;
                     Tethered.LOGGER.warn("Quest {}: unknown task type {}", id, type);
@@ -125,7 +125,7 @@ public final class QuestDefs {
             String type = GsonHelper.getAsString(r, "type", "item");
             Item item = null;
             if ("item".equals(type)) {
-                item = BuiltInRegistries.ITEM.getOptional(ResourceLocation.parse(GsonHelper.getAsString(r, "item"))).orElse(null);
+                item = modMissing ? null : Ids.item(GsonHelper.getAsString(r, "item"), "quest " + id + " reward");
                 if (item == null) continue; // reward from a missing mod: just skip it
             }
             String island = GsonHelper.getAsString(r, "island", "");

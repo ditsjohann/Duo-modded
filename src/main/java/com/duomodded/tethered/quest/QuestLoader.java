@@ -28,6 +28,7 @@ public final class QuestLoader extends SimpleJsonResourceReloadListener {
 
     @Override
     protected void apply(Map<ResourceLocation, JsonElement> map, ResourceManager manager, ProfilerFiller profiler) {
+        com.duomodded.tethered.util.Ids.clear("quest ");
         List<QuestDefs.Chapter> loaded = new ArrayList<>();
         map.forEach((id, json) -> {
             try {

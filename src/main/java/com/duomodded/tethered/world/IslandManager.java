@@ -3,7 +3,6 @@ package com.duomodded.tethered.world;
 import com.duomodded.tethered.Tethered;
 import com.duomodded.tethered.heart.Blessings;
 import com.duomodded.tethered.heart.IslandBuilder;
-import com.duomodded.tethered.heart.StartIsland;
 import com.duomodded.tethered.quest.QuestManager;
 import com.duomodded.tethered.registry.ModRegistry;
 import com.duomodded.tethered.tether.TetherData;
@@ -171,8 +170,9 @@ public final class IslandManager {
     }
 
     /**
-     * Fast travel for the pair (Heart Paths blessing). You must stand at the Heart Tree or an attuned
-     * Anchor Stone, your partner must be with you, and the target must be attuned (or "tree").
+     * Fast travel for the pair (Heart Paths blessing). You must stand at the Heartstone, the World Tree
+     * or an attuned Anchor Stone, your partner must be with you, and the target must be attuned
+     * (or "heart" / "tree").
      */
     public static void travel(ServerPlayer player, String target) {
         MinecraftServer server = player.getServer();
@@ -188,7 +188,11 @@ public final class IslandManager {
             return;
         }
         BlockPos dest;
-        if ("tree".equals(target)) {
+        if ("heart".equals(target)) {
+            BlockPos core = data.heartPos();
+            if (core == null) return;
+            dest = core.offset(0, 1, 4);
+        } else if ("tree".equals(target)) {
             BlockPos tree = data.heartTreePos();
             if (tree == null) return;
             dest = surfaceAbove(level, tree.getX(), tree.getZ() + 2, tree.getY());
@@ -220,6 +224,8 @@ public final class IslandManager {
     private static boolean atTravelPoint(ServerPlayer player, TetherData data) {
         BlockPos tree = data.heartTreePos();
         if (tree != null && player.blockPosition().distSqr(tree) < 10 * 10) return true;
+        BlockPos core = data.heartPos();
+        if (core != null && player.blockPosition().distSqr(core) < 12 * 12) return true;
         for (String id : data.attunedIslands()) {
             IslandDef island = IslandLoader.get(id);
             if (island == null) continue;
@@ -237,7 +243,7 @@ public final class IslandManager {
     }
 
     public static boolean isTetheredWorld(MinecraftServer server) {
-        return TetherData.get(server).startIslandGenerated() || StartIsland.isVoidWorld(server.overworld());
+        return TetherData.get(server).startIslandGenerated() || LastStone.isLastStoneWorld(server.overworld());
     }
 
     private IslandManager() {}

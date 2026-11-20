@@ -1,0 +1,169 @@
+{
+  "title": "VII. What Sleeps Below",
+  "age": 6,
+  "order": 6,
+  "icon": "minecraft:echo_shard",
+  "description": "The deep places: sculk, the Undergarden and the Otherside.",
+  "quests": [
+    {
+      "id": "diamonds",
+      "title": "Diamonds",
+      "description": "The core of the Last Stone and the Heartstone both give diamonds now.",
+      "icon": "minecraft:diamond",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 8,
+          "consume": false,
+          "item": "minecraft:diamond"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "threads",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "undergarden",
+      "title": "The Undergarden",
+      "description": "Undergarden: make a catalyst and open the portal to the world below.",
+      "icon": "undergarden:catalyst",
+      "tasks": [
+        {
+          "type": "dimension",
+          "dimension": "undergarden:undergarden"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 100
+        }
+      ],
+      "mod": "undergarden"
+    },
+    {
+      "id": "otherside",
+      "title": "The Otherside",
+      "description": "Deeper and Darker: find your way into the Otherside.",
+      "icon": "minecraft:echo_shard",
+      "tasks": [
+        {
+          "type": "dimension",
+          "dimension": "deeperdarker:otherside"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 120
+        }
+      ],
+      "mod": "deeperdarker",
+      "optional": true
+    },
+    {
+      "id": "echo",
+      "title": "Echoes",
+      "description": "Collect echo shards.",
+      "icon": "minecraft:echo_shard",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 4,
+          "consume": false,
+          "item": "minecraft:echo_shard"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ]
+    },
+    {
+      "id": "learner",
+      "title": "Deep Learning",
+      "description": "Hostile Neural Networks: simulate the mobs you've fought.",
+      "icon": "hostilenetworks:deep_learner",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "hostilenetworks:deep_learner"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 60
+        }
+      ],
+      "mod": "hostilenetworks",
+      "optional": true
+    },
+    {
+      "id": "tremor",
+      "title": "Steady Heart",
+      "description": "Win a Heart Tremor: defeat the champion that crawls out of the Heartstone.",
+      "icon": "tethered:heartstone",
+      "tasks": [
+        {
+          "type": "event",
+          "event": "heart_tremor",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "favor",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "gloomhollow",
+      "title": "Gloomhollow",
+      "description": "Follow the Rootway into the dark.",
+      "icon": "minecraft:dark_oak_log",
+      "tasks": [
+        {
+          "type": "visit",
+          "island": "gloomhollow"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 100
+        }
+      ]
+    },
+    {
+      "id": "heavens",
+      "title": "The Sky Unfolds",
+      "description": "Make the offering and defeat Skyrender.",
+      "icon": "minecraft:feather",
+      "tasks": [
+        {
+          "type": "age",
+          "age": 7
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 200
+        }
+      ],
+      "requires": [
+        "diamonds",
+        "gloomhollow"
+      ]
+    }
+  ]
+}

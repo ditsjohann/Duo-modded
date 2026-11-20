@@ -1,6 +1,6 @@
 {
   "title": "Bloomreach",
-  "order": 7,
+  "order": 27,
   "icon": "minecraft:pink_petals",
   "quests": [
     {
@@ -23,8 +23,8 @@
     },
     {
       "id": "question",
-      "title": "The Weaver's Question",
-      "description": "Stand together beside the Anchor Stone of Bloomreach. The Weaver has one question for you both.",
+      "title": "The Weaver's Garden",
+      "description": "Stand together at Bloomreach's Anchor Stone. Her last Heart Shard is here.",
       "icon": "tethered:golden_thread",
       "tasks": [
         {
@@ -37,7 +37,12 @@
       ],
       "rewards": [
         {
-          "type": "ending"
+          "type": "shard",
+          "count": 1
+        },
+        {
+          "type": "favor",
+          "count": 1
         }
       ],
       "requires": [

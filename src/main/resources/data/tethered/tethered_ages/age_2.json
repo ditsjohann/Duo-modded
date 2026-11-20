@@ -1,0 +1,315 @@
+{
+  "order": 2,
+  "title": "Age of the Hunt",
+  "name": "Fang and Feather",
+  "color": "#C9783A",
+  "icon": "minecraft:bone",
+  "lore": [
+    "Where there is green there is hunger. The Heartstone remembers beasts: herds and packs, wings and claws, the thrill of the chase.",
+    "The Stoneborn was the stone's own fear of forgetting. Beating it taught the Heartstone that it could be brave.",
+    "The Unraveler noticed. His Hollow, things made of missing thread, have started to climb out of the dark at night. Keep a torch lit, and each other close."
+  ],
+  "weaver": "A world with wolves in it is a world worth defending.",
+  "awaken": {
+    "breaks": 120,
+    "offering": [
+      {
+        "count": 1,
+        "item": "tethered:heart_shard"
+      },
+      {
+        "count": 16,
+        "item": "minecraft:bread"
+      },
+      {
+        "count": 8,
+        "tag": "minecraft:wool"
+      },
+      {
+        "count": 8,
+        "tag": "minecraft:saplings"
+      },
+      {
+        "count": 8,
+        "item": "tethered:lost_thread"
+      }
+    ],
+    "trial": {
+      "name": "Thornmother",
+      "entity": [
+        "minecraft:spider"
+      ],
+      "health": 90,
+      "damage": 1.4,
+      "scale": 2.4,
+      "armor": 2,
+      "speed": 1.1,
+      "intro": "Webs spill from the Heartstone. The Thornmother wants her forest back.",
+      "minions": [
+        {
+          "entity": "minecraft:cave_spider",
+          "every": 7,
+          "count": 2,
+          "max": 6
+        }
+      ]
+    }
+  },
+  "keep_previous": 0.25,
+  "unlocks": [
+    "ironreach"
+  ],
+  "blocks": [
+    {
+      "block": "minecraft:bone_block",
+      "weight": 6
+    },
+    {
+      "block": "minecraft:cobweb",
+      "weight": 2
+    },
+    {
+      "block": "minecraft:hay_block",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:mud",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:packed_mud",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:terracotta",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:red_sand",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:sandstone",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:iron_ore",
+      "weight": 4
+    },
+    {
+      "block": "minecraft:coal_ore",
+      "weight": 6
+    },
+    {
+      "block": "minecraft:copper_ore",
+      "weight": 3
+    },
+    {
+      "block": "minecraft:spruce_log",
+      "weight": 6
+    },
+    {
+      "block": "minecraft:dark_oak_log",
+      "weight": 6
+    },
+    {
+      "block": "minecraft:mushroom_stem",
+      "weight": 2
+    },
+    {
+      "block": "minecraft:mossy_stone_bricks",
+      "weight": 2
+    },
+    {
+      "block": "minecraft:cracked_stone_bricks",
+      "weight": 2
+    },
+    {
+      "block": "tethered:thread_ore",
+      "weight": 3
+    }
+  ],
+  "mobs": {
+    "chance": 0.07,
+    "list": [
+      {
+        "entity": "minecraft:zombie",
+        "weight": 10
+      },
+      {
+        "entity": "minecraft:skeleton",
+        "weight": 10
+      },
+      {
+        "entity": "minecraft:spider",
+        "weight": 8
+      },
+      {
+        "entity": "minecraft:creeper",
+        "weight": 6
+      },
+      {
+        "entity": "minecraft:wolf",
+        "weight": 4
+      },
+      {
+        "entity": "minecraft:horse",
+        "weight": 3
+      },
+      {
+        "entity": "minecraft:llama",
+        "weight": 2
+      },
+      {
+        "entity": "minecraft:goat",
+        "weight": 3
+      },
+      {
+        "entity": "naturalist:bear",
+        "weight": 3
+      },
+      {
+        "entity": "naturalist:boar",
+        "weight": 4
+      },
+      {
+        "entity": "born_in_chaos_v1:decaying_zombie",
+        "weight": 4
+      },
+      {
+        "entity": "born_in_chaos_v1:bone_imp",
+        "weight": 3
+      },
+      {
+        "entity": "mowziesmobs:foliaath",
+        "weight": 2
+      },
+      {
+        "entity": "mowziesmobs:grottol",
+        "weight": 1
+      },
+      {
+        "entity": "friendsandfoes:rascal",
+        "weight": 1
+      },
+      {
+        "entity": "quark:shiba",
+        "weight": 2
+      }
+    ]
+  },
+  "cache": {
+    "chance": 0.025,
+    "rolls": 4,
+    "items": [
+      {
+        "item": "minecraft:bow",
+        "min": 1,
+        "max": 1,
+        "weight": 6
+      },
+      {
+        "item": "minecraft:arrow",
+        "min": 8,
+        "max": 16,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:iron_sword",
+        "min": 1,
+        "max": 1,
+        "weight": 4
+      },
+      {
+        "item": "minecraft:leather_chestplate",
+        "min": 1,
+        "max": 1,
+        "weight": 4
+      },
+      {
+        "item": "minecraft:leather_helmet",
+        "min": 1,
+        "max": 1,
+        "weight": 4
+      },
+      {
+        "item": "minecraft:shield",
+        "min": 1,
+        "max": 1,
+        "weight": 4
+      },
+      {
+        "item": "minecraft:crossbow",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "minecraft:saddle",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "minecraft:lead",
+        "min": 1,
+        "max": 2,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:name_tag",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "minecraft:golden_carrot",
+        "min": 2,
+        "max": 4,
+        "weight": 10
+      },
+      {
+        "item": "minecraft:cooked_beef",
+        "min": 2,
+        "max": 4,
+        "weight": 10
+      },
+      {
+        "item": "doggytalents:training_treat",
+        "min": 2,
+        "max": 4,
+        "weight": 10
+      },
+      {
+        "item": "artifacts:running_shoes",
+        "min": 1,
+        "max": 1,
+        "weight": 1
+      },
+      {
+        "item": "artifacts:lucky_scarf",
+        "min": 1,
+        "max": 1,
+        "weight": 1
+      },
+      {
+        "item": "spartanweaponry:iron_dagger",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "spartanweaponry:iron_longsword",
+        "min": 1,
+        "max": 1,
+        "weight": 3
+      },
+      {
+        "item": "tethered:lost_thread",
+        "min": 2,
+        "max": 4,
+        "weight": 10
+      }
+    ]
+  }
+}

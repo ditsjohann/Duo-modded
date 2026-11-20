@@ -1,9 +1,16 @@
 package com.duomodded.tethered.registry;
 
 import com.duomodded.tethered.Tethered;
+import com.duomodded.tethered.age.HeartstoneBlock;
 import com.duomodded.tethered.heart.HeartTreeBlock;
-import com.duomodded.tethered.heart.HeartTreeBlockEntity;
 import com.duomodded.tethered.item.JournalItem;
+import com.duomodded.tethered.item.WeaversFavorItem;
+import com.duomodded.tethered.world.LastStoneGenerator;
+import com.duomodded.tethered.world.RemnantBlock;
+import com.mojang.serialization.MapCodec;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.chunk.ChunkGenerator;
 import com.duomodded.tethered.item.RedThreadItem;
 import com.duomodded.tethered.item.TetherUpgradeItem;
 import com.duomodded.tethered.tether.RopeTier;
@@ -21,7 +28,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
@@ -33,8 +39,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class ModRegistry {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Tethered.MODID);
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Tethered.MODID);
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
-            DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, Tethered.MODID);
+    public static final DeferredRegister<MapCodec<? extends ChunkGenerator>> CHUNK_GENERATORS =
+            DeferredRegister.create(Registries.CHUNK_GENERATOR, Tethered.MODID);
     public static final DeferredRegister<CreativeModeTab> TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Tethered.MODID);
 
@@ -59,11 +65,34 @@ public final class ModRegistry {
                     .lightLevel(state -> 12)
                     .noLootTable()));
 
+    public static final DeferredBlock<HeartstoneBlock> HEARTSTONE = BLOCKS.register("heartstone",
+            () -> new HeartstoneBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_MAGENTA)
+                    .strength(-1.0F, 3600000.0F)
+                    .sound(SoundType.AMETHYST)
+                    .lightLevel(state -> 15)
+                    .noLootTable()));
+    public static final DeferredBlock<DropExperienceBlock> THREAD_ORE = BLOCKS.register("thread_ore",
+            () -> new DropExperienceBlock(UniformInt.of(1, 4), BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_ORE)
+                    .lightLevel(state -> 3)));
+    public static final DeferredBlock<DropExperienceBlock> DEEPSLATE_THREAD_ORE = BLOCKS.register("deepslate_thread_ore",
+            () -> new DropExperienceBlock(UniformInt.of(1, 4), BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_IRON_ORE)
+                    .lightLevel(state -> 3)));
+    public static final DeferredBlock<RemnantBlock> REMNANT = BLOCKS.register("remnant",
+            () -> new RemnantBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CHISELED_DEEPSLATE)
+                    .strength(2.0F, 6.0F)
+                    .lightLevel(state -> 5)
+                    .noLootTable()));
+
     // Block items
     public static final DeferredItem<BlockItem> HEART_TREE_ITEM = ITEMS.registerSimpleBlockItem(HEART_TREE);
     public static final DeferredItem<BlockItem> HEARTWOOD_LOG_ITEM = ITEMS.registerSimpleBlockItem(HEARTWOOD_LOG);
     public static final DeferredItem<BlockItem> HEART_LEAVES_ITEM = ITEMS.registerSimpleBlockItem(HEART_LEAVES);
     public static final DeferredItem<BlockItem> ANCHOR_STONE_ITEM = ITEMS.registerSimpleBlockItem(ANCHOR_STONE);
+    public static final DeferredItem<BlockItem> HEARTSTONE_ITEM = ITEMS.registerSimpleBlockItem(HEARTSTONE);
+    public static final DeferredItem<BlockItem> THREAD_ORE_ITEM = ITEMS.registerSimpleBlockItem(THREAD_ORE);
+    public static final DeferredItem<BlockItem> DEEPSLATE_THREAD_ORE_ITEM = ITEMS.registerSimpleBlockItem(DEEPSLATE_THREAD_ORE);
+    public static final DeferredItem<BlockItem> REMNANT_ITEM = ITEMS.registerSimpleBlockItem(REMNANT);
 
     // Items
     public static final DeferredItem<Item> RED_THREAD = ITEMS.register("red_thread",
@@ -81,13 +110,20 @@ public final class ModRegistry {
     public static final DeferredItem<Item> HEART_SHARD = ITEMS.register("heart_shard",
             () -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.RARE)
                     .component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)));
+    public static final DeferredItem<Item> LOST_THREAD = ITEMS.register("lost_thread",
+            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> WEAVERS_FAVOR = ITEMS.register("weavers_favor",
+            () -> new WeaversFavorItem(new Item.Properties().stacksTo(16).rarity(Rarity.EPIC)
+                    .component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)));
+    public static final DeferredItem<Item> LOOM_HEART = ITEMS.register("loom_heart",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant()
+                    .component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)));
     public static final DeferredItem<Item> WEAVERS_JOURNAL = ITEMS.register("weavers_journal",
             () -> new JournalItem(new Item.Properties().stacksTo(1)));
 
-    // Block entities
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<HeartTreeBlockEntity>> HEART_TREE_BE =
-            BLOCK_ENTITIES.register("heart_tree",
-                    () -> BlockEntityType.Builder.of(HeartTreeBlockEntity::new, HEART_TREE.get()).build(null));
+    // World generation: the Last Stone
+    public static final DeferredHolder<MapCodec<? extends ChunkGenerator>, MapCodec<LastStoneGenerator>> LAST_STONE =
+            CHUNK_GENERATORS.register("last_stone", () -> LastStoneGenerator.CODEC);
 
     // Creative tab
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TAB = TABS.register("main",
@@ -96,7 +132,14 @@ public final class ModRegistry {
                     .icon(() -> new ItemStack(RED_THREAD.get()))
                     .displayItems((params, output) -> {
                         output.accept(WEAVERS_JOURNAL.get());
+                        output.accept(WEAVERS_FAVOR.get());
+                        output.accept(LOST_THREAD.get());
                         output.accept(HEART_SHARD.get());
+                        output.accept(LOOM_HEART.get());
+                        output.accept(THREAD_ORE_ITEM.get());
+                        output.accept(DEEPSLATE_THREAD_ORE_ITEM.get());
+                        output.accept(REMNANT_ITEM.get());
+                        output.accept(HEARTSTONE_ITEM.get());
                         output.accept(RED_THREAD.get());
                         output.accept(LEATHER_TETHER.get());
                         output.accept(CHAIN_TETHER.get());
@@ -112,7 +155,7 @@ public final class ModRegistry {
     public static void register(IEventBus modBus) {
         BLOCKS.register(modBus);
         ITEMS.register(modBus);
-        BLOCK_ENTITIES.register(modBus);
+        CHUNK_GENERATORS.register(modBus);
         TABS.register(modBus);
     }
 

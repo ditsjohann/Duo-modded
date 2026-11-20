@@ -1,0 +1,229 @@
+{
+  "title": "II. The First Green",
+  "age": 1,
+  "order": 1,
+  "icon": "minecraft:oak_sapling",
+  "description": "Soil, seeds and trees return. Build a home and a farm.",
+  "quests": [
+    {
+      "id": "bread",
+      "title": "Daily Bread",
+      "description": "Grow wheat and bake bread for two.",
+      "icon": "minecraft:bread",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 16,
+          "consume": true,
+          "item": "minecraft:bread"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:bone_meal",
+          "count": 16
+        }
+      ]
+    },
+    {
+      "id": "forest",
+      "title": "Plant a Forest",
+      "description": "Collect saplings of different trees. The Heartstone gives many kinds now.",
+      "icon": "minecraft:oak_sapling",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 16,
+          "consume": false,
+          "tag": "minecraft:saplings"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:bone_meal",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "id": "herd",
+      "title": "A Small Herd",
+      "description": "Animals sometimes step out of the Heartstone. Keep some! Bring wool.",
+      "icon": "minecraft:white_wool",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 8,
+          "consume": false,
+          "tag": "minecraft:wool"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:lead",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "bed",
+      "title": "Somewhere to Sleep",
+      "description": "Make a bed. Every home needs one, even inside a stone.",
+      "icon": "minecraft:red_bed",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "tag": "minecraft:beds"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 30
+        }
+      ]
+    },
+    {
+      "id": "pots",
+      "title": "Botany Pots",
+      "description": "Grow crops and trees in a pot, no soil needed. Perfect for a stone world.",
+      "icon": "botanypots:terracotta_botany_pot",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "botanypots:terracotta_botany_pot"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "minecraft:bone_meal",
+          "count": 16
+        }
+      ],
+      "mod": "botanypots"
+    },
+    {
+      "id": "pot",
+      "title": "The Cooking Pot",
+      "description": "Farmer's Delight meals feed you for much longer.",
+      "icon": "farmersdelight:cooking_pot",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 1,
+          "consume": false,
+          "item": "farmersdelight:cooking_pot"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "farmersdelight:tomato_seeds",
+          "count": 4
+        }
+      ],
+      "mod": "farmersdelight"
+    },
+    {
+      "id": "dinner",
+      "title": "Dinner Date",
+      "description": "Cook a beef stew for each of you and eat it together.",
+      "icon": "farmersdelight:beef_stew",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 2,
+          "consume": true,
+          "item": "farmersdelight:beef_stew"
+        },
+        {
+          "type": "together"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 40
+        },
+        {
+          "type": "threads",
+          "count": 3
+        }
+      ],
+      "requires": [
+        "pot"
+      ],
+      "mod": "farmersdelight"
+    },
+    {
+      "id": "seeds",
+      "title": "Inferium Seeds",
+      "description": "Mystical Agriculture: grow your resources as crops.",
+      "icon": "mysticalagriculture:inferium_seeds",
+      "tasks": [
+        {
+          "type": "item",
+          "count": 16,
+          "consume": false,
+          "item": "mysticalagriculture:inferium_essence"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 30
+        }
+      ],
+      "mod": "mysticalagriculture",
+      "optional": true
+    },
+    {
+      "id": "meadow",
+      "title": "Hearthmeadow",
+      "description": "The World Tree's roots reached Hearthmeadow. Climb to the summit of the Last Stone and follow the Rootway.",
+      "icon": "minecraft:grass_block",
+      "tasks": [
+        {
+          "type": "visit",
+          "island": "hearthmeadow"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 40
+        }
+      ]
+    },
+    {
+      "id": "hunt",
+      "title": "Fang and Feather",
+      "description": "Make the offering and defeat the Thornmother.",
+      "icon": "minecraft:bone",
+      "tasks": [
+        {
+          "type": "age",
+          "age": 2
+        }
+      ],
+      "rewards": [
+        {
+          "type": "xp",
+          "count": 80
+        }
+      ],
+      "requires": [
+        "bread",
+        "meadow"
+      ]
+    }
+  ]
+}

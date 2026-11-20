@@ -1,0 +1,23 @@
+{
+  "parent": "tethered:first_memory",
+  "display": {
+    "icon": {
+      "id": "minecraft:oak_sapling"
+    },
+    "title": {
+      "translate": "advancements.tethered.age.age_1.title"
+    },
+    "description": {
+      "translate": "advancements.tethered.age.age_1.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

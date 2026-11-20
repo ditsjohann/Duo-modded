@@ -1,0 +1,182 @@
+{
+  "type": "wandering_weaver",
+  "name": "The Wandering Weaver",
+  "color": "#FFB6D5",
+  "time": "day",
+  "min_age": 1,
+  "weight": 7,
+  "warning": "A hooded figure with a basket of threads has found you. She trades in Lost Threads.",
+  "success": "The Wandering Weaver tips her hood. She'll be around for a few minutes.",
+  "duration": 480,
+  "trades": [
+    {
+      "result": "minecraft:oak_sapling",
+      "cost_count": 2,
+      "count": 2,
+      "max_uses": 4
+    },
+    {
+      "result": "minecraft:water_bucket",
+      "cost_count": 3,
+      "count": 1,
+      "max_uses": 2
+    },
+    {
+      "result": "minecraft:lava_bucket",
+      "cost_count": 6,
+      "count": 1,
+      "max_uses": 2
+    },
+    {
+      "result": "minecraft:bone_meal",
+      "cost_count": 2,
+      "count": 12,
+      "max_uses": 6
+    },
+    {
+      "result": "minecraft:name_tag",
+      "cost_count": 4,
+      "count": 1,
+      "max_uses": 2
+    },
+    {
+      "result": "minecraft:saddle",
+      "cost_count": 6,
+      "count": 1,
+      "max_uses": 1,
+      "min_age": 2
+    },
+    {
+      "result": "minecraft:iron_ingot",
+      "cost_count": 3,
+      "count": 4,
+      "max_uses": 6,
+      "min_age": 2
+    },
+    {
+      "result": "minecraft:redstone",
+      "cost_count": 3,
+      "count": 16,
+      "max_uses": 4,
+      "min_age": 3
+    },
+    {
+      "result": "minecraft:experience_bottle",
+      "cost_count": 4,
+      "count": 8,
+      "max_uses": 4,
+      "min_age": 3
+    },
+    {
+      "result": "minecraft:ender_pearl",
+      "cost_count": 6,
+      "count": 2,
+      "max_uses": 4,
+      "min_age": 4
+    },
+    {
+      "result": "minecraft:diamond",
+      "cost_count": 12,
+      "count": 1,
+      "max_uses": 3,
+      "min_age": 5
+    },
+    {
+      "result": "minecraft:nether_wart",
+      "cost_count": 4,
+      "count": 4,
+      "max_uses": 2,
+      "min_age": 4
+    },
+    {
+      "result": "minecraft:totem_of_undying",
+      "cost_count": 24,
+      "count": 1,
+      "max_uses": 1,
+      "min_age": 6
+    },
+    {
+      "result": "tethered:heart_shard",
+      "cost_count": 40,
+      "count": 1,
+      "max_uses": 1,
+      "min_age": 3
+    },
+    {
+      "result": "tethered:weavers_favor",
+      "cost_count": 16,
+      "count": 1,
+      "max_uses": 1,
+      "min_age": 2
+    },
+    {
+      "result": "farmersdelight:cooking_pot",
+      "cost_count": 5,
+      "count": 1,
+      "max_uses": 1,
+      "mod": "farmersdelight"
+    },
+    {
+      "result": "exdeorum:oak_sieve",
+      "cost_count": 3,
+      "count": 1,
+      "max_uses": 2,
+      "mod": "exdeorum"
+    },
+    {
+      "result": "exdeorum:string_mesh",
+      "cost_count": 2,
+      "count": 1,
+      "max_uses": 2,
+      "mod": "exdeorum"
+    },
+    {
+      "result": "sophisticatedbackpacks:backpack",
+      "cost_count": 8,
+      "count": 1,
+      "max_uses": 2,
+      "mod": "sophisticatedbackpacks"
+    },
+    {
+      "result": "waystones:waystone",
+      "cost_count": 20,
+      "count": 1,
+      "max_uses": 1,
+      "min_age": 3,
+      "mod": "waystones"
+    },
+    {
+      "result": "create:andesite_alloy",
+      "cost_count": 3,
+      "count": 8,
+      "max_uses": 4,
+      "min_age": 3,
+      "mod": "create"
+    },
+    {
+      "result": "ars_nouveau:source_gem",
+      "cost_count": 4,
+      "count": 6,
+      "max_uses": 4,
+      "min_age": 4,
+      "mod": "ars_nouveau"
+    },
+    {
+      "result": "undergarden:catalyst",
+      "cost_count": 12,
+      "count": 1,
+      "max_uses": 1,
+      "min_age": 6,
+      "mod": "undergarden"
+    },
+    {
+      "result": "paraglider:paraglider",
+      "cost_count": 20,
+      "count": 1,
+      "max_uses": 1,
+      "min_age": 7,
+      "mod": "paraglider"
+    }
+  ],
+  "rewards": {}
+}

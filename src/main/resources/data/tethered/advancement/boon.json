@@ -1,0 +1,23 @@
+{
+  "parent": "tethered:root",
+  "display": {
+    "icon": {
+      "id": "tethered:weavers_favor"
+    },
+    "title": {
+      "translate": "advancements.tethered.boon.title"
+    },
+    "description": {
+      "translate": "advancements.tethered.boon.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}
