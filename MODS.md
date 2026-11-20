@@ -1,7 +1,7 @@
 # Mod list (draft)
 
 **Target:** Minecraft **1.21.1**, **NeoForge**
-**Concept:** Tethered + Heart Tree. Two players tied by a rope on a sky island; a tree you grow together spawns new island rings, and each ring unlocks a chapter of mods.
+**Concept:** Tethered: The Last Stone. Two bonded players start inside a huge boulder floating in the void (StoneBlock), next to the Heartstone (a One Block). Ten story Ages bring the world back; each Age brings in a group of these mods through the Heartstone's blocks, mobs, loot and quests. See the README.
 
 > **Status:** This is a draft from known mods. ✅ = checked that a NeoForge 1.21.1 build exists.
 > Unmarked = I expect it exists, but it still needs checking. ❓ = not sure it was ever made for 1.21.1; check first.
@@ -130,7 +130,7 @@
 |---|-----|-------------------|
 | 75 | The Twilight Forest | A whole adventure dimension with a boss progression. Great **Bloom** reward |
 | 76 | The Aether | A sky dimension, so it fits the theme. Maybe the first portal |
-| 77 | L_Ender's Cataclysm | Big boss fights for the finale |
+| 77 | ~~L_Ender's Cataclysm~~ | **Removed**: it breaks world loading in this pack |
 | 78 | Mowzie's Mobs ✅ | Unique bosses and creatures |
 | 79 | Born in Chaos | Spooky mobs for the Shadow islands |
 | 80 | Artifacts | Fun accessories found in loot |

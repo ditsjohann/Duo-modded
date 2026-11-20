@@ -1,98 +1,88 @@
 # Duo-modded: Tethered
 
-A duo mod for me and my gf. Minecraft **1.21.1**, **NeoForge**.
+A two-player story modpack for Minecraft **1.21.1** (**NeoForge**). Think StoneBlock + One Block + SkyFactory, with a fantasy story, boss Trials, night events and RPG Boons.
 
-You both wake up on a tiny island in the sky, **tied together by a rope**, next to a glowing **Heart Tree** seed.
-Feed the tree together and it grows, raising new rings of islands around it. At full bloom, the Weaver asks you one question.
+## The story
+The Weaver wove the world on her Loom. The Unraveler pulled it apart, thread by thread, until only the Void was left.
+One knot held: the **Heartstone**, deep inside the **Last Stone**, a colossal boulder floating in the void.
+With her last strength the Weaver tied two souls together with a Red Thread and wove them in beside it:
+*"Remember the world for me."*
 
-## How to play
-1. Install NeoForge 1.21.1 and put `tethered-0.1.0.jar` in `mods/` (you **both** need it).
-2. Create a world, click **World Type** until it says **Tethered Sky**.
-3. Open to LAN (or use a server). When the second player joins, you're tied together automatically.
-4. Read *The Weaver's Note* in the starter chest.
+## How it plays
+1. **You wake inside the stone** (the Hollow Heart chamber) next to the Heartstone. There's no way out but to dig.
+2. **Break the block on top of the Heartstone.** It immediately weaves a new one: logs, dirt, ore and, later, modded blocks, mobs and cache chests.
+   Every break is a *memory*.
+3. **Mine the Last Stone** (StoneBlock-style). Richer ore lies deeper: coal and copper in the crust; iron, gold, redstone and lapis in the mantle; diamonds in the core.
+   **Thread Ore** gives Lost Threads, and hidden **Remnants** spill loot. The caves are dark and monsters live there.
+4. **Wake the next Age.** When the Heartstone has enough memories it asks for an **offering**. Make it, then both of you face its **Trial**, a boss.
+   Win, and a whole Age of the world comes back: new blocks, mobs, loot, a blessing, a Weaver's Favor each and a new story chapter.
+5. **Climb to the summit.** The Weaver's World Tree grows there with every Age. Its roots reach out to the **Lost Shards**, faraway islands with their own quests.
+   Each one gives the **Heart Shard** that the next offering needs.
+6. **Survive the nights.** The Unraveler sends events your way (see below).
+7. **Forge the Loom Heart** (it takes a Wither's star) and face **the Unraveler** himself.
 
-## Controls (rebindable under Options → Controls → Tethered)
+## The ten Ages
+| # | Age | Brings back | Trial |
+|---|---|---|---|
+| 0 | Age of Silence | stone, wood, coal, copper | – |
+| 1 | Age of Roots | soil, every tree, farm animals, crops (Farmer's Delight, Botany Pots, BoP, BWG) | Stoneborn |
+| 2 | Age of the Hunt | beasts and monsters (Naturalist, Born in Chaos, Mowzie's), weapons | Thornmother |
+| 3 | Age of Iron | ores, Create, AE2, Mystical Agriculture, storage, Waystones | The Wroughtnaut |
+| 4 | Age of Arcana | Ars Nouveau, Iron's Spells, Occultism, enchanting, brewing | The Hollow Magus |
+| 5 | Age of Frost and Flame | the Nether, ice, Ice and Fire | Cinderwing |
+| 6 | Age of the Deep | sculk, the Undergarden, Deeper and Darker, diamonds | Gravemaw |
+| 7 | Age of the Heavens | the Aether, Eternal Starlight, gliders and aircraft | Skyrender |
+| 8 | Age of the Weaver | endgame loot, the Loom | Herald of Unmaking |
+| 9 | The Rewoven World | everything (post-game) | **The Unraveler** |
+
+## World events
+At nightfall (sometimes by day) one of these can happen. A boss bar shows the progress, and winning gives Lost Threads, loot and sometimes a Weaver's Favor.
+- **Hollow Tide**: waves of glowing Hollow monsters climb toward you. They get tougher with every Age.
+- **Threadfall**: threads and loot fall around you for a minute.
+- **The Wandering Weaver**: a trader who takes Lost Threads (saplings, lava, ender pearls, Favors and more).
+- **The Crimson Weave**: monsters get stronger, and they drop threads.
+- **Heart Tremor**: a champion claws its way out of the Heartstone.
+- **Unraveling Storm**: lightning hunts anyone outside and leaves threads behind.
+
+## Boons (RPG)
+Every **Weaver's Favor** (from each new Age, quests and events, or crafted from 8 Lost Threads + a diamond) lets you pick **one of three Boons**.
+Each Boon has a few ranks:
+- **Stat Boons**: Stoneheart, Thread-Sharp, Quarrier, Swiftstep, Long Reach, Ironhide, Fortune's Thread, Featherfall, Deep Lungs, Steadfast, Long Stride.
+- **Special Boons**: Twin Strike (stronger near your partner), Lifeline, Heart's Echo, Bloodthread, Nightsight, Hearty, Scholar, Hollowbane, Threadfinder.
+
+## The two of you
+- If one of you would die, you go **down** instead. Your partner crouches next to you for 3 s to revive you.
+- **Thread Call** (`H`, from the Age of Iron): teleport to your partner.
+- **Blessings** from the Ages: Green Thumb, Together (regeneration near each other), Heart Paths (fast travel), Deep Roots, Shared Table, Heartward and Bloom.
+- The old physical rope still exists: set `ropePhysics = true` in `config/tethered-common.toml`.
+
+## Controls
 | Key | Action |
 |---|---|
-| Crouch | **Brace**: you hold firm, your partner swings/dangles |
-| `R` (hold) | **Haul**: reel the rope in to pull your partner up |
-| Crouch + `G` | **Launch**: throw your partner across a gap |
-| `H` | **Ender Call**: teleport to your partner (needs Ender Thread) |
-| `U` | **Unhook**: loosen the rope (Golden Thread only) |
-| `J` | **Weaver's Journal**: map, quests, tree |
+| `J` | Weaver's Journal: Heartstone, quests, map and story |
+| `H` | Thread Call |
+| Crouch near a downed partner | Revive |
+| Right-click the Heartstone | Offering / status / start the Trial (empty hand) |
+| Rope mode only | `R` haul, crouch + `G` launch, `U` unhook |
 
-## The rope
-| Tier | Length | How to get it |
-|---|---|---|
-| Red Twine | 8 | Start (or a **Red Thread** on another player) |
-| Leather | 12 | Leather Tether (leather + string) |
-| Chain | 16 | Chain Tether (8 chains + Leather Tether) |
-| Ender Thread | 24 | Ender pearls + gold + Chain Tether. Unlocks Ender Call |
-| Golden Thread | 32 | Choose to **keep** the thread at the end. Unlocks Unhook |
-
-- If one of you falls, the rope catches you (no fall damage while it's holding you).
-- If one of you would die, you go **down** instead. Your partner crouches next to you for 3 s to help you up.
-- The void still kills. If you both fall, you both fall.
-- Go through a portal and your partner gets pulled through with you.
-
-## The world map
-You start on **Heartrest**, a small island with the Heart Tree. Seven more islands float far away:
-
-| # | Island | Distance | Theme | Quests use |
-|---|---|---|---|---|
-| 1 | Hearthmeadow | ~200 | meadows, animals | Farmer's Delight, Vinery |
-| 2 | Ironreach | ~360 | ore-rich rock | Create, Ex Deorum |
-| 3 | Windward Docks | ~540 | high & windy | Paragliders, Immersive Aircraft, the Aether |
-| 4 | Arcanum | ~720 | birch & old stone | Ars Nouveau, Occultism, enchanting |
-| 5 | Frostfall | ~920 | snow & ice | Ice and Fire (dragons) |
-| 6 | Gloomhollow | ~1160 | dark forest | the Nether, Wither, Mowzie's Mobs, Cataclysm |
-| 7 | Bloomreach | ~1500 | cherry blossoms | the Weaver's question (ending) |
-
-Islands are built when you get close, so the far ones really are undiscovered.
-
-**The loop:** grow the Heart Tree → its roots grow a **Rootway** bridge to the next island → do that island's
-quest chapter together → get a **Heart Shard** → bring it home → the tree grows → next island.
-
-**Anchor Stones:** each island has one in the middle. Right-click it *together* to attune it.
-
-## The Heart Tree
-Right-click it to see what it wants. It only grows when you're **both** next to it.
-Every stage unlocks a **blessing** for the whole world:
-
-| Stage | Name | Blessing |
-|---|---|---|
-| 1 | Sprout | **Green Thumb**: crops near the tree grow faster |
-| 2 | Sapling | **Together**: regeneration while you're within 12 blocks of each other |
-| 3 | Young Tree | **Heart Paths**: fast travel between the tree and attuned anchors (journal map) |
-| 4 | Grown Tree | **Deep Roots**: rope +4 blocks |
-| 5 | Elder Tree | **Shared Table**: when one eats, the other is fed a little |
-| 6 | Ancient Tree | **Heartward**: no monsters spawn near the tree |
-| 7 | Bloom | the last root reaches Bloomreach |
-
-Rope upgrades need the tree too: Leather at stage 2, Chain at 3, Ender at 4.
-
-## The Weaver's Journal (press J)
-- **Map**: every island, the Rootways, you (white) and your partner (pink). Click an attuned island to travel.
-- **Quests**: a chapter per island, tasks, rewards and a *Hand in items* button.
-- **Heart Tree**: stage and blessings.
-The HUD also shows an arrow to the next island.
-
-Quests for mods you don't have are hidden automatically, so the story always works.
+## Start a world
+Create a world and click **World Type** until it says **Tethered: The Last Stone**. Open it to LAN (or use a server).
+The second player is bonded automatically.
 
 ## Adding to it
-Everything is datapack JSON, so it's easy to extend without code:
-- `data/tethered/tethered_islands/*.json`: islands (position, size, blocks, ores, biome, trees, mobs, loot)
-- `data/tethered/tethered_quests/*.json`: quest chapters (task types: item, kill, advancement, visit, attune,
-  tree_stage, together; rewards: item, shard, xp, unlock, ending)
-- `data/tethered/heart_tree_stages/*.json`: what each stage needs and which island it unlocks
+Everything is datapack JSON:
+- `data/tethered/tethered_ages/*.json`: each Age (block/mob/loot pools, offering, Trial boss, story)
+- `data/tethered/tethered_events/*.json`: world events (mobs per Age, rewards, trades)
+- `data/tethered/tethered_quests/*.json`: quest chapters (task types: item, kill, advancement, visit, attune, age, heart, event, dimension, boons, together)
+- `data/tethered/tethered_islands/*.json`: the Lost Shards
+
+Anything from a mod that isn't installed is skipped automatically.
 
 ## Commands
-- `/tether status`, `/tether travel <island|tree>`, `/hearttree info`
-- Operators: `/tether pair <a> <b>`, `/tether cut <player>`, `/tether tier <player> <1-5>`,
-  `/hearttree grow` (skip a stage), `/hearttree unlockall`, `/hearttree startisland` (build a starter island where you stand)
+- `/heart info`, `/tether status`, `/tether travel <heart|tree|island>`
+- Operators: `/heart advance`, `/heart breaks <n>`, `/heart tp`, `/tether event start <id>`, `/tether event stop`, `/tether favor <player> [n]`
 
 ## Building
-`./gradlew build` → `build/libs/tethered-0.1.0.jar`.
-Every push is also built by GitHub Actions; download the jar from the run's **Artifacts**.
+`./gradlew build` → `build/libs/tethered-0.1.0.jar`. GitHub Actions builds every push, makes the `.mrpack`, and plays a full-pack server through every Age and event.
 
 See [MODS.md](MODS.md) for the modpack list.
