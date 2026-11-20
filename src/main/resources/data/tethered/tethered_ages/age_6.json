@@ -125,19 +125,19 @@
       "weight": 3
     },
     {
-      "block": "undergarden:cloggrum_ore",
+      "block": "undergarden:depthrock_cloggrum_ore",
       "weight": 3
     },
     {
-      "block": "undergarden:froststeel_ore",
+      "block": "undergarden:shiverstone_froststeel_ore",
       "weight": 2
     },
     {
-      "block": "undergarden:utherium_ore",
+      "block": "undergarden:depthrock_utherium_ore",
       "weight": 2
     },
     {
-      "block": "undergarden:regalium_ore",
+      "block": "undergarden:depthrock_regalium_ore",
       "weight": 1
     },
     {
